@@ -3,3 +3,16 @@
 ################################################################################
 
 /.vs/Solution
+/Back/AutomationBack/bin
+/Back/AutomationBack/obj
+/Back/Integration/bin
+/Back/Integration/obj
+/Back/Master/bin
+/Back/Master/obj
+/Back/UnitTesting/bin
+/Back/UnitTesting/obj/Debug/netcoreapp3.1
+/Front/AutomationFront/bin
+/Front/AutomationFront/obj
+/ProjectShared/bin
+/ProjectShared/obj
+/packages/Newtonsoft.Json.12.0.3
