@@ -13,6 +13,7 @@ import DemoDataTableClickPagination from "./Pages/DataTableClickPagination.js"
 import DemoDataLabel from "./Pages/DataLabel.js"
 import DemoTimer from "./Pages/Timer.js"
 import DemoTrigger from "./Pages/Trigger.js"
+import DemoModal from "./Pages/Modal.js"
 
 const routes = [
     { path: "/", view: Dashboard },
@@ -25,6 +26,7 @@ const routes = [
     { path: "/datalabel", view: DemoDataLabel },
     { path: "/timer", view: DemoTimer },
     { path: "/trigger", view: DemoTrigger },
+    { path: "/modal", view: DemoModal },
 ];
 
 // -------------------------

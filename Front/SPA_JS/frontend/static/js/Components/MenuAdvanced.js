@@ -222,6 +222,7 @@ export default class {
                                     <li><a href="/datalabel">Data Label</a></li>
                                     <li><a href="/timer">Timer</a></li>
                                     <li><a href="/trigger">Trigger</a></li>
+                                    <li><a href="/modal">Modal</a></li>
                                 </ul>
                             </div>
                         </li>

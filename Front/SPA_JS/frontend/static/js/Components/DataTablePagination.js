@@ -44,12 +44,14 @@ export default class {
                          buttonHtml.replace("class=", "_page='" + endPage + "' class=") + 'Last' + term;
 
         return `
+        <div align='left'>
             <table>
                 <tr height='52px'>
                     <td valign='middle' width='250px'><span style='font-size:small'>Showing results [${startRes} to ${endRes}] of ${injectTotItens}</span></td>
                     <td valign='middle'>${injectButtons}</td>
                 </tr>
             </table>
+            </div>
             `;
     }
 }

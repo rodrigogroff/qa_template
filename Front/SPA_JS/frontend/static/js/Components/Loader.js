@@ -6,14 +6,13 @@ export default class {
 
     getHtml() {
         return `
-            <div align="center" style="min-height:30px;">
-                <div class="loader-ring" id="loading" style="display:none;height:20px">
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                </div>
+            <div class="loader-ring" id="loading" style="display:none;min-height:30px;height:30px" align='center'>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
             </div>
-        `;
+            `;
     }
 }

@@ -68,19 +68,16 @@ export default class extends AbstractView {
                     'data': []
                 };
 
+                // mock!
                 var start = (currentPage - 1) * itensPerPage + 1;
                 var end = start + itensPerPage;
-        
-                // mock!
                 while (true)
                 {
                     var row = [];
                     row.push('Alfred ' + start)
-                    row.push('555-545' + start)
+                    row.push('555-5451')
                     table.data.push(row);
-
                     start++;
-
                     if (start >= totItens) break;
                     if (start >= end) break;
                 }
@@ -110,8 +107,9 @@ export default class extends AbstractView {
             <div align='center'>
                 <div style='width:900px'>
                     <br>
-                    <h1>Data Table Click Pagination - Sample</h1>                    
-                    <br>
+                    <div class="card-heading d-flex a-i-center j-c-between">
+                        <h4>Data Table Click Pagination - Sample</h4>
+                    </div>
                     ${injectLoading}
                     <div id='data'></div>
                     <br>
