@@ -5,7 +5,6 @@ import FetchCtrl  from "../Infra/FetchCtrl.js"
 
 //Components
 import Loader from "../Components/Loader.js";
-import MenuAdvanced from "../Components/MenuAdvanced.js";
 import DataTableClick from "../Components/DataTableClick.js";
 import DataTablePagination from "../Components/DataTablePagination.js";
 
@@ -99,14 +98,9 @@ export default class extends AbstractView {
 
     getHtml() {
 
-        var injectMenu = new MenuAdvanced().getHtml();
         var injectLoading = new Loader().getHtml();
 
         return  `
-            ${injectMenu}    
-            <div align='center'>
-                <div style='width:900px'>
-                    <br>
                     <div class="card-heading d-flex a-i-center j-c-between">
                         <h4>Data Table Click Pagination - Sample</h4>
                     </div>
@@ -114,8 +108,6 @@ export default class extends AbstractView {
                     <div id='data'></div>
                     <br>
                     <br>
-                </div>
-            </div>
             `;
     }
 }

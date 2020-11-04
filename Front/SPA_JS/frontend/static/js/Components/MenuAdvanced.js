@@ -206,10 +206,10 @@ export default class {
                             </a>
                             <div class="sub-menu">
                                 <ul>
-                                    <li><a href="/">Dashboard</a></li>
-                                    <li><a href="/login">Login</a></li>
-                                    <li><a href="/login">Register</a></li>
-                                    <li><a href="/posts">Browser Nav.</a></li>
+                                    <li><a _href="/" style='cursor:pointer'>Dashboard</a></li>
+                                    <li><a _href="/login" style='cursor:pointer'>Login</a></li>
+                                    <li><a _href="/login" style='cursor:pointer'>Register</a></li>
+                                    <li><a _href="/posts" style='cursor:pointer'>Browser Nav.</a></li>
                                 </ul>
                             </div>
                         </li>                    
@@ -219,11 +219,11 @@ export default class {
                             </a>
                             <div class="sub-menu">
                                 <ul>
-                                    <li><a href="/datalabel">Data Label</a></li>
-                                    <li><a href="/timer">Timer</a></li>
-                                    <li><a href="/trigger">Trigger</a></li>
-                                    <li><a href="/modal">Modal</a></li>
-                                    <li><a href="/alert">Alerts</a></li>
+                                    <li><a _href="/datalabel" style='cursor:pointer'>Data Label</a></li>
+                                    <li><a _href="/timer" style='cursor:pointer'>Timer</a></li>
+                                    <li><a _href="/trigger" style='cursor:pointer'>Trigger</a></li>
+                                    <li><a _href="/modal" style='cursor:pointer'>Modal</a></li>
+                                    <li><a _href="/alert" style='cursor:pointer'>Alerts</a></li>
                                 </ul>
                             </div>
                         </li>
@@ -233,9 +233,9 @@ export default class {
                             </a>
                             <div class="sub-menu">
                                 <ul>
-                                    <li><a href="/datatable">Table</a></li>
-                                    <li><a href="/datatableclick">Table Click</a></li>
-                                    <li><a href="/datatableclickpagination">Table Pagination</a></li>
+                                    <li><a _href="/datatable" style='cursor:pointer'>Table</a></li>
+                                    <li><a _href="/datatableclick" style='cursor:pointer'>Table Click</a></li>
+                                    <li><a _href="/datatableclickpagination" style='cursor:pointer'>Table Pagination</a></li>
                                 </ul>
                             </div>
                         </li>

@@ -91,10 +91,6 @@ $(function(){
     });
     */ 
 
-    $(document).ready(function() {
-        $("body").fadeIn(900);
-    });
-
     /*
     -------------------------------------------------
         Dark Skin 

@@ -1,20 +1,10 @@
 
 //Infrastructure
-import AbstractView from "../Infra/AbstractView.js"
 import FetchCtrl from "../Infra/FetchCtrl.js";
 
-// Components
-import Menu from "../Components/MenuAdvanced.js";
-
-export default class extends AbstractView {
+export default class {
 
     constructor(params) {
-        super(params);        
-        this.setTitle("Login");
-
-        $(document).ready(function () {
-
-        });
 
         $(document).on('keypress', function (e) {
             if (e.which == 13) {
@@ -82,10 +72,9 @@ export default class extends AbstractView {
 
     getHtml() {
 
-        var injectMenu = new Menu().getHtml();
+               
 
         return `
-            ${injectMenu}
             <div align='center'>
                 <div class="auth-boxed">
                     <div class="auth-wrapper">

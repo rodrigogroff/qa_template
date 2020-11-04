@@ -3,33 +3,21 @@
 // App Routing 
 // --------------------
 
-import Dashboard from "./Pages/Dashboard.js"
-import Posts from "./Pages/Posts.js"
-import Post from "./Pages/Post.js"
-import Login from "./Pages/Login.js"
-
-import DemoDataTable from "./Pages/DataTable.js"
-import DemoDataTableClick from "./Pages/DataTableClick.js"
-import DemoDataTableClickPagination from "./Pages/DataTableClickPagination.js"
-import DemoDataLabel from "./Pages/DataLabel.js"
-import DemoTimer from "./Pages/Timer.js"
-import DemoTrigger from "./Pages/Trigger.js"
-import DemoModal from "./Pages/Modal.js"
-import DemoAlert from "./Pages/Alert.js"
+import SPA from "./Page/SPA.js"
 
 const routes = [
-    { path: "/", view: Dashboard },
-    { path: "/posts", view: Posts },
-    { path: "/posts/:id", view: Post },
-    { path: "/login", view: Login },
-    { path: "/datatable", view: DemoDataTable },
-    { path: "/datatableclick", view: DemoDataTableClick },
-    { path: "/datatableclickpagination", view: DemoDataTableClickPagination },
-    { path: "/datalabel", view: DemoDataLabel },
-    { path: "/timer", view: DemoTimer },
-    { path: "/trigger", view: DemoTrigger },
-    { path: "/modal", view: DemoModal },
-    { path: "/alert", view: DemoAlert },
+    { path: "/", view: SPA },
+    { path: "/posts", view: SPA },
+    { path: "/posts/:id", view: SPA },
+    { path: "/login", view: SPA },
+    { path: "/datatable", view: SPA },
+    { path: "/datatableclick", view: SPA },
+    { path: "/datatableclickpagination", view: SPA },
+    { path: "/datalabel", view: SPA },
+    { path: "/timer", view: SPA },
+    { path: "/trigger", view: SPA },
+    { path: "/modal", view: SPA },
+    { path: "/alert", view: SPA },
 ];
 
 // -------------------------
