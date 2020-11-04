@@ -1,3 +1,4 @@
+
 // --------------------
 // App Routing 
 // --------------------
@@ -14,6 +15,7 @@ import DemoDataLabel from "./Pages/DataLabel.js"
 import DemoTimer from "./Pages/Timer.js"
 import DemoTrigger from "./Pages/Trigger.js"
 import DemoModal from "./Pages/Modal.js"
+import DemoAlert from "./Pages/Alert.js"
 
 const routes = [
     { path: "/", view: Dashboard },
@@ -27,6 +29,7 @@ const routes = [
     { path: "/timer", view: DemoTimer },
     { path: "/trigger", view: DemoTrigger },
     { path: "/modal", view: DemoModal },
+    { path: "/alert", view: DemoAlert },
 ];
 
 // -------------------------

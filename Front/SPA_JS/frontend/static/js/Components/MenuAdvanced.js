@@ -223,6 +223,7 @@ export default class {
                                     <li><a href="/timer">Timer</a></li>
                                     <li><a href="/trigger">Trigger</a></li>
                                     <li><a href="/modal">Modal</a></li>
+                                    <li><a href="/alert">Alerts</a></li>
                                 </ul>
                             </div>
                         </li>
