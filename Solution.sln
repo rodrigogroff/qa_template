@@ -66,6 +66,7 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Static_JS", "Front\Static_J
 		Release.AspNetCompiler.FixedNames = "false"
 		Release.AspNetCompiler.Debug = "False"
 		VWDPort = "52851"
+		SlnRelativePath = "Front\Static_JS\"
 	EndProjectSection
 EndProject
 Global

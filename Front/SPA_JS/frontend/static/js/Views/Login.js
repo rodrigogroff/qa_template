@@ -1,10 +1,15 @@
 
 //Infrastructure
+import AbstractView from "../Infra/AbstractView.js"
 import FetchCtrl from "../Infra/FetchCtrl.js";
 
-export default class {
+export default class extends AbstractView {
+
+    initView() {
+    }
 
     constructor(params) {
+        super(params)
 
         $(document).on('keypress', function (e) {
             if (e.which == 13) {
@@ -19,7 +24,7 @@ export default class {
             }
         });
 
-        $("#formLogin").submit(function (event) {
+        $("#formLogin").submit(function (event) {            
             btnSubmit_Click()
         });
 
@@ -42,7 +47,7 @@ export default class {
                 swal("Ops!", "Password required", "error");
                 return;
             }
-
+            
             $("#loading").show();
             $("#btnSubmit").prop('disabled', true);
 
@@ -71,9 +76,6 @@ export default class {
     }
 
     getHtml() {
-
-               
-
         return `
             <div align='center'>
                 <div class="auth-boxed">

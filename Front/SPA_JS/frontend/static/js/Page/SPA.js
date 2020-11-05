@@ -1,12 +1,12 @@
 
 //Infrastructure
 import AbstractView from "../Infra/AbstractView.js"
-import FetchControl from "../Infra/FetchCtrl.js"
 
 //Components
 import MenuAdvanced from "../Components/MenuAdvanced.js";
 
 //Views
+import Dashboard from "../Views/Dashboard.js";
 import Login from "../Views/Login.js";
 import DataTableClickPagination from "../Views/DataTableClickPagination.js";
 
@@ -14,39 +14,42 @@ class Router
 {
     getHtml() {
 
-        var currentState = new FetchControl().getFromStorage('currentState');
+        var viewClass = new Dashboard();
 
-        if (currentState == undefined)
-            currentState = 'dashboard';
-
-        var injectPage = "";
-
-        switch (currentState)
+        switch (sessionStorage.getItem('currentState'))
         {
-            case '/login': injectPage = new Login().getHtml(); break;
-            case '/datatableclickpagination': injectPage = new DataTableClickPagination().getHtml(); break;
+            case undefined: viewClass = new Login(); break; 
+            case '/login': viewClass = new Login(); break;
+            case '/datatableclickpagination': viewClass = new DataTableClickPagination(); break;
         }        
 
-        var injectMenu = new MenuAdvanced().getHtml();
-
         return `
-            ${injectMenu}
+            ${new MenuAdvanced().getHtml()}
             <div align='center'>
                 <div style='width:900px'>
-                    ${injectPage}
+                    ${viewClass.getHtml()}
                 </div>
             </div>
         `;
     }
 }
 
-export default class extends AbstractView {
-    
+export default class extends AbstractView {    
     constructor(params) {
         super(params);
-
         $("#app").bind('click', function (e) {
-            $("#app").html(new Router().getHtml());
+            if (e!= undefined)
+                if(e.target != undefined)
+                    if (e.target.attributes._href != undefined)
+                    {
+                        var newState = e.target.attributes._href.value;
+                        var currentState = sessionStorage.getItem('currentState');
+                        if (currentState != newState)
+                        {
+                            sessionStorage.setItem('currentState', newState);
+                            $("#app").html(new Router().getHtml());
+                        }                        
+                    }
         });
     }
 

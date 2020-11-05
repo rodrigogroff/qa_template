@@ -3,6 +3,7 @@
 import AbstractView from "../Infra/AbstractView.js"
 
 //Components
+import TitleForm from "../Components/TitleForm.js";
 import MenuAdvanced from "../Components/MenuAdvanced.js";
 import Alert from "../Components/Alert.js";
 
@@ -31,11 +32,6 @@ export default class extends AbstractView {
 
         var injectMenu = new MenuAdvanced().getHtml();
 
-        var injectAlertDanger = new Alert('title', 'text','Close','myModalDanger').getHtmlDanger()
-        var injectAlertSuccess = new Alert('title', 'text','Close','myModalSuccess').getHtmlSuccess()
-        var injectAlertWarning = new Alert('title', 'text','Close','myModalWarning').getHtmlWarning()
-        var injectAlertInfo = new Alert('title', 'text','Close','myModalInfo').getHtmlInfo()
-
         var buttonDanger = "<button class='btn btn-shadow btn-xs btn-danger mr-3 mb-5' id='open_modal_danger'>Danger</button>"
         var buttonSuccess = "<button class='btn btn-shadow btn-xs btn-success mr-3 mb-5' id='open_modal_success'>Success</button>"
         var buttonWarning = "<button class='btn btn-shadow btn-xs btn-warning mr-3 mb-5' id='open_modal_warning'>Warning</button>"
@@ -45,16 +41,14 @@ export default class extends AbstractView {
             ${injectMenu}
             <div align='center'>
                 <div style='width:900px'>
-                    <div class="card-heading d-flex a-i-center j-c-between">
-                        <h4>Modal Sample</h4>
-                    </div>                                        
+                    ${new TitleForm().getHtml("Alert Sample")}
                     <div align='left'>
                         ${buttonDanger} ${buttonSuccess} ${buttonWarning} ${buttonInfo}
                     </table>
-                    ${injectAlertDanger} 
-                    ${injectAlertSuccess}
-                    ${injectAlertWarning}
-                    ${injectAlertInfo}
+                    ${new Alert('title', 'text','Close','myModalDanger').getHtmlDanger()} 
+                    ${new Alert('title', 'text','Close','myModalSuccess').getHtmlSuccess()}
+                    ${new Alert('title', 'text','Close','myModalWarning').getHtmlWarning()}
+                    ${new Alert('title', 'text','Close','myModalInfo').getHtmlInfo()}
                 </div>
             </div>
         `;

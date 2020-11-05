@@ -3,6 +3,7 @@
 import AbstractView from "../Infra/AbstractView.js"
 
 //Components
+import TitleForm from "../Components/TitleForm.js";
 import MenuAdvanced from "../Components/MenuAdvanced.js";
 import DataLabel from "../Components/DataLabel.js";
 
@@ -21,8 +22,7 @@ export default class extends AbstractView {
             ${injectMenu}
             <div align='center'>
                 <div style='width:900px'>
-                    <br>
-                    <h1>DataLabel</h1>                    
+                    ${new TitleForm().getHtml("Data Label Sample")}
                     <br>
                     ${injectDataLabel}
                 </div>

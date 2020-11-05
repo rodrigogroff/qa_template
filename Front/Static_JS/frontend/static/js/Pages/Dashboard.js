@@ -3,6 +3,7 @@
 import AbstractView from "../Infra/AbstractView.js"
 
 //Components
+import TitleForm from "../Components/TitleForm.js";
 import MenuAdvanced from "../Components/MenuAdvanced.js";
 
 export default class extends AbstractView {
@@ -19,9 +20,7 @@ export default class extends AbstractView {
             ${injectMenu}    
             <div align='center'>
                 <div style='width:900px'>
-                    <br>
-                    <h1>Dashboard</h1>                    
-                    <br>
+                    ${new TitleForm().getHtml("Dashboard")}
                 </div>
             </div>
         `;

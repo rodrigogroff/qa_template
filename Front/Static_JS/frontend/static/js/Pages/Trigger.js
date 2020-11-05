@@ -3,6 +3,7 @@
 import AbstractView from "../Infra/AbstractView.js"
 
 //Components
+import TitleForm from "../Components/TitleForm.js";
 import MenuAdvanced from "../Components/MenuAdvanced.js";
 import Trigger from "../Components/Trigger.js";
 
@@ -23,16 +24,14 @@ export default class extends AbstractView {
     getHtml() {
 
         var injectMenu = new MenuAdvanced().getHtml();
-        var injectTrigger = new Trigger('btnHW').getHtml()
 
         return `
             ${injectMenu}
             <div align='center'>
                 <div style='width:900px'>
+                ${new TitleForm().getHtml("Trigger Sample")}
                     <br>
-                    <h1>Trigger Demo</h1>                    
-                    <br>
-                    ${injectTrigger}
+                    ${new Trigger('btnHW').getHtml()}
                 </div>
             </div>
         `;

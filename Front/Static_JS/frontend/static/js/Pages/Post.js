@@ -3,14 +3,14 @@
 import AbstractView from "../Infra/AbstractView.js"
 
 //Components
+import TitleForm from "../Components/TitleForm.js";
 import Menu from "../Components/MenuAdvanced.js"
 
 export default class extends AbstractView {
     
     constructor(params) {
         super(params);
-        this.postId = params.id;
-        this.setTitle("Posts");
+        this.postId = params.id;        
     }
 
     getHtml() {
@@ -21,7 +21,7 @@ export default class extends AbstractView {
             ${injectMenu}
             <div align='center'>
                 <div style='width:900px'>
-                    <h1>Posts</h1>
+                    ${new TitleForm().getHtml("Posts Sample")}
                     <p>You are viewing the posts!<br>                    
                     <b>You are viewing post #${this.postId}</b></p>
                     <br>

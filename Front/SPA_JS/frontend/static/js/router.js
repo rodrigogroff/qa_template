@@ -7,6 +7,7 @@ import SPA from "./Page/SPA.js"
 
 const routes = [
     { path: "/", view: SPA },
+    { path: "/dashboard", view: SPA },
     { path: "/posts", view: SPA },
     { path: "/posts/:id", view: SPA },
     { path: "/login", view: SPA },

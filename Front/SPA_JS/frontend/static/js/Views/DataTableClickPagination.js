@@ -1,9 +1,9 @@
 
 //Infrastructure
 import AbstractView from "../Infra/AbstractView.js"
-import FetchCtrl  from "../Infra/FetchCtrl.js"
 
 //Components
+import TitleForm from "../Components/TitleForm.js";
 import Loader from "../Components/Loader.js";
 import DataTableClick from "../Components/DataTableClick.js";
 import DataTablePagination from "../Components/DataTablePagination.js";
@@ -11,17 +11,15 @@ import DataTablePagination from "../Components/DataTablePagination.js";
 export default class extends AbstractView {
 
     constructor(params) {
-        super(params);
-
+        super(params)
+        
         $(document).ready(function () 
         {
             load();
 
             $(document).bind('click', function (e) {
 
-                var f = new FetchCtrl(); 
-
-                var totItens = f.getFromStorage("totItens_reportName")
+                var totItens = sessionStorage.getItem("totItens_reportName")
 
                 if (e != undefined)
                     if (e.target != undefined)
@@ -43,17 +41,17 @@ export default class extends AbstractView {
 
         function load()
         {
-            $("#loading").show();
+            // ----------------------
+            // process here
+            // --------------------
 
-            var f = new FetchCtrl(); 
-
-            f.setToStorage("totItens_reportName", 263);
+            sessionStorage.setItem("totItens_reportName", 263);
             
             setPage(263,10,5);
         }
 
         function setPage(totItens, itensPerPage, currentPage)
-        {
+        {            
             $("#loading").show();
 
             setTimeout(() => {
@@ -97,14 +95,9 @@ export default class extends AbstractView {
     }
 
     getHtml() {
-
-        var injectLoading = new Loader().getHtml();
-
         return  `
-                    <div class="card-heading d-flex a-i-center j-c-between">
-                        <h4>Data Table Click Pagination - Sample</h4>
-                    </div>
-                    ${injectLoading}
+                    ${new TitleForm().getHtml('DataTable PaginationDemo')}
+                    ${new Loader().getHtml()}
                     <div id='data'></div>
                     <br>
                     <br>

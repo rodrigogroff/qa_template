@@ -3,6 +3,7 @@
 import AbstractView from "../Infra/AbstractView.js"
 
 //Components
+import TitleForm from "../Components/TitleForm.js";
 import MenuAdvanced from "../Components/MenuAdvanced.js";
 import Timer from "../Components/Timer.js";
 
@@ -15,16 +16,14 @@ export default class extends AbstractView {
     getHtml() {
 
         var injectMenu = new MenuAdvanced().getHtml();
-        var injectTimer = new Timer().getHtml()
-
+        
         return `
             ${injectMenu}
             <div align='center'>
                 <div style='width:900px'>
+                    ${new TitleForm().getHtml("Timer Sample")}
                     <br>
-                    <h1>Timer Demo</h1>                    
-                    <br>
-                    ${injectTimer}
+                    ${new Timer().getHtml()}
                 </div>
             </div>
         `;

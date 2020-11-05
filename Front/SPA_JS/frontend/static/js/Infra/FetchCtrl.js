@@ -15,6 +15,14 @@ export default class FetchCtrl {
         localStorage.setItem(tag, val)
     }
 
+    getFromSession(tag) {
+        return sessionStorage.getItem(tag);
+    }
+
+    setToSession(tag, val) {
+        sessionStorage.setItem(tag, val)        
+    }
+
     isAuthenticated() {
         return localStorage.getItem('token');
     }
