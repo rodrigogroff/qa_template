@@ -76,8 +76,7 @@ export default class extends AbstractView {
     }
 
     getHtml() {
-        return `
-            <div align='center'>
+        return `            
                 <div class="auth-boxed">
                     <div class="auth-wrapper">
                         <div class="auth-content" align='left'>
@@ -121,8 +120,7 @@ export default class extends AbstractView {
                             </form>
                         </div>
                     </div>
-                </div>
-            </div>
-        `;
+                </div>            
+                `;
     }
 }

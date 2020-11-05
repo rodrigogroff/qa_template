@@ -29,16 +29,16 @@ class AppRouter
             case '/datatableclickpagination': return new DataTableClickPagination(params);
         }        
     }
-
+    
     getHtml() {
 
         var newState = sessionStorage.getItem('currentState')
 
         if (this.url != undefined)
             newState = this.url;
-        else if (newState == null || newState == undefined)
-            newState = '/dashboard';
-
+        else 
+            if (newState == null || newState == undefined)
+                newState = '/dashboard';
         
         var params = { id: null };
         var route_values = newState.split("/");
@@ -48,14 +48,10 @@ class AppRouter
         if (route_values.length >= 2)
             params.id = route_values[2]
 
-        var viewClass = this.getProperView(newState, params);
-
         return `
             ${new MenuAdvanced().getHtml()}
-            <div align='center'>
-                <div style='width:900px'>
-                    ${viewClass.getHtml()}
-                </div>
+            <div align='center' style='margin-left:20px;margin-top:20px;margin-right:20px'>
+                ${this.getProperView(newState, params).getHtml()}
             </div>
         `;
     }

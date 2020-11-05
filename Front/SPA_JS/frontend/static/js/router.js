@@ -1,40 +1,5 @@
 
-// --------------------
-// App Routing 
-// --------------------
-
 import SPA from "./Page/SPA.js"
-
-const routes = [
-    { path: "/", view: SPA },
-    { path: "/dashboard", view: SPA },
-    { path: "/posts", view: SPA },
-    { path: "/post", view: SPA },
-    { path: "/login", view: SPA },
-    { path: "/datatable", view: SPA },
-    { path: "/datatableclick", view: SPA },
-    { path: "/datatableclickpagination", view: SPA },
-    { path: "/datalabel", view: SPA },
-    { path: "/timer", view: SPA },
-    { path: "/trigger", view: SPA },
-    { path: "/modal", view: SPA },
-    { path: "/alert", view: SPA },
-];
-
-// -------------------------
-// App Router infra
-// -------------------------
-
-const pathToRegex = path => new RegExp("^" + path.replace(/\//g, "\\/").replace(/:\w+/g, "(.+)") + "$");
-
-const getParams = match => {
-    const values = match.result.slice(1);
-    const keys = Array.from(match.route.path.matchAll(/:(\w+)/g)).map(result => result[1]);
-
-    return Object.fromEntries(keys.map((key, i) => {
-        return [key, values[i]];
-    }));
-};
 
 const navigateTo = url => {
     history.pushState(null, null, url);
@@ -42,25 +7,7 @@ const navigateTo = url => {
 };
 
 const router = () => {
-
-    const potentialMatches = routes.map(route => {
-        return {
-            route: route,
-            result: location.pathname.match(pathToRegex(route.path))
-        };
-    });
-
-    let match = potentialMatches.find(potentialMatch => potentialMatch.result !== null);
-
-    if (!match) {
-        match = {
-            route: routes[0],
-            result: [location.pathname]
-        };
-    }
-
-    const view = new SPA(match.result[0]);
-
+    const view = new SPA(window.location.pathname);
     document.querySelector("#app").innerHTML = view.getHtml();
 };
 
