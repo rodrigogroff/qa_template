@@ -209,7 +209,7 @@ export default class {
                                     <li><a _href="/" style='cursor:pointer'>Dashboard</a></li>
                                     <li><a _href="/login" style='cursor:pointer'>Login</a></li>
                                     <li><a _href="/login" style='cursor:pointer'>Register</a></li>
-                                    <li><a _href="/posts" style='cursor:pointer'>Browser Nav.</a></li>
+                                    <li><a _href="/posts" style='cursor:pointer'>Posts</a></li>
                                 </ul>
                             </div>
                         </li>                    

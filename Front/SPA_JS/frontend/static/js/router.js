@@ -9,7 +9,7 @@ const routes = [
     { path: "/", view: SPA },
     { path: "/dashboard", view: SPA },
     { path: "/posts", view: SPA },
-    { path: "/posts/:id", view: SPA },
+    { path: "/post", view: SPA },
     { path: "/login", view: SPA },
     { path: "/datatable", view: SPA },
     { path: "/datatableclick", view: SPA },
@@ -41,7 +41,7 @@ const navigateTo = url => {
     router();
 };
 
-const router = async () => {
+const router = () => {
 
     const potentialMatches = routes.map(route => {
         return {
@@ -59,9 +59,9 @@ const router = async () => {
         };
     }
 
-    const view = new match.route.view(getParams(match));
+    const view = new SPA(match.result[0]);
 
-    document.querySelector("#app").innerHTML = await view.getHtml();
+    document.querySelector("#app").innerHTML = view.getHtml();
 };
 
 window.addEventListener("popstate", router);
