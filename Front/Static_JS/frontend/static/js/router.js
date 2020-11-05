@@ -70,9 +70,7 @@ const router = async () => {
         };
     }
 
-    const view = new match.route.view(getParams(match));
-
-    document.querySelector("#app").innerHTML = view.getHtml();
+    document.querySelector("#app").innerHTML = new match.route.view(getParams(match)).getHtml();
 };
 
 window.addEventListener("popstate", router);

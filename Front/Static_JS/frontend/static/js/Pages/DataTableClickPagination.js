@@ -1,7 +1,6 @@
 
 //Infrastructure
 import AbstractView from "../Infra/AbstractView.js"
-import FetchCtrl  from "../Infra/FetchCtrl.js"
 
 //Components
 import TitleForm from "../Components/TitleForm.js";
@@ -21,9 +20,7 @@ export default class extends AbstractView {
 
             $(document).bind('click', function (e) {
 
-                var f = new FetchCtrl(); 
-
-                var totItens = f.getFromStorage("totItens_reportName")
+                var totItens = sessionStorage.getItem('totItens_reportName');
 
                 if (e != undefined)
                     if (e.target != undefined)
@@ -47,9 +44,7 @@ export default class extends AbstractView {
         {
             $("#loading").show();
 
-            var f = new FetchCtrl(); 
-
-            f.setToStorage("totItens_reportName", 263);
+            sessionStorage.setItem("totItens_reportName", 263);
             
             setPage(263,10,5);
         }
@@ -99,11 +94,8 @@ export default class extends AbstractView {
     }
 
     getHtml() {
-
-        var injectMenu = new MenuAdvanced().getHtml();
-
         return  `
-            ${injectMenu}    
+            ${new MenuAdvanced().getHtml()}
             <div align='center'>
                 <div style='width:900px'>
                     ${new TitleForm().getHtml("Data Table Click Pagination Sample")}

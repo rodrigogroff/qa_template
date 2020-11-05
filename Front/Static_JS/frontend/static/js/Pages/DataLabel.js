@@ -14,17 +14,13 @@ export default class extends AbstractView {
     }
 
     getHtml() {
-
-        var injectMenu = new MenuAdvanced().getHtml();
-        var injectDataLabel = new DataLabel('lblOne','This is your <b>text</b>').getHtml()
-
         return `
-            ${injectMenu}
+            ${new MenuAdvanced().getHtml()}
             <div align='center'>
                 <div style='width:900px'>
                     ${new TitleForm().getHtml("Data Label Sample")}
                     <br>
-                    ${injectDataLabel}
+                    ${new DataLabel('lblOne','This is your <b>text</b>').getHtml()}
                 </div>
             </div>
         `;

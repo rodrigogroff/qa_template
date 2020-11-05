@@ -11,7 +11,6 @@ export default class extends AbstractView {
 
     constructor(params) {
         super(params);
-
         $(document).ready(function () {
             $(document).bind('click', function (e) {
                 if (e != undefined)
@@ -41,10 +40,8 @@ export default class extends AbstractView {
             table.data.push(row);
         }
 
-        var injectMenu = new MenuAdvanced().getHtml();
-
         return `
-            ${injectMenu}    
+            ${new MenuAdvanced().getHtml()}
             <div align='center'>
                 <div style='width:900px'>
                     ${new TitleForm().getHtml("Data Table Click Sample")}                                  

@@ -12,10 +12,6 @@ export default class extends AbstractView {
         super(params);        
         this.setTitle("Login");
 
-        $(document).ready(function () {
-
-        });
-
         $(document).on('keypress', function (e) {
             if (e.which == 13) {
                 btnSubmit_Click()
@@ -81,11 +77,8 @@ export default class extends AbstractView {
     }
 
     getHtml() {
-
-        var injectMenu = new Menu().getHtml();
-
         return `
-            ${injectMenu}
+            ${new Menu().getHtml()}
             <div align='center'>
                 <div class="auth-boxed">
                     <div class="auth-wrapper">

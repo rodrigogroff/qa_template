@@ -13,7 +13,7 @@ export default class {
                     <!-- header left -->
                     <div class="header-left hide-md">
                         <div class="header-logo logo-type">
-                            <a href="/">Ultra QA</a>
+                            <a href="/">Ultra QA (Static)</a>
                         </div>
                     </div><!-- END / header left -->
 

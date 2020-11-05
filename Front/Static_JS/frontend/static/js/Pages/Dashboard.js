@@ -13,11 +13,8 @@ export default class extends AbstractView {
     }
 
     getHtml() {
-
-        var injectMenu = new MenuAdvanced().getHtml();
-
         return `
-            ${injectMenu}    
+            ${new MenuAdvanced().getHtml()}    
             <div align='center'>
                 <div style='width:900px'>
                     ${new TitleForm().getHtml("Dashboard")}

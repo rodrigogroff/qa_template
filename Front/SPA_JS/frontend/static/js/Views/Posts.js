@@ -15,9 +15,9 @@ export default class extends AbstractView {
         return  `
                 ${new TitleForm().getHtml('Posts Demo')}
                 <br>
-                <a href='./post/1' style='color:blue'>Check post #1 external</a><br>
+                <a href='./post/23' style='color:blue'>Check post #23 external</a><br>
                 <br>
-                <a _href='/post/1' style='cursor:pointer;color:blue'>Check post #1 spa</a>
+                <a _href='/post/76' style='cursor:pointer;color:blue'>Check post #76 spa</a>
                 `;
     }
 }

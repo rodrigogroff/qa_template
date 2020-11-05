@@ -8,10 +8,9 @@ https://www.youtube.com/watch?v=6BozpmSjk-Y
 // todo
 //----------------
 
-página de register (passo 1 / 6)
-páginas de UX
+webpack
 
+página de register (passo 1 / 6)
 uso de internacionalização
 escolha de language no menu
-
 automação de chamada de serviço / testes inbutidos

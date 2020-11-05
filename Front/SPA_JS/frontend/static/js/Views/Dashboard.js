@@ -13,7 +13,7 @@ export default class extends AbstractView {
 
     getHtml() {
         return  `
-                ${new TitleForm().getHtml('Dashboard')}
+                ${new TitleForm().getHtml('Dashboard x')}
                 `;
     }
 }
