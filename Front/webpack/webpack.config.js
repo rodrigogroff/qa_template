@@ -1,10 +1,13 @@
 
+var glob = require('glob');
+
 const path = require('path');
 const MinifyPlugin = require('babel-minify-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const webpack = require('webpack');
 
 module.exports = {
-  mode: 'development',
+  mode: 'production',
   target: 'node',
   resolve: {
     fallback: { "path": require.resolve("path-browserify"),
@@ -19,8 +22,9 @@ module.exports = {
   },
   devtool: 'source-map',
   context: path.resolve(__dirname, './'),  
-  entry: './server.js',
+  entry: { 'app' : glob.sync('./frontend/static/js/**/*.js')},
    output: {
+    globalObject: "this",
      path: path.resolve(__dirname, 'public')
    },
    module: {
@@ -49,10 +53,13 @@ module.exports = {
    },
    plugins: [
      new MinifyPlugin({}, {
-       comments: false
+        comments: false
      }),
      new MiniCssExtractPlugin({
-       filename: '[name].css'
-     })
+        filename: '[name].css'
+     }),
+     new webpack.ProvidePlugin({
+        window: 'global/window',
+    }),
    ]
 }
