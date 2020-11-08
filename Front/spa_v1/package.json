@@ -5,14 +5,16 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack -w",
+    "build": "webpack",
     "start": "node server.js"
   },
   "keywords": [],
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "jquery": "^3.5.1",
+    "popper.js": "^1.14.3"
   },
   "devDependencies": {
     "@babel/core": "^7.12.3",
@@ -21,6 +23,7 @@
     "autoprefixer": "^10.0.1",
     "babel-loader": "^8.1.0",
     "babel-minify-webpack-plugin": "^0.3.1",
+    "bootstrap": "^4.1.1",
     "browserify-zlib": "^0.2.0",
     "buffer": "^6.0.1",
     "clean-webpack-plugin": "^3.0.0",
@@ -29,7 +32,6 @@
     "crypto-browserify": "^3.12.0",
     "css-loader": "^5.0.1",
     "cssnano": "^4.1.10",
-    "jquery": "^3.5.1",
     "locale": "^0.1.0",
     "mini-css-extract-plugin": "^1.2.1",
     "moment": "2.24.0",
@@ -37,7 +39,6 @@
     "node": "^15.0.1",
     "node-sass": "^5.0.0",
     "path-browserify": "^1.0.1",
-    "popper": "^1.0.1",
     "postcss-loader": "^4.0.4",
     "querystring-es3": "^0.2.1",
     "sass-loader": "^10.0.5",

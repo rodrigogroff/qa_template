@@ -12,7 +12,7 @@ module.exports = {
   mode: 'production',
   target: 'web',
   resolve: {
-    fallback: { "path": require.resolve("path-browserify"),
+    fallback: { /*"path": require.resolve("path-browserify"),
                 "zlib": require.resolve("browserify-zlib"), 
                 "querystring": require.resolve("querystring-es3"),
                 "assert": require.resolve("assert/"),
@@ -22,7 +22,8 @@ module.exports = {
                 "http": require.resolve("stream-http"),
                 "locale": require.resolve("locale"),
                 "popper": require.resolve("popper"),
-                "url": require.resolve("url/") }
+                "url": require.resolve("url/")*/
+               } 
   },
   devtool: 'source-map',
   context: path.resolve(__dirname, './'),  

@@ -1,4 +1,6 @@
 
+import 'jquery'
+
 import SPA from "./Page/SPA.js"
 
 const navigateTo = url => {
