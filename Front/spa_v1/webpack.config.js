@@ -27,7 +27,7 @@ module.exports = {
   entry: { './frontend/static/js/app' : glob.sync('./frontend/static/js/**/*.js')},
    output: {
     globalObject: "this",
-     path: path.resolve(__dirname, 'public')
+     path: path.resolve(__dirname, 'dist')
    },
    module: {
      rules: [{
