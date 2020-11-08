@@ -1,46 +1,64 @@
 
+var glob = require('glob');
+
 const path = require('path');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const CopyPlugin = require('copy-webpack-plugin');
+const MinifyPlugin = require('babel-minify-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const webpack = require('webpack');
 
 module.exports = {
-  entry: './src/index.js',
-  plugins: [
-    new CleanWebpackPlugin(),
-    new CopyPlugin({
-      patterns: [
-        {from: './index_prod.html', to: './index.html'}
-      ],
-      options:{
-        concurrency:100,
-      }
-    }),
-  ],
-  output: {
-    filename: 'bundle.js',
-    path: path.resolve(__dirname, 'dist'),
+  mode: 'production',
+  target: 'web',
+  resolve: {
+    fallback: { "path": require.resolve("path-browserify"),
+                "zlib": require.resolve("browserify-zlib"), 
+                "querystring": require.resolve("querystring-es3"),
+                "assert": require.resolve("assert/"),
+                "buffer": require.resolve("buffer/"),
+                "stream": require.resolve("stream-browserify"),
+                "crypto": require.resolve("crypto-browserify"),
+                "http": require.resolve("stream-http"),
+                "locale": require.resolve("locale"),
+                "popper": require.resolve("popper"),
+                "url": require.resolve("url/") }
   },
-  module: {
-    rules: [
-      {
-        test: /\.css$/,
-        use: [
-          'style-loader',
-          'css-loader',
-        ],
-      },
-      {
-        test: /\.(png|svg|jpg|gif)$/,
-        use: [
-          'file-loader',
-        ],
-      },
-      {
-        test: /\.(woff|woff2|eot|ttf|otf)$/,
-        use: [
-          'file-loader',
-        ],
-      },
-    ],
-  },
-};
+  devtool: 'source-map',
+  context: path.resolve(__dirname, './'),  
+  entry: { './frontend/static/js/app' : glob.sync('./frontend/static/js/**/*.js')},
+   output: {
+    globalObject: "this",
+     path: path.resolve(__dirname, 'public')
+   },
+   module: {
+     rules: [{
+       test: /\.(js|jsx)$/,
+       exclude: /node_modules/,
+       loader: 'babel-loader'
+     },
+     {
+       test: /\.(scss|css)$/,
+       exclude: /node_modules/,
+       use:[
+         {
+           loader: MiniCssExtractPlugin.loader,
+           options: {
+             reloadAll: true,             
+           }
+         },
+         'css-loader',
+         'postcss-loader',
+         'sass-loader'
+       ]
+     }
+
+    ]
+   },
+   plugins: [
+     new MinifyPlugin({}, {
+        comments: false
+     }),
+     new MiniCssExtractPlugin({
+        filename: '[name].css'
+     }),     
+   ]
+}
