@@ -18,6 +18,8 @@ module.exports = {
                 "stream": require.resolve("stream-browserify"),
                 "crypto": require.resolve("crypto-browserify"),
                 "http": require.resolve("stream-http"),
+                "locale": require.resolve("locale"),
+                "popper": require.resolve("popper"),
                 "url": require.resolve("url/") }
   },
   devtool: 'source-map',

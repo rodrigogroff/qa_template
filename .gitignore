@@ -16,3 +16,5 @@
 /ProjectShared/bin
 /ProjectShared/obj
 /packages/Newtonsoft.Json.12.0.3
+/Front/pwa-101-master/node_modules
+/Front/webpack_safe/node_modules
