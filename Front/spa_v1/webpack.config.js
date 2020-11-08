@@ -4,6 +4,8 @@ var glob = require('glob');
 const path = require('path');
 const MinifyPlugin = require('babel-minify-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 const webpack = require('webpack');
 
 module.exports = {
@@ -57,6 +59,16 @@ module.exports = {
      new MinifyPlugin({}, {
         comments: false
      }),
+     new CleanWebpackPlugin(),
+     new CopyPlugin({
+      patterns: [
+        {from: './index.html', to: './index.html'},
+        {from: './server.js', to: './server.js'},
+      ],
+      options:{
+        concurrency:100,
+      }
+    }),
      new MiniCssExtractPlugin({
         filename: '[name].css'
      }),     
