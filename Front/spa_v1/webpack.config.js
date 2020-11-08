@@ -26,7 +26,7 @@ module.exports = {
   },
   devtool: 'source-map',
   context: path.resolve(__dirname, './'),  
-  entry: { './frontend/static/js/app' : glob.sync('./frontend/static/js/**/*.js')},
+  entry: { './src/static/js/app' : glob.sync('./src/static/js/**/*.js')},
    output: {
     globalObject: "this",
      path: path.resolve(__dirname, 'dist')
