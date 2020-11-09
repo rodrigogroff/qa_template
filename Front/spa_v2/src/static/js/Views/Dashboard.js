@@ -9,6 +9,8 @@ export default class extends AbstractView {
 
     constructor(params) {
         super(params)
+
+        console.log('dashboard')
     }
 
     getHtml() {
