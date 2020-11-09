@@ -23,7 +23,7 @@ export default class {
         }
         else {
             this.lineData = "<br><button class='btn btn-dark btn-lg'>No results were found</button><br>";
-        }    
+        }  
     }
 
     getHtml() {

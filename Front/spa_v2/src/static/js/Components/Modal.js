@@ -1,7 +1,7 @@
 
 export default class {
 
-    constructor(title, subtitle, text, btnCloseLabel, btnSaveLabel, modalId) {
+    constructor(title, text, btnCloseLabel, btnSaveLabel, modalId) {
 
         this.title = title;
         this.subtitle = subtitle;
@@ -14,7 +14,6 @@ export default class {
     getHtml() {
 
         var injectLabelTitle = this.title;
-        var injectLabelSubtitle = this.subtitle;
         var injectLabelText = this.text;
         var injectLabelbtnCloseLabel = this.btnCloseLabel;
         var injectLabelbtnSaveLabel = this.btnSaveLabel;
@@ -24,23 +23,18 @@ export default class {
         var idLabelSave = this.modalId + "_save";
 
         return `
-            <div class="modal fade" id="${idModal}" tabindex="-1">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h4 class="modal-title">${injectLabelTitle}</h4>
-                            <button type="button" class="close" data-dismiss="modal">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <p>${injectLabelSubtitle}</p>
-                            <p class="text-light">${injectLabelText}</p>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-white" data-dismiss="modal" id="${idLabelClose}">${injectLabelbtnCloseLabel}</button>
-                            <button type="button" class="btn btn-primary" data-dismiss="modal" id="${idLabelSave}">${injectLabelbtnSaveLabel}</button>
-                        </div>
+            <div class="popup-overlay" id="${idModal}">
+                <div class="popup-container">
+                    <div class="popup-header">
+                        <h3 class="popup-title">${injectLabelTitle}</h3>
+                        <span class="popup-close" data-dismiss="true"><i class="fa fa-times"></i></span>
+                    </div>
+                    <div class="popup-content">
+                        ${injectLabelText}
+                    </div>
+                    <div class="popup-footer">
+                        <button id="${idLabelClose}" data-dismiss="true" class="button">${injectLabelbtnCloseLabel}</button>    
+                        <button id="${idLabelSave}" data-dismiss="true" class="button green">${injectLabelbtnSaveLabel}</button>                    
                     </div>
                 </div>
             </div>

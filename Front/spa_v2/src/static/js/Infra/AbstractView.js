@@ -9,6 +9,8 @@ export default class {
         this.params = params;
     }
 
+    
+
     getHtml() {
         return "";
     }

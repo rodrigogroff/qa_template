@@ -3,6 +3,9 @@
 import AbstractView from "../Infra/AbstractView.js"
 import FetchCtrl from "../Infra/FetchCtrl.js";
 
+//Components
+import Modal from "../Components/Modal.js";
+
 export default class extends AbstractView {
 
     constructor(params) {
@@ -21,32 +24,47 @@ export default class extends AbstractView {
             }
         });
 
-        function btnSubmit_Click() {
-            event.preventDefault();
+        function ValidateForm(api, serviceData)
+        {
+            if (api.isFieldContentValid(serviceData.email) === false) {
+                api.errorField ('#failBtnMail')    
+                api.displaySystemPopup('Error', 'Email required');
+                return false;
+            }
+            else
+                api.errorClean ('#failBtnMail')    
 
-            var serviceData = {
-                email: $('#form-mail')[0].value,
-                password: $('#form-pass')[0].value
-            };
+            if (api.isFieldContentValid(serviceData.password) === false) {
+                api.errorField ('#failBtnPass')
+                api.displaySystemPopup('Error', 'Password required');
+                return false;
+            }
+            else
+                api.errorClean ('failBtnPass')    
+            
+            api.loadingOn();
+            api.disableButton('#btnSubmit')
+
+            return true;
+        }
+
+        function btnSubmit_Click() {
+            
+            event.preventDefault();
 
             var api = new FetchCtrl();
 
-            if (api.isFieldContentValid(serviceData.email) === false) {
-                //swal("Ops!", "Email required", "error");
-                return;
-            }
+            var serviceData = {
+                email: $('#formMail').val(),
+                password: $('#formPass').val()
+            };
 
-            if (api.isFieldContentValid(serviceData.password) === false) {
-                //swal("Ops!", "Password required", "error");
-                return;
-            }
+            if (!ValidateForm(api, serviceData))
+                return;            
             
-            //$("#loading").show();
-            $("#btnSubmit").prop('disabled', true);
-
             api.postPublicPortal(JSON.stringify(serviceData), 'authenticate_v1')
                 .then(resp => {
-              //      $("#loading").hide();
+                    api.loadingOff();
                     if (resp.ok === true) {
                         api.loginOk(
                             resp.payload.token,
@@ -56,14 +74,14 @@ export default class extends AbstractView {
                         location.href = '/';
                     } else {
                         api.cleanLogin();
-                     //   swal("Ops!", resp.msg, "error");
-                        $("#btnSubmit").prop('disabled', false);
+                        api.displaySystemPopup('Error', resp.msg);
+                        api.enableButton('#btnSubmit');
                     }
                 })
                 .catch(err => {
-                   // $("#loading").hide();
-                    swal("Ops!", err.msg, "error");
-                    $("#btnSubmit").prop('disabled', false);
+                    api.loadingOff();
+                    api.displaySystemPopup('Error', resp.msg);
+                    api.enableButton('#btnSubmit');                    
                 });
         }
     }
@@ -79,17 +97,20 @@ export default class extends AbstractView {
                 <br>
                 <div class="form-row-group with-icons" align="left">                    
                     <div class="form-row no-padding">
-                        <i class="fa fa-envelope"></i>
-                        <input type="form-mail" name="aaa" class="form-element" placeholder="Username or Email">
+                        <i class="fa fa-envelope" id='failBtnMail'></i>
+                        <input id="formMail" type="text" class="form-element" placeholder="Username or Email">
                     </div>
                     <div class="form-row no-padding">
-                        <i class="fa fa-lock"></i>
-                        <input type="form-password" name="aaa" class="form-element" placeholder="Password">
+                        <i class="fa fa-lock" id='failBtnPass'></i>
+                        <input id="formPass" type="password" class="form-element" placeholder="Password">
                     </div>
                 </div>
+                <br>
+                <br>
                 <div class="form-row txt-center">
                     <a href="forgot-password.html" data-loader="show">Forgot password?</a>
                 </div>
+                <br>
                 <div class="form-divider"></div>
                 <div class="form-row">
                     <a id="btnSubmit" class="button circle block green">Login</a>

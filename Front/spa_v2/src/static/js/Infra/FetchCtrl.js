@@ -15,6 +15,40 @@ export default class FetchCtrl {
         localStorage.setItem(tag, val)
     }
 
+    loadingOn() {
+        $('.sweet-loader').show().addClass('show');
+    }
+
+    displaySystemPopup(title, text) {
+        $('#popUpSystem').fadeIn('fast');
+        $('#popUpSystemTitle').text(title)
+        $('#popUpSystemText').text(text)
+    }
+
+    errorField(id) {
+        $(id).attr('style', 'color:red');
+    }
+
+    errorClean(id) {
+        $(id).attr('style', '');
+    }
+
+    loadingOff() {
+        $('.sweet-loader').show().removeClass('show');
+    }
+
+    updateHTML(idElement, html) {
+        document.querySelector(idElement).innerHTML = html;
+    }
+
+    disableButton(btn){
+        $(btn).prop('disabled', true);
+    }
+
+    enableButton(btn){
+        $(btn).prop('disabled', false);
+    }
+
     getFromSession(tag) {
         return sessionStorage.getItem(tag);
     }
