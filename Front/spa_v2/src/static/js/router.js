@@ -1,6 +1,5 @@
 
-import 'jquery'
-
+import "./global.script.js"
 import SPA from "./Page/SPA.js"
 
 const navigateTo = url => {

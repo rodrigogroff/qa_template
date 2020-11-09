@@ -2,8 +2,8 @@
 //Infrastructure
 import AbstractView from "../Infra/AbstractView.js"
 
-//Components
-import MenuAdvanced from "../Components/MenuAdvanced.js";
+//Main Menu
+import Menu from "../Components/Menu.js";
 
 //Views
 import Dashboard from "../Views/Dashboard.js";
@@ -49,11 +49,32 @@ class AppRouter
             params.id = route_values[2]
 
         return `
-            ${new MenuAdvanced().getHtml()}
-            <div align='center' style='margin-left:20px;margin-top:20px;margin-right:20px'>
-                ${this.getProperView(newState, params).getHtml()}
-            </div>
-        `;
+            <div class="wrapper">
+                ${new Menu().getHtml()}
+                <div class="wrapper-inline">
+                    <header>
+                        <h1 class="page-title">TEMPLATE</h1>
+                        <div class="navi-menu-button">
+                            <em></em>
+                            <em></em>
+                            <em></em>
+                        </div>
+                    </header>
+                    <main>
+                        <section class="container">
+                            ${this.getProperView(newState, params).getHtml()}
+                        </section>
+                    </main>
+                </div>
+            </div>   
+            <div class="sweet-loader">
+		        <div class="box">
+		  	        <div class="circle1"></div>
+		  	        <div class="circle2"></div>
+		  	        <div class="circle3"></div>
+		        </div>
+	        </div>         
+            `;
     }
 }
 

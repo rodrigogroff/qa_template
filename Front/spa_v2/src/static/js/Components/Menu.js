@@ -1,25 +1,24 @@
 
 export default class {
 
-    constructor(params) {
-        this.params = params;
-    }
+	constructor(params) {
+		this.params = params;
+	}
 
-    getHtml(p) {
-        return `
-        <div class="wrapper">
+	getHtml(p) {
+		return `
 		<div class="nav-menu">
 			<nav class="menu">
 				<!-- Template logo start -->
 				<div class="nav-header">
-					<a _href="/"><img src="static/img/app-logo.png" width="160"></a>
+					<a href="home.html"><img src="/static/img/app-logo.png" width="160"></a>
 				</div>
 				<!-- Template logo end -->
 				<!-- Menu navigation start -->
 				<div class="nav-container">
 					<ul class="main-menu">
 						<li class="active">
-							<a _href="/"><i class="fa fa-home"></i> Home</a>
+							<a href="home.html"><i class="fa fa-home"></i> Home</a>
 						</li>
 						<li>
 							<a href="javascript:void(0);"><i class="fa fa-sign-in"></i> Entry <span class="fa fa-angle-down"></span></a>
@@ -89,56 +88,9 @@ export default class {
 				</div>
 			<!-- Menu navigation end -->
 			</nav>
-		</div>
-		<div class="wrapper-inline">
-			<!-- Header area start -->
-			<header> <!-- extra class no-background -->
-				<a class="go-back-link" href="javascript:history.back();"><i class="fa fa-arrow-left"></i></a>
-				<h1 class="page-title">IDEABOX MOBILE UI</h1>
-				<div class="navi-menu-button">
-					<em></em>
-					<em></em>
-					<em></em>
-				</div>
-			</header>
-			<!-- Header area end -->
-			<!-- Page content start -->
-			<main>
-			
-				<section class="container">
-					
-					<div class="animated-text vertical-center zero-opacity">
-						<h1>
-							<span class="text1 block txt-light" data-transation="fadeInDown" data-start-time="0">Save Hours</span>
-							<span class="text3 block txt-bold" data-transation="zoomIn" data-start-time="300">of</span>
-							<span class="text4 block txt-extra-bold txt-red" data-transation="zoomInDown" data-start-time="500">FRONT</span>
-							<span class="text5 block txt-extra-bold txt-red" data-transation="zoomInDown" data-start-time="600">END</span>
-							<span class="text6 block txt-extra-bold txt-red" data-transation="zoomInDown" data-start-time="700">DEVELOPING</span>
-							<span class="text7 block txt-light" data-transation="fadeInUp" data-start-time="1000">and make mobile website fast as light</span>
-							<br>
-							<div class="text-center" data-transation="tada" data-start-time="2000">
-								<a href="javascript:void(0);" class="button circle blue">Get Started</a>
-							</div>
-						</h1>
-					</div>
-
-				</section>
-			</main>
-			<!-- Page content end -->
-		</div>
-	</div>
-
-
-	<!--Page loader DOM Elements. Requared all pages-->
-	<div class="sweet-loader">
-		<div class="box">
-		  	<div class="circle1"></div>
-		  	<div class="circle2"></div>
-		  	<div class="circle3"></div>
-		</div>
-	</div>      
+		</div>	
             `;
-    }
+	}
 }
 
 
