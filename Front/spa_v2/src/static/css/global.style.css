@@ -231,7 +231,7 @@ header.with-search-icon .page-title{
 .navi-menu-button{
 	width: 30px;
 	height: 30px;
-	float: right;
+	float: left;
 	position: relative;
 	cursor: pointer;
 }

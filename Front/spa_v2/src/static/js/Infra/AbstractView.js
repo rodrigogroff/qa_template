@@ -1,7 +1,8 @@
 
 export default class {
     
-    initView() {        
+    initView() {     
+        
     }
 
     constructor(params) {        

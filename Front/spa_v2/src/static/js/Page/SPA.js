@@ -12,6 +12,8 @@ import Posts from "../Views/Posts.js";
 import Post from "../Views/Post.js";
 import DataTableClickPagination from "../Views/DataTableClickPagination.js";
 
+import "./../global.script.js"
+
 class AppRouter
 {
     constructor(url) {
@@ -32,13 +34,10 @@ class AppRouter
     
     getHtml() {
 
-        var newState = sessionStorage.getItem('currentState')
+        var newState = this.url
 
-        if (this.url != undefined)
-            newState = this.url;
-        else 
-            if (newState == null || newState == undefined)
-                newState = '/dashboard';
+        if (newState == null || newState == undefined)
+            newState = '/dashboard';
         
         var params = { id: null };
         var route_values = newState.split("/");
@@ -49,9 +48,9 @@ class AppRouter
             params.id = route_values[2]
 
         return `
-            <div class="wrapper">
+            <div class="wrapper" align="center">
                 ${new Menu().getHtml()}
-                <div class="wrapper-inline">
+                <div class="wrapper-inline" >
                     <header>
                         <h1 class="page-title">TEMPLATE</h1>
                         <div class="navi-menu-button">
@@ -66,33 +65,18 @@ class AppRouter
                         </section>
                     </main>
                 </div>
-            </div>   
-            <div class="sweet-loader">
-		        <div class="box">
-		  	        <div class="circle1"></div>
-		  	        <div class="circle2"></div>
-		  	        <div class="circle3"></div>
-		        </div>
-	        </div>         
-            `;
+            </div>`;
     }
 }
 
 export default class extends AbstractView {    
     constructor(params) {
         super(params);
-        $("#app").bind('click', function (e) {
+        $("#myApp").bind('click', function (e) {
             if (e!= undefined)
                 if(e.target != undefined)
                     if (e.target.attributes._href != undefined)
-                    {
-                        var newState = e.target.attributes._href.value;
-                        if (sessionStorage.getItem('currentState') != newState)
-                        {
-                            sessionStorage.setItem('currentState', newState);
-                            $("#app").html(new AppRouter().getHtml());
-                        }                        
-                    }
+                        document.querySelector("#myApp").innerHTML = new AppRouter(e.target.attributes._href.value).getHtml()                    
         });
     }
 

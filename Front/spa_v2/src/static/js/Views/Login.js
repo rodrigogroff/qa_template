@@ -5,9 +5,6 @@ import FetchCtrl from "../Infra/FetchCtrl.js";
 
 export default class extends AbstractView {
 
-    initView() {
-    }
-
     constructor(params) {
         super(params)
 
@@ -24,10 +21,6 @@ export default class extends AbstractView {
             }
         });
 
-        $("#formLogin").submit(function (event) {            
-            btnSubmit_Click()
-        });
-
         function btnSubmit_Click() {
             event.preventDefault();
 
@@ -39,21 +32,21 @@ export default class extends AbstractView {
             var api = new FetchCtrl();
 
             if (api.isFieldContentValid(serviceData.email) === false) {
-                swal("Ops!", "Email required", "error");
+                //swal("Ops!", "Email required", "error");
                 return;
             }
 
             if (api.isFieldContentValid(serviceData.password) === false) {
-                swal("Ops!", "Password required", "error");
+                //swal("Ops!", "Password required", "error");
                 return;
             }
             
-            $("#loading").show();
+            //$("#loading").show();
             $("#btnSubmit").prop('disabled', true);
 
             api.postPublicPortal(JSON.stringify(serviceData), 'authenticate_v1')
                 .then(resp => {
-                    $("#loading").hide();
+              //      $("#loading").hide();
                     if (resp.ok === true) {
                         api.loginOk(
                             resp.payload.token,
@@ -63,12 +56,12 @@ export default class extends AbstractView {
                         location.href = '/';
                     } else {
                         api.cleanLogin();
-                        swal("Ops!", resp.msg, "error");
+                     //   swal("Ops!", resp.msg, "error");
                         $("#btnSubmit").prop('disabled', false);
                     }
                 })
                 .catch(err => {
-                    $("#loading").hide();
+                   // $("#loading").hide();
                     swal("Ops!", err.msg, "error");
                     $("#btnSubmit").prop('disabled', false);
                 });
@@ -76,51 +69,35 @@ export default class extends AbstractView {
     }
 
     getHtml() {
-        return `            
-                <div class="auth-boxed">
-                    <div class="auth-wrapper">
-                        <div class="auth-content" align='left'>
-                            <div class="auth-text">
-                                <div class="logo logo-type"><a href="">Template Login</a></div>
-                                <p class="mb-0"><span>Welcome,</span> sign in to continue.</p>
-                            </div>
-                            <form id='formLogin'>
-                                <div class="form-group mb-20">
-                                    <label for="form-mail"><strong>E-Mail</strong></label>
-                                    <div class="input-icon input-icon-right">
-                                        <input type="email" class="form-control form-control-pill" id="form-mail" placeholder="Enter your e-mail address">  
-                                        <i class="far fa-envelope icon text-fade"></i>
-                                    </div>
-                                </div>
-                                <div class="form-group mb-20">
-                                    <label for="form-pass"><strong>Password</strong></label>
-                                    <div class="input-icon input-icon-right">
-                                        <input type="password" class="form-control form-control-pill" id="form-pass" placeholder="Enter your password"> 
-                                        <i class="fas fa-lock icon text-fade"></i>
-                                    </div>
-                                </div>
-                                <div align="center" style="min-height:30px;">
-                                    <div class="loader-ring" id="loading" style="display:none;height:20px">
-                                        <div></div>
-                                        <div></div>
-                                        <div></div>
-                                        <div></div>
-                                    </div>
-                                </div>
-                                <div class="form-group mt-20">
-                                    <button id='btnSubmit' class="btn btn-primary btn-round btn-block btn-md">Sign In</button>
-                                </div>
-                                <div class="auth-footer">
-                                    <hr>
-                                    <a href="page-register.html">Forgot Password?</a>
-                                    <p class="mt-5">
-                                        Do not have an account? <a href="page-register.html">Register</a>
-                                    </p>
-                                </div>
-                            </form>
-                        </div>
+        return `
+            <div style="width:400px"> 
+                <div class="form-divider"></div>
+                <br>
+                <div align='center'>
+                    <h4>Template Login</h4>
+                </div>
+                <br>
+                <div class="form-row-group with-icons" align="left">                    
+                    <div class="form-row no-padding">
+                        <i class="fa fa-envelope"></i>
+                        <input type="form-mail" name="aaa" class="form-element" placeholder="Username or Email">
                     </div>
-                </div>            
-                `;
+                    <div class="form-row no-padding">
+                        <i class="fa fa-lock"></i>
+                        <input type="form-password" name="aaa" class="form-element" placeholder="Password">
+                    </div>
+                </div>
+                <div class="form-row txt-center">
+                    <a href="forgot-password.html" data-loader="show">Forgot password?</a>
+                </div>
+                <div class="form-divider"></div>
+                <div class="form-row">
+                    <a id="btnSubmit" class="button circle block green">Login</a>
+                </div>
+                <div class="form-row txt-center">
+                    Don't you have an account yet? <a href="signup.html" data-loader="show">Sign Up</a>
+                </div>
+            </div>
+            `;
     }
 }

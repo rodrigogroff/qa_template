@@ -1,5 +1,4 @@
 
-import "./global.script.js"
 import SPA from "./Page/SPA.js"
 
 const navigateTo = url => {
@@ -9,7 +8,7 @@ const navigateTo = url => {
 
 const router = () => {
     const view = new SPA(window.location.pathname);
-    document.querySelector("#app").innerHTML = view.getHtml();
+    document.querySelector("#myApp").innerHTML = view.getHtml();
 };
 
 window.addEventListener("popstate", router);
