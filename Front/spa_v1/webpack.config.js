@@ -11,20 +11,6 @@ const webpack = require('webpack');
 module.exports = {
   mode: 'production',
   target: 'web',
-  resolve: {
-    fallback: { /*"path": require.resolve("path-browserify"),
-                "zlib": require.resolve("browserify-zlib"), 
-                "querystring": require.resolve("querystring-es3"),
-                "assert": require.resolve("assert/"),
-                "buffer": require.resolve("buffer/"),
-                "stream": require.resolve("stream-browserify"),
-                "crypto": require.resolve("crypto-browserify"),
-                "http": require.resolve("stream-http"),
-                "locale": require.resolve("locale"),
-                "popper": require.resolve("popper"),
-                "url": require.resolve("url/")*/
-               } 
-  },
   devtool: 'source-map',
   context: path.resolve(__dirname, './'),  
   entry: { './src/static/js/app' : glob.sync('./src/static/js/**/*.js')},
@@ -45,10 +31,11 @@ module.exports = {
          {
            loader: MiniCssExtractPlugin.loader,
            options: {
-             reloadAll: true,             
+             reloadAll: true,        
+             module: true,     
            }
          },
-         'css-loader',
+         'css-loader',         
          'postcss-loader',
          'sass-loader'
        ]
