@@ -3,8 +3,6 @@
 import AbstractView from "../Infra/AbstractView.js"
 
 //Components
-import TitleForm from "../Components/TitleForm.js";
-import Loader from "../Components/Loader.js";
 import DataTableClick from "../Components/DataTableClick.js";
 import DataTablePagination from "../Components/DataTablePagination.js";
 
@@ -96,8 +94,7 @@ export default class extends AbstractView {
 
     getHtml() {
         return  `
-                    ${new TitleForm().getHtml('DataTable PaginationDemo')}
-                    ${new Loader().getHtml()}
+                    DataTable PaginationDemo
                     <div id='data'></div>
                     <br>
                     <br>

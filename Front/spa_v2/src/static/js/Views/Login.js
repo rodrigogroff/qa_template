@@ -4,64 +4,100 @@ import AbstractView from "../Infra/AbstractView.js"
 import FetchCtrl from "../Infra/FetchCtrl.js";
 
 //Components
-import Modal from "../Components/Modal.js";
+
 
 export default class extends AbstractView {
 
     constructor(params) {
         super(params)
 
-        $(document).on('keypress', function (e) {
-            if (e.which == 13) {
-                btnSubmit_Click()
+        $(document).ready(function () {
+            ValidateForm(true);
+        });
+
+        $(document).on('keydown', function (e) {
+            var code = e.keyCode || e.which;
+            if (code === 9) {  // tab
+                e.preventDefault();
+                ValidateForm(false, false);
             }
+            else if (code === 13)
+            {
+                e.preventDefault();
+                btnSubmit_Click()  
+            }                          
         });
 
         $(document).bind('click', function (e) {
-            var target = $(e.target);
-            switch (target.attr('id')) {
+            switch ($(e.target).attr('id')) {
                 case 'btnSubmit': btnSubmit_Click(); break;
+                case 'formMail':
+                case 'formPass': break;
+                default: ValidateForm(true); break;
             }
         });
 
-        function ValidateForm(api, serviceData)
-        {
-            if (api.isFieldContentValid(serviceData.email) === false) {
-                api.errorField ('#failBtnMail')    
-                api.displaySystemPopup('Error', 'Email required');
-                return false;
-            }
-            else
-                api.errorClean ('#failBtnMail')    
+        function getData() {
+            return {
+                email: $('#formMail').val().trim(),
+                password: $('#formPass').val().trim(),
+            };
+        }
 
-            if (api.isFieldContentValid(serviceData.password) === false) {
-                api.errorField ('#failBtnPass')
-                api.displaySystemPopup('Error', 'Password required');
+        function ValidateForm(set_focus, show_msg) {
+
+            var api = new FetchCtrl();
+            var serviceData = getData();
+
+            var id_failBtnMail = '#failBtnMail'
+            var id_failBtnPass = '#failBtnPass'
+
+            if (!api.isFieldContentValid(serviceData.email, 99, 'email')) {
+                if (set_focus == true)
+                    $('#formMail').focus();            
+                else
+                {
+                    api.errorField(id_failBtnMail)
+                    if (show_msg==true)
+                        api.displaySystemPopup('Error', 'Invalid Email');
+                }
                 return false;
             }
             else
-                api.errorClean ('failBtnPass')    
-            
-            api.loadingOn();
-            api.disableButton('#btnSubmit')
+                api.errorClean(id_failBtnMail)
+
+            $('#formPass').focus();
+
+            if (!api.isFieldContentValid(serviceData.password, 20, 'password', 4)) {
+                if (set_focus==true)
+                    $('#formPass').focus();
+                else
+                {
+                    api.errorField(id_failBtnPass)
+                    if (show_msg==true)
+                        api.displaySystemPopup('Error', 'Invalid Password');
+                }
+                return false;
+            }
+            else
+                api.errorClean(id_failBtnPass)
+
+            document.activeElement.blur();
 
             return true;
         }
 
         function btnSubmit_Click() {
-            
-            event.preventDefault();
+
+            if (!ValidateForm(false, true))
+                return;
 
             var api = new FetchCtrl();
+            var serviceData = getData();
 
-            var serviceData = {
-                email: $('#formMail').val(),
-                password: $('#formPass').val()
-            };
+            api.loadingOn();
+            api.disableButton('#btnSubmit')
 
-            if (!ValidateForm(api, serviceData))
-                return;            
-            
             api.postPublicPortal(JSON.stringify(serviceData), 'authenticate_v1')
                 .then(resp => {
                     api.loadingOff();
@@ -81,18 +117,17 @@ export default class extends AbstractView {
                 .catch(err => {
                     api.loadingOff();
                     api.displaySystemPopup('Error', resp.msg);
-                    api.enableButton('#btnSubmit');                    
+                    api.enableButton('#btnSubmit');
                 });
         }
     }
 
     getHtml() {
         return `
-            <div style="width:400px"> 
+            <div style="width:280px"> 
                 <div class="form-divider"></div>
-                <br>
                 <div align='center'>
-                    <h4>Template Login</h4>
+                    <h2>Template Login</h2>
                 </div>
                 <br>
                 <div class="form-row-group with-icons" align="left">                    
@@ -105,8 +140,7 @@ export default class extends AbstractView {
                         <input id="formPass" type="password" class="form-element" placeholder="Password">
                     </div>
                 </div>
-                <br>
-                <br>
+                <br>                
                 <div class="form-row txt-center">
                     <a href="forgot-password.html" data-loader="show">Forgot password?</a>
                 </div>
@@ -115,8 +149,9 @@ export default class extends AbstractView {
                 <div class="form-row">
                     <a id="btnSubmit" class="button circle block green">Login</a>
                 </div>
+                <br>
                 <div class="form-row txt-center">
-                    Don't you have an account yet? <a href="signup.html" data-loader="show">Sign Up</a>
+                    Not registered? <a href="signup.html" data-loader="show">Sign Up</a>
                 </div>
             </div>
             `;

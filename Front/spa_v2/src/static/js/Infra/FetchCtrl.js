@@ -61,11 +61,62 @@ export default class FetchCtrl {
         return localStorage.getItem('token');
     }
 
-    isFieldContentValid(val) {
+    isFieldContentValid(val, maxLength, fieldType, minlength ) {
+
+        if (fieldType == undefined) fieldType = 'text';
+        if (maxLength == undefined) maxLength = 20;
+        if (minlength == undefined) minlength = 4;
+        if (fieldType == 'email') maxLength = 99;
 
         if (val === null) return false;
         if (val === undefined) return false;
-        if (val.length === 0) return false;
+        if (val === "") return false;
+
+        var len = val.trim().length;
+
+        if (len === 0) return false;
+        if (len > maxLength) return false;
+
+        switch (fieldType)
+        {
+            case 'email':
+
+                const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+                if (!re.test(String(val).toLowerCase()))
+                    return false;
+
+                break;
+
+            case 'name':
+
+                if (len.length < 3)
+                return false;
+
+                var reN = /^\d$/;
+
+                for (let i=0; i < val.length; i++) {
+                    let n = val[i];
+                    if (reN.test(c)) {
+                        return false;
+                    }
+                }
+
+                break;
+
+            case 'fullName':
+
+                if (val.trim().indexOf(' ') < 0)
+                    return false;
+
+                break;
+
+            case 'password':
+
+                if (val.length < minlength)
+                    return false;
+
+                break;
+        }
 
         return true;
     }

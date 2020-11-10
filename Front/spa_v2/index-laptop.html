@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Mobile Web UI Template</title>
+	
+	<style type="text/css">
+		body{background-color: #ddd; margin:0; padding:0; background-image: url('demo-assets/bg-pattern.png'); background-position:center; background-repeat:repeat; font-family:'Nunito'; color:#333;}
+		.mobile-tablet{width: 818px; height: 578px; position: relative; background:url('demo-assets/tablet.png') center no-repeat; margin: 0 auto;}
+		.iframe-tablet{border:none; position: absolute; top: 41px; left: 76px;}
+		.test-text{text-align: center;}
+		.links{text-align: center; padding-bottom: 15px;}
+		.title{font-size:30px; text-align: center;}
+		.button{display:inline-block; background:#cc0c35; color:#FFF; padding:10px 50px; text-decoration:none; border-radius:30px; cursor: pointer;}
+		.button.active{background: #EEE; border:solid 1px #DDD; color: #666; cursor: default;}
+		.template_url{background:#FFF; height:40px; padding:5px 20px; border:solid 2px #333; border-radius:5px; display:block; width:300px; font-family:'Nunito'; font-weight:700; margin: 20px auto; }
+	</style>
+</head>
+
+<body>
+	
+	<h1 class="title">Mobile Web UI Template</h1>
+	<div class="links">
+		<a href="index-mobile.html" class="button">Phone Mode</a>
+		<a href="index-tablet.html;" class="button active">Tablet Mode</a>
+		<a href="javascript:void(0);" class="button active">Laptop Mode</a>
+	</div>
+
+	<div class="mobile-tablet">
+		<iframe class="iframe-tablet" src="http://localhost:5060" width="1300" height="700"></iframe>
+	</div>
+	
+</body>
+
+</html>

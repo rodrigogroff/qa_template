@@ -2,8 +2,6 @@
 //Infrastructure
 import AbstractView from "../Infra/AbstractView.js"
 
-//Components
-import TitleForm from "../Components/TitleForm.js";
 
 export default class extends AbstractView {
 
@@ -14,7 +12,7 @@ export default class extends AbstractView {
 
     getHtml() {
         return  `
-                ${new TitleForm().getHtml('Post Demo')}
+                'Post Demo'
                 <br>
                 <p>Post #${this.postId} View</a>
                 `;
