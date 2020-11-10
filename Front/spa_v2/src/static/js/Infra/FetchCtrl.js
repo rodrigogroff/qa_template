@@ -16,7 +16,7 @@ export default class FetchCtrl {
     }
 
     loadingOn() {
-        $('.sweet-loader').show().addClass('show');
+        $('#loading').show();
     }
 
     displaySystemPopup(title, text) {
@@ -34,7 +34,7 @@ export default class FetchCtrl {
     }
 
     loadingOff() {
-        $('.sweet-loader').show().removeClass('show');
+        $('#loading').hide();
     }
 
     updateHTML(idElement, html) {

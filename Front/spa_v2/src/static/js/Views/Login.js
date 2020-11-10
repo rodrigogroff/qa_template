@@ -12,7 +12,7 @@ export default class extends AbstractView {
         super(params)
 
         $(document).ready(function () {
-            ValidateForm(true);
+            $('#formMail').focus();
         });
 
         $(document).on('keydown', function (e) {
@@ -21,9 +21,7 @@ export default class extends AbstractView {
                 e.preventDefault();
                 ValidateForm(false, false);
             }
-            else if (code === 13)
-            {
-                e.preventDefault();
+            else if (code === 13) { // enter
                 btnSubmit_Click()  
             }                          
         });
@@ -33,6 +31,23 @@ export default class extends AbstractView {
                 case 'btnSubmit': btnSubmit_Click(); break;
                 case 'formMail':
                 case 'formPass': break;
+
+                case 'seePass': 
+                    if ($('#seePass').css('color') !== 'rgb(102, 127, 151)')
+                    {
+                        $('#seePass').css('color', $('body').css('color'))
+                        $('#formPass').removeAttr('type');
+                        $('#formPass').attr('type', 'password');
+                    }
+                    else
+                    {
+                        $('#seePass').css('color','green')
+                        $('#formPass').removeAttr('type');
+                        $('#formPass').attr('type', 'text');
+                    }
+                    break;
+
+                // close -> error (click no x)
                 default: ValidateForm(true); break;
             }
         });
@@ -82,6 +97,7 @@ export default class extends AbstractView {
             else
                 api.errorClean(id_failBtnPass)
 
+            // all ok, loose focus
             document.activeElement.blur();
 
             return true;
@@ -96,11 +112,16 @@ export default class extends AbstractView {
             var serviceData = getData();
 
             api.loadingOn();
-            api.disableButton('#btnSubmit')
 
-            api.postPublicPortal(JSON.stringify(serviceData), 'authenticate_v1')
+            $('#btnSubmit').removeClass('green');
+            $('#btnSubmit').addClass('light');
+
+            setTimeout(() => {
+
+                api.postPublicPortal(JSON.stringify(serviceData), 'authenticate_v1')
                 .then(resp => {
                     api.loadingOff();
+                    $('#btnSubmit').addClass('green');
                     if (resp.ok === true) {
                         api.loginOk(
                             resp.payload.token,
@@ -110,21 +131,23 @@ export default class extends AbstractView {
                         location.href = '/';
                     } else {
                         api.cleanLogin();
-                        api.displaySystemPopup('Error', resp.msg);
-                        api.enableButton('#btnSubmit');
+                        api.displaySystemPopup('Error', resp.msg);                        
                     }
                 })
-                .catch(err => {
+                .catch(resp => {
                     api.loadingOff();
-                    api.displaySystemPopup('Error', resp.msg);
-                    api.enableButton('#btnSubmit');
-                });
+                    $('#btnSubmit').addClass('green');
+                    api.displaySystemPopup('Error', resp.msg);                    
+                });                
+
+            }, 1500);            
         }
     }
 
     getHtml() {
         return `
-            <div style="width:280px"> 
+            <br>
+            <div style="width:280px" class="form-row-group-dark"> 
                 <div class="form-divider"></div>
                 <div align='center'>
                     <h2>Template Login</h2>
@@ -136,8 +159,17 @@ export default class extends AbstractView {
                         <input id="formMail" type="text" class="form-element" placeholder="Username or Email">
                     </div>
                     <div class="form-row no-padding">
-                        <i class="fa fa-lock" id='failBtnPass'></i>
-                        <input id="formPass" type="password" class="form-element" placeholder="Password">
+                        <i class="fa fa-lock" id='failBtnPass'></i>     
+                        <table width='100%'>
+                            <tr>
+                                <td valign='top' width='90%'>
+                                    <input id="formPass" type="password" class="form-element" placeholder="Password">                        
+                                </td>
+                                <td valign='top'>
+                                    <i class="fa fa-eye" id='seePass' title='See password'></i>
+                                </td>
+                            </tr>
+                        </table>
                     </div>
                 </div>
                 <br>                
@@ -147,12 +179,17 @@ export default class extends AbstractView {
                 <br>
                 <div class="form-divider"></div>
                 <div class="form-row">
-                    <a id="btnSubmit" class="button circle block green">Login</a>
+                    <a id="btnSubmit" class="button circle block green">
+                        Login &nbsp;&nbsp;&nbsp;
+                        <i class="fa fa-spinner fa-spin" id='loading' style="font-size:24px;display:none;"></i>
+                    </a>
                 </div>
                 <br>
                 <div class="form-row txt-center">
                     Not registered? <a href="signup.html" data-loader="show">Sign Up</a>
                 </div>
+                <br>
+                <br>
             </div>
             `;
     }

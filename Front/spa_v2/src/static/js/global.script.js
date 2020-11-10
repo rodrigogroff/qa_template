@@ -3,12 +3,10 @@
 $(document).ready(function(){
 
 	$('.navi-menu-button').on('click', function(e){
-		console.log('navMenuOpen')
 		navMenuOpen();
 	});
 
 	$('.nav-menu').on('click', function(e){
-		console.log('nav-menu')
 		if ($(e.target).hasClass('nav-menu')){
 			navMenuClose();
 		}
