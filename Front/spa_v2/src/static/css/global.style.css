@@ -46,8 +46,7 @@ body{
 	right: 0;
 	background-position: center center;
 	background-size: cover;
-	background-repeat: no-repeat;
-	
+	background-repeat: no-repeat;	
 }
 .wrapper.with-bg-image{
 	background-image: url('../img/background-image.jpg');
@@ -147,7 +146,7 @@ nav.menu ul.main-menu>li li a{
 	width: 100%;
 	bottom: 0;
 	top: 0;
-	background-color: #F5F6F8;
+	background-color: #7795d0;
 	overflow: auto;
 }
 .wrapper.with-bg-image .wrapper-inline{
@@ -310,10 +309,13 @@ section.container{
 	-webkit-box-shadow: 0px 0px 12px 0px rgba(0,0,0,0.1);
 	-moz-box-shadow: 0px 0px 12px 0px rgba(0,0,0,0.1);
 	box-shadow: 0px 0px 12px 0px rgba(0,0,0,0.1);
+	padding-top:10px;
+	padding-right:10px;
+	padding-bottom:10px;
 }
 .form-row-group-dark{
 	border-radius: 3px;
-	background-color: #f9f9f9;
+	background-color: #e9e9ff;
 	border:solid 1px #a9a9a9;
 	-webkit-box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.2);
 	-moz-box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.2);

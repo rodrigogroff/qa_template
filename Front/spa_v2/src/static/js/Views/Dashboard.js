@@ -12,7 +12,6 @@ export default class extends AbstractView {
 
     getHtml() {
         return  `
-                Dashboard x
                 `;
     }
 }
