@@ -8,6 +8,7 @@ import Menu from "../Components/Menu.js";
 //Views
 import Dashboard from "../Views/Dashboard.js";
 import Login from "../Views/Login.js";
+import Login2 from "../Views/LoginComponent.js";
 import Posts from "../Views/Posts.js";
 import Post from "../Views/Post.js";
 import DataTableClickPagination from "../Views/DataTableClickPagination.js";
@@ -26,6 +27,7 @@ class AppRouter
         {
             default: return new Dashboard(params);
             case '/login': return new Login(params);
+            case '/login2': return new Login2(params);
             case '/posts': return new Posts(params);
             case '/post': return new Post(params); 
             case '/datatableclickpagination': return new DataTableClickPagination(params);

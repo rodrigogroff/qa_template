@@ -3,6 +3,10 @@
 import AbstractView from "../Infra/AbstractView.js"
 import FetchCtrl from "../Infra/FetchCtrl.js"
 
+//Components
+import EmailField from "../Components/Fields/Email.js"
+import PasswordField from "../Components/Fields/Password.js"
+
 export default class extends AbstractView {
 
     constructor(params) {
@@ -29,24 +33,13 @@ export default class extends AbstractView {
                 // do nothing
                 case 'formMail': case 'formPass': break;
                 // check password
-                case 'seePass': btnSeePassword(); break;
+                case 'seePass': new PasswordField().btnSeePassword(); break;
                 // close -> error (x)
                 default: validateForm(new FetchCtrl(), { focus: false, msg: false, fields: getData() }); break;
             }
         });
 
-        function btnSeePassword() {
-            $('#formPass').removeAttr('type')
-            if ($('#seePass').css('color') === $('body').css('color')) {
-                $('#seePass').css('color', 'red')
-                $('#formPass').attr('type', 'text')
-            }
-            else {
-                $('#seePass').css('color', $('body').css('color'))
-                $('#formPass').attr('type', 'password')
-            }
-        }
-
+        // --serviceData -------------------------
         function getData() {
             return {
                 email: $('#formMail').val().trim(),
@@ -64,33 +57,13 @@ export default class extends AbstractView {
 
         function validateForm(api, _params) {
 
-            if (!api.isFieldContentValid(_params.fields.email, 99, 'email')) {
-                if (_params.focus == true)
-                    $('#formMail').focus()
-                else {
-                    api.errorField('#failBtnMail')
-                    if (_params.msg == true)
-                        api.displaySystemPopup('Error', 'Invalid Email')
-                }
+            if (!new EmailField().validate(api, _params))
                 return false;
-            }
-            else
-                api.errorClean('#failBtnMail')
 
             $('#formPass').focus();
 
-            if (!api.isFieldContentValid(_params.fields.password, 20, 'password', 4)) {
-                if (_params.focus == true)
-                    $('#formPass').focus()
-                else {
-                    api.errorField('#failBtnPass')
-                    if (_params.msg == true)
-                        api.displaySystemPopup('Error', 'Invalid Password')
-                }
-                return false;
-            }
-            else
-                api.errorClean('#failBtnPass')
+            if (!new PasswordField().validate(api, _params))
+                return false;            
 
             // all ok, loose focus
             document.activeElement.blur();
@@ -145,27 +118,12 @@ export default class extends AbstractView {
             <div style="width:296px" class="form-row-group-dark"> 
                 <div class="form-divider"></div>
                 <div align='center'>
-                    <h2>Login</h2>
+                    <h2>Login 2</h2>
                 </div>
                 <br>
                 <div class="form-row-group with-icons" align="left">                    
-                    <div class="form-row no-padding">
-                        <i class="fa fa-envelope" id='failBtnMail'></i>
-                        <input id="formMail" type="text" class="form-element" placeholder="Username or Email">
-                    </div>
-                    <div class="form-row no-padding">
-                        <i class="fa fa-lock" style='padding-left:4px' id='failBtnPass'></i>
-                        <table width='100%'>
-                            <tr>
-                                <td valign='top' width='90%'>
-                                    <input id="formPass" type="password" class="form-element" placeholder="Password">
-                                </td>
-                                <td valign='top'>
-                                    <i class="fa fa-eye" id='seePass' title='See password'></i>
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
+                    ${new EmailField().getHtml()}
+                    ${new PasswordField().getHtml()}
                 </div>
                 <br>                
                 <div class="form-row txt-center">
