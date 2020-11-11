@@ -5,7 +5,7 @@ export default class {
 		this.params = params;
 	}
 
-	getHtml(p) {
+	static getHtml(p) {
 		return `
 			<div class="nav-menu" align='left'>
 				<nav class="menu">

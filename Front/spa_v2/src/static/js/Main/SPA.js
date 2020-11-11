@@ -1,19 +1,18 @@
 
 //Infrastructure
-import AbstractView from "../Infra/AbstractView.js"
+import MainCtrl from "../Infra/MainCtrl.js"
 
 //Main Menu
 import Menu from "../Components/Menu.js";
 
-//Views
-import Dashboard from "../Views/Dashboard.js";
-import Login from "../Views/Login.js";
-import Login2 from "../Views/LoginComponent.js";
-import Posts from "../Views/Posts.js";
-import Post from "../Views/Post.js";
-import DataTableClickPagination from "../Views/DataTableClickPagination.js";
+//Pages
+import Dashboard from "../Pages/Dashboard.js";
+import Login from "../Pages/Login.js";
+//import Posts from "../Pages/Posts.js";
+//import Post from "../Pages/Post.js";
+//import DataTableClickPagination from "../Pages/DataTableClickPagination.js";
 
-import "./../global.script.js"
+import "../global.script.js"
 
 class AppRouter
 {
@@ -27,7 +26,6 @@ class AppRouter
         {
             default: return new Dashboard(params);
             case '/login': return new Login(params);
-            case '/login2': return new Login2(params);
             case '/posts': return new Posts(params);
             case '/post': return new Post(params); 
             case '/datatableclickpagination': return new DataTableClickPagination(params);
@@ -51,7 +49,7 @@ class AppRouter
 
         return `
             <div class="wrapper" align="center">
-                ${new Menu().getHtml()}
+                ${Menu.getHtml()}
                 <div class="wrapper-inline" >
                     <header>
                         <h1 class="page-title">TEMPLATE</h1>
@@ -94,7 +92,7 @@ class AppRouter
     }
 }
 
-export default class extends AbstractView {    
+export default class extends MainCtrl {    
     constructor(params) {
         super(params);
         $("#myApp").bind('click', function (e) {

@@ -1,26 +1,26 @@
 
+//Infrastructure
+import MainCtrl from "../../Infra/MainCtrl.js"
+
 export default class {
-
-    constructor(params) {
-    }
-
-    validate(api,_params) {
-        if (!api.isFieldContentValid(_params.fields.email, 99, 'email')) {
+    
+    static validate(_params) {
+        if (!MainCtrl.isFieldContentValid(_params.fields.email, 99, 'email')) {
             if (_params.focus == true)
                 $('#formMail').focus()
             else {
-                api.errorField('#failBtnMail')
+                MainCtrl.errorField('#failBtnMail')
                 if (_params.msg == true)
-                    api.displaySystemPopup('Error', 'Invalid Email')
+                    MainCtrl.displaySystemPopup('Error', 'Invalid Email')
             }
             return false;
         }
         else
-            api.errorClean('#failBtnMail')
+            MainCtrl.errorClean('#failBtnMail')
         return true;
     }
 
-    getHtml() {
+    static getHtml() {
         return `
             <div class="form-row no-padding">
                 <i class="fa fa-envelope" id='failBtnMail'></i>

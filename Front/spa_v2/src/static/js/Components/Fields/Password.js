@@ -1,26 +1,27 @@
 
+//Infrastructure
+import MainCtrl from "../../Infra/MainCtrl.js"
+
 export default class {
 
-    constructor(params) {
-    }
-
-    validate(api, _params) {
-        if (!api.isFieldContentValid(_params.fields.password, 20, 'password', 4)) {
+    static validate(_params) {
+        if (!MainCtrl.isFieldContentValid(_params.fields.password, 20, 'password', 4)) {
             if (_params.focus == true)
                 $('#formPass').focus()
             else {
-                api.errorField('#failBtnPass')
+                MainCtrl.errorField('#failBtnPass')
                 if (_params.msg == true)
-                    api.displaySystemPopup('Error', 'Invalid Password')
+                    MainCtrl.displaySystemPopup('Error', 'Invalid Password')
             }
             return false;
         }
         else
-            api.errorClean('#failBtnPass')
+            MainCtrl.errorClean('#failBtnPass')
+
         return true;
     }
 
-    btnSeePassword() {
+    static btnSeePassword() {
         $('#formPass').removeAttr('type')
         if ($('#seePass').css('color') === $('body').css('color'))
         {
@@ -34,7 +35,7 @@ export default class {
         }
     }
 
-    getHtml() {
+    static getHtml() {
         return `
             <div class="form-row no-padding">
                 <i class="fa fa-lock" style='padding-left:4px' id='failBtnPass'></i>

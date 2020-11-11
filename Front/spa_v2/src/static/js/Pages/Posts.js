@@ -1,9 +1,8 @@
 
 //Infrastructure
-import AbstractView from "../Infra/AbstractView.js"
+import MainCtrl from "../Infra/MainCtrl.js"
 
-
-export default class extends AbstractView {
+export default class extends MainCtrl {
 
     constructor(params) {
         super(params)
