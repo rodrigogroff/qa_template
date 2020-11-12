@@ -88,7 +88,7 @@ export default class extends MainCtrl {
 
                 $("#data").html( result );
                 
-            }, 500);            
+            }, 500);
         }
     }
 

@@ -8,6 +8,7 @@ import EndPoints from "../Infra/Endpoints.js"
 import EmailField from "../Components/Fields/Email.js"
 import PasswordField from "../Components/Fields/Password.js"
 import Endpoints from "../Infra/Endpoints.js"
+import ImgLoader from "../Components/ImageLoader.js"
 
 export default class extends MainCtrl {
 
@@ -18,6 +19,7 @@ export default class extends MainCtrl {
                 <div class="form-divider"></div>
                 <div align='center'>
                     <h2>Login</h2>
+                        ${ImgLoader.getHtml('logoId','max-height:20px')}
                 </div>
                 <br>
                 <div class="form-row-group with-icons" align="left">                    
@@ -49,6 +51,7 @@ export default class extends MainCtrl {
 
         $(document).ready(function () {
             $('#formMail').focus() // user does not need to click in first field
+            ImgLoader.loadAsync('logoId', 'https://lirp-cdn.multiscreensite.com/97c59373/dms3rep/multi/opt/LOGO.CONVEYbranco+total-1920w.png');
         });
 
         $(document).on('keydown', function (e) {
