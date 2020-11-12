@@ -11,100 +11,13 @@ import Endpoints from "../Infra/Endpoints.js"
 
 export default class extends MainCtrl {
 
-    constructor(params) {
-        super(params)
-
-        $(document).ready(function () {
-            $('#formMail').focus()
-        });
-
-        $(document).on('keydown', function (e) {
-            var code = e.keyCode
-            if (code === 9) {  // tab
-                e.preventDefault()
-                validateForm({ focus: false, msg: false, fields: extractFormData() })
-            }
-            else if (code === 13) // enter
-                btnSubmit_Click(extractFormData())
-        });
-
-        $(document).bind('click', function (e) {
-            switch ($(e.target).attr('id')) {
-                // login
-                case 'btnSubmit': btnSubmit_Click(extractFormData()); break;
-                // do nothing
-                case 'formMail': case 'formPass': break;
-                // check password
-                case 'seePass': PasswordField.btnSeePassword(); break;
-                // close -> error (x)
-                default: validateForm({ focus: false, msg: false, fields: extractFormData() }); break;
-            }
-        });
-
-        function extractFormData() {
-            return new Endpoints().
-                authenticate_Input(
-                    $('#formMail').val().trim(),
-                    $('#formPass').val().trim()
-                );
-        }
-
-        function validateForm(_params) {
-
-            if (!EmailField.validate(_params)) return false;
-            $('#formPass').focus();
-            if (!PasswordField.validate(_params)) return false;
-            // all ok, loose focus
-            document.activeElement.blur();
-
-            return true;
-        }
-
-        function btnSubmit_Click(_fields) {
-
-            if (!validateForm({ focus: false, msg: true, fields: _fields }))
-                return;
-
-            var api = new FetchCtrl();
-
-            MainCtrl.loadingOn()
-
-            $('#btnSubmit').removeClass('green')
-            $('#btnSubmit').addClass('light')
-
-            MainCtrl.disableButton('#btnSubmit')
-        
-            api.postPublicPortal(JSON.stringify(_fields), new EndPoints().authenticate)
-                .then(resp => {
-                    MainCtrl.loadingOff()
-                    MainCtrl.enableButton('#btnSubmit')
-                    $('#btnSubmit').addClass('green');
-                    if (resp.ok === true) {                            
-                        var obj = new Endpoints().authenticate_Output(resp.payload);
-                        MainCtrl.loginOk(obj.token, obj.user.email, obj.user.login);
-                        location.href = '/';
-                    } else {
-                        MainCtrl.cleanLogin()
-                        MainCtrl.displaySystemPopup('Error', resp.msg)
-                    }
-                })
-                .catch(resp => {
-                    MainCtrl.loadingOff()
-                    MainCtrl.enableButton('#btnSubmit')
-                                            
-                    $('#btnSubmit').addClass('green')
-                    MainCtrl.displaySystemPopup('Error', resp.msg)
-                });            
-        }
-    }
-
     getHtml() {
         return `
             <br>
             <div style="width:296px" class="form-row-group-dark"> 
                 <div class="form-divider"></div>
                 <div align='center'>
-                    <h2>Login 2</h2>
+                    <h2>Login</h2>
                 </div>
                 <br>
                 <div class="form-row-group with-icons" align="left">                    
@@ -126,8 +39,88 @@ export default class extends MainCtrl {
                     Not registered? <a href="/signup">Sign Up</a>
                 </div>
                 <br>
-                <br>
             </div>
             `;
+    }
+
+    constructor(params) {
+        
+        super(params)
+
+        $(document).ready(function () {
+            $('#formMail').focus() // user does not need to click in first field
+        });
+
+        $(document).on('keydown', function (e) {
+            switch (e.keyCode) {
+                case 9: validateForm({ focus: false, msg: false, fields: null }); break;    //tab                
+                case 13: btnSubmit_Click(); break;                                          //enter
+            }
+        });
+
+        $(document).bind('click', function (e) {
+            switch ($(e.target).attr('id')) {
+                case 'btnSubmit': btnSubmit_Click(); break;                                         // login                
+                case 'seePass': PasswordField.btnSeePassword(); break;                              // password eye                
+                case 'popupClose': validateForm({ focus: false, msg: false, fields: null }); break; // close -> error (x)
+            }
+        });
+
+        function validateForm(_params) {
+            if (_params.fields == null)
+                _params.fields = extractFormData();
+
+            // component checking
+            if (!(EmailField.validate(_params) &&           
+                  PasswordField.validate(_params))) {
+                return false;
+            }   
+
+            document.activeElement.blur();  // ok -> loose focus
+            return true;
+        }
+
+        function extractFormData() {
+            return new Endpoints().
+                authenticate_Input(
+                    $('#formMail').val().trim(),
+                    $('#formPass').val().trim()
+                );
+        }
+
+        function btnSubmit_Click() {
+            if (MainCtrl.IsLoading())
+                return;
+            var formData = extractFormData();
+            if (!validateForm({ focus: false,
+                                msg: true, 
+                                fields: formData }))
+                return;
+            MainCtrl.loadingOn('#btnSubmit')
+            new FetchCtrl().
+                postPublicPortal(
+                    new EndPoints().authenticate,   // endpoint url
+                    formData)                       // input service data
+                .then(resp => {
+                    if (resp.ok == true)                        
+                        serviceOk(resp.payload)     // output service data 
+                    else
+                        MainCtrl.displaySystemPopup('Error', resp.msg);
+                })
+                .catch(resp => {
+                    MainCtrl.displaySystemPopup('Error', resp.msg)
+                });
+        }
+
+        function serviceOk(payload) {
+            // stop icon
+            MainCtrl.loadingOff()
+            // convert data
+            var response = new Endpoints().authenticate_Output(payload);
+            // set user logged in
+            MainCtrl.loginOk ( response.token, response.user.email, response.user.login );
+            // redirect to index
+            location.href = '/';
+        }
     }
 }

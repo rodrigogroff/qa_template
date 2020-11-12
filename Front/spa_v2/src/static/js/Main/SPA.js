@@ -72,7 +72,7 @@ class AppRouter
                                 <div class="popup-container" style='margin-top:50px;max-width:350px'>
                                     <div class="popup-header">
                                         <h3 class="popup-title" id='popUpSystemTitle'>Standart Popup</h3>
-                                        <span class="popup-close" data-dismiss="true"><i class="fa fa-times"></i></span>
+                                        <span id='popupClose' class="popup-close" data-dismiss="true"><i class="fa fa-times"></i></span>
                                     </div>
                                     <div class="popup-content">          
                                         <span style="font-size:64px;color:red;padding-top:32px;" class="fa fa-exclamation-circle"></span><br>

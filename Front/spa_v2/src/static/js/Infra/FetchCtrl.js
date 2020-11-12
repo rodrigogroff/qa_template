@@ -136,12 +136,13 @@ export default class {
         }
     }
 
-    postPublicPortal(obj, endPoint) {
+    postPublicPortal(location, _obj) {
+        var obj = JSON.stringify(_obj)
         var attempts = 5;
         var _catch = false;
         while (true) {
             var ret = new Promise((resolve, reject) => {
-                fetch(ApiLocation.api_host + ':' + ApiLocation.api_port + ApiLocation.api_portal + endPoint,
+                fetch(ApiLocation.api_host + ':' + ApiLocation.api_port + ApiLocation.api_portal + location,
                     {
                         method: 'POST', headers: { 'Content-Type': 'application/json' }, body: obj
                     })

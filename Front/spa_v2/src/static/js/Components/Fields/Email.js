@@ -4,6 +4,15 @@ import MainCtrl from "../../Infra/MainCtrl.js"
 
 export default class {
     
+    static getHtml() {
+        return `
+            <div class="form-row no-padding">
+                <i class="fa fa-envelope" id='failBtnMail'></i>
+                <input id="formMail" type="text" class="form-element" placeholder="Username or Email">
+            </div>
+            `;
+    }
+
     static validate(_params) {
         if (!MainCtrl.isFieldContentValid(_params.fields.email, 99, 'email')) {
             if (_params.focus == true)
@@ -18,14 +27,5 @@ export default class {
         else
             MainCtrl.errorClean('#failBtnMail')
         return true;
-    }
-
-    static getHtml() {
-        return `
-            <div class="form-row no-padding">
-                <i class="fa fa-envelope" id='failBtnMail'></i>
-                <input id="formMail" type="text" class="form-element" placeholder="Username or Email">
-            </div>
-            `;
-    }
+    }    
 }

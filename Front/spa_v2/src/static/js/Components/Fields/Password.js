@@ -4,37 +4,6 @@ import MainCtrl from "../../Infra/MainCtrl.js"
 
 export default class {
 
-    static validate(_params) {
-        if (!MainCtrl.isFieldContentValid(_params.fields.password, 20, 'password', 4)) {
-            if (_params.focus == true)
-                $('#formPass').focus()
-            else {
-                MainCtrl.errorField('#failBtnPass')
-                if (_params.msg == true)
-                    MainCtrl.displaySystemPopup('Error', 'Invalid Password')
-            }
-            return false;
-        }
-        else
-            MainCtrl.errorClean('#failBtnPass')
-
-        return true;
-    }
-
-    static btnSeePassword() {
-        $('#formPass').removeAttr('type')
-        if ($('#seePass').css('color') === $('body').css('color'))
-        {
-            $('#seePass').css('color', 'red')
-            $('#formPass').attr('type', 'text') 
-        }
-        else
-        {
-            $('#seePass').css('color', $('body').css('color'))
-            $('#formPass').attr('type', 'password') 
-        }
-    }
-
     static getHtml() {
         return `
             <div class="form-row no-padding">
@@ -51,5 +20,37 @@ export default class {
                 </table>
             </div>
             `;
+    }
+
+    static btnSeePassword(id) {
+        if (id == undefined) id = '#formPass';
+        $(id).removeAttr('type')
+        if ($('#seePass').css('color') === $('body').css('color'))
+        {
+            $('#seePass').css('color', 'red')
+            $(id).attr('type', 'text') 
+        }
+        else
+        {
+            $('#seePass').css('color', $('body').css('color'))
+            $(id).attr('type', 'password') 
+        }
+    }
+
+    static validate(_params) {
+        if (!MainCtrl.isFieldContentValid(_params.fields.password, 20, 'password', 4)) {
+            if (_params.focus == true)
+                $('#formPass').focus()
+            else {
+                MainCtrl.errorField('#failBtnPass')
+                if (_params.msg == true)
+                    MainCtrl.displaySystemPopup('Error', 'Invalid Password')
+            }
+            return false;
+        }
+        else
+            MainCtrl.errorClean('#failBtnPass')
+
+        return true;
     }
 }

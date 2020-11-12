@@ -17,11 +17,22 @@ export default class {
         localStorage.setItem(tag, val)
     }
 
-    static loadingOn() {
+    static IsLoading() {
+        return $('#loading').is(":visible");
+    }
+
+    static loadingOn(btn) {
         $('#loading').show();
+        if (btn != undefined) {
+            $(btn).removeClass('green')
+            $(btn).addClass('light')
+            this.setToSession('myBtn', btn)
+        }
     }
 
     static displaySystemPopup(title, text) {
+        if (this.IsLoading())
+            this.loadingOff(this.getFromSession('myBtn'));
         $('#popUpSystem').fadeIn('fast');
         $('#popUpSystemTitle').text(title)
         $('#popUpSystemText').text(text)
@@ -35,8 +46,10 @@ export default class {
         $(id).attr('style', '');
     }
 
-    static loadingOff() {
+    static loadingOff(btn) {
         $('#loading').hide();
+        if (btn != undefined)
+            $(btn).addClass('green')
     }
 
     static updateHTML(idElement, html) {
@@ -78,45 +91,35 @@ export default class {
 
         if (len === 0) return false;
         if (len > maxLength) return false;
+        if (len < minlength) return false;
 
         switch (fieldType)
         {
             case 'email':
-
                 const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
                 if (!re.test(String(val).toLowerCase()))
                     return false;
-
                 break;
 
             case 'name':
-
                 if (len.length < 3)
                 return false;
-
                 var reN = /^\d$/;
-
                 for (let i=0; i < val.length; i++) {
                     let n = val[i];
                     if (reN.test(c)) {
                         return false;
                     }
                 }
-
                 break;
 
             case 'fullName':
-
                 if (val.trim().indexOf(' ') < 0)
                     return false;
 
                 break;
 
             case 'password':
-
-                if (val.length < minlength)
-                    return false;
-
                 break;
         }
 

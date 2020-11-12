@@ -5,7 +5,7 @@ export default class {
 		this.params = params;
 	}
 
-	static getHtml(p) {
+	static getHtml() {
 		return `
 			<div class="nav-menu" align='left'>
 				<nav class="menu">
@@ -20,8 +20,7 @@ export default class {
 							<li>
 								<a href="javascript:void(0);"><i class="fa fa-sign-in"></i> Entry <span class="fa fa-angle-down"></span></a>
 								<ul>
-									<li><a href="/login" style='cursor:pointer' data-loader="show">Login</a></li>
-									<li><a href="/login2" style='cursor:pointer' data-loader="show">Login 2</a></li>
+									<li><a href="/login" style='cursor:pointer' data-loader="show">Login</a></li>									
 									<li><a href="#" data-loader="show">Register</a></li>
 									<li><a href="#" data-loader="show">Forgot Password</a></li>
 								</ul>
