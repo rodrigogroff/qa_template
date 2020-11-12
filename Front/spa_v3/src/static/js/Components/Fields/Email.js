@@ -5,12 +5,12 @@ import MainCtrl from "../../Infra/MainCtrl"
 export default class {
     
     static getHtml() {
-        return `
+        return MainCtrl.HtmlCleanup(`
             <div class="form-row no-padding">
                 <i class="fa fa-envelope" id='failBtnMail'></i>
                 <input id="formMail" type="text" class="form-element" placeholder="Username or Email">
             </div>
-            `;
+            `);
     }
 
     static validate(_params) {

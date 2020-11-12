@@ -1,4 +1,6 @@
 
+import MainCtrl from "../Infra/MainCtrl"
+
 export default class {
 
     constructor(totItens, itensPerPage, currentPage) {
@@ -43,7 +45,7 @@ export default class {
         injectButtons += buttonHtml.replace("class=", "_page='" + next + "' class=") + 'Next' + term +
                          buttonHtml.replace("class=", "_page='" + endPage + "' class=") + 'Last' + term;
 
-        return `
+        return MainCtrl.HtmlCleanup(`
             <div align='left'>
                 <table>
                     <tr height='52px'>
@@ -52,6 +54,6 @@ export default class {
                     </tr>
                 </table>
             </div>
-            `;
+            `);
     }
 }

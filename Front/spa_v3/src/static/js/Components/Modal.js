@@ -1,4 +1,6 @@
 
+import MainCtrl from "../Infra/MainCtrl"
+
 export default class {
 
     constructor(title, text, btnCloseLabel, btnSaveLabel, modalId) {
@@ -21,7 +23,7 @@ export default class {
         var idLabelClose = this.modalId + "_close";
         var idLabelSave = this.modalId + "_save";
 
-        return `
+        return MainCtrl.HtmlCleanup(`
             <div class="popup-overlay" id="${idModal}">
                 <div class="popup-container">
                     <div class="popup-header">
@@ -37,6 +39,6 @@ export default class {
                     </div>
                 </div>
             </div>
-            `;
+            `);
     }
 }

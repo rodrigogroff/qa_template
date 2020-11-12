@@ -1,4 +1,6 @@
 
+import MainCtrl from "../Infra/MainCtrl"
+
 export default class {
 
 	constructor(params) {
@@ -6,7 +8,7 @@ export default class {
 	}
 
 	static getHtml() {
-		return `
+		return MainCtrl.HtmlCleanup(`
 			<div class="nav-menu" align='left'>
 				<nav class="menu">
 					<div class="nav-header">
@@ -30,6 +32,6 @@ export default class {
 					</div>
 				</nav>
 			</div>	
-            `;
+            `);
 	}
 }

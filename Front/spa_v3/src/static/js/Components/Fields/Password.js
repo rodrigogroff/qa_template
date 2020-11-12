@@ -5,7 +5,7 @@ import MainCtrl from "../../Infra/MainCtrl"
 export default class {
 
     static getHtml() {
-        return `
+        return MainCtrl.HtmlCleanup(`
             <div class="form-row no-padding">
                 <i class="fa fa-lock" style='padding-left:4px' id='failBtnPass'></i>
                 <table width='100%'>
@@ -19,7 +19,7 @@ export default class {
                     </tr>
                 </table>
             </div>
-            `;
+            `);
     }
 
     static btnSeePassword(id) {

@@ -1,4 +1,5 @@
 
+import MainCtrl from "../Infra/MainCtrl"
 import TableUtil from "../Infra/TableUtil"
 
 export default class {
@@ -15,12 +16,12 @@ export default class {
     getHtml() {
         if (this.state.table === null) 
             return '';
-        return `
+        return MainCtrl.HtmlCleanup(`
             ${new TableUtil (   this.state.table, 
                 this.state.textColor, 
                 this.state.backColor, 
                 this.state.type).
                 getHtml()}
-            `;
+            `);
     }
 }

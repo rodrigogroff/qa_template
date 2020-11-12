@@ -1,5 +1,6 @@
 
 //Infrastructure
+import MainCtrl from "../../Infra/MainCtrl"
 import Endpoints from "../../Infra/Endpoints"
 
 //Components
@@ -10,7 +11,7 @@ import ImgLoader from "../ImageLoader"
 export default class {
 
     static getHtml() {
-        return `
+        return MainCtrl.HtmlCleanup(`
         <div style="width:296px" class="form-row-group-dark"> 
             <div class="form-divider"></div>
             <div align='center'>
@@ -37,7 +38,7 @@ export default class {
             </div>
             <br>
         </div>
-        `;
+        `);
     }
 
     static validate(_params) {        

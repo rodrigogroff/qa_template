@@ -15,6 +15,10 @@ export default class {
         return "";
     }
 
+    static HtmlCleanup(str) {
+        return str.split(/\>[\n\t\s]*\</g).join('><').split(/[\n\t]*/gm).join('')
+    }
+
     static getFromStorage(tag) {
         return localStorage.getItem(tag);
     }

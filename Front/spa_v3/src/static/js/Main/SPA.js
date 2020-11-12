@@ -11,7 +11,7 @@ import Dashboard from "../Pages/Dashboard";
 import Login from "../Pages/Login";
 import Posts from "../Pages/Posts";
 import Post from "../Pages/Post";
-//import DataTableClickPagination from "../Pages/DataTableClickPagination";
+import DataTableClickPagination from "../Pages/DataTableClickPagination";
 
 import "../global.script.js"
 
@@ -48,7 +48,7 @@ class AppRouter
         if (route_values.length >= 2)
             params.id = route_values[2]
 
-        return `
+        return MainCtrl.HtmlCleanup(`
             <div class="wrapper" align="center">
                 ${Menu.getHtml()}
                 <div class="wrapper-inline" >
@@ -68,7 +68,7 @@ class AppRouter
                     </main>
                 </div>
             </div>
-            `;
+            `);
     }
 }
 

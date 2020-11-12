@@ -17,8 +17,6 @@ export default class {
         if (style==undefined) style='';
         else    
             style = "style='" + style + "'"            
-        return `
-            <img id='${id}' ${style} /><i class="fa fa-spinner fa-spin" id='loading_img_${id}' style="display:block;"></i>
-            `;
+        return `<img id='${id}' ${style} /><i class="fa fa-spinner fa-spin" id='loading_img_${id}' style="display:block;"></i>`;
     }
 }
