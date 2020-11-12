@@ -1,0 +1,71 @@
+
+// --------------------------------------
+// Here only!
+// --------------------------------------
+// event handling               
+// macro and micro components              
+// backend access               
+// flow and routing decision    
+
+//Infrastructure
+import MainCtrl from "../Infra/MainCtrl"
+import FetchCtrl from "../Infra/FetchCtrl"
+import EndPoints from "../Infra/Endpoints"
+
+//Components
+import Form from "../Components/Forms/xxx"
+
+export default class extends MainCtrl {
+
+    getHtml() {
+        return `
+            <br>
+            ${Form.getHtml()}
+            `;
+    }
+
+    constructor(params) {
+        super(params)
+
+        // All page events here --------------------------------------------------------
+
+        $(document).ready(function () {
+
+        });
+
+        $(document).on('keydown', function (e) {
+            switch (e.keyCode) {
+                case 9: LoginForm.validate({ focus: false, msg: false, fields: null }); break;          //tab                
+                case 13: btnSubmit_Click(); break;                                                      //enter
+            }
+        });
+
+        $(document).bind('click', function (e) {
+            switch ($(e.target).attr('id')) {
+                case 'btnSubmit': btnSubmit_Click(); break;
+            }
+        });
+
+        function btnSubmit_Click() {
+            if (MainCtrl.IsLoading()) return;
+            var formData = Form.extractFormData();
+            if (!Form.validate({ focus: false, msg: true, fields: formData }))
+                return;
+            MainCtrl.loadingOn('#btnSubmit')
+            backend(formData)
+        }
+
+        // backend access here --------------------------------------------------------
+
+        function backend(formData) {
+            new FetchCtrl().
+                
+        }
+
+        // Flow and routing decision here --------------------------------------------------------
+
+        function serviceOk(payload) {
+            MainCtrl.loadingOff()            
+        }
+    }
+}

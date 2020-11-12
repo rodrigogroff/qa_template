@@ -10,11 +10,11 @@ export default class extends MainCtrl {
 
     getHtml() {
         return  `
-                'Posts Demo'
+                <br>        
+                <h1 style='color:white'> Posts Demo </h1>
                 <br>
-                <a href='./post/23' style='color:blue'>Check post #23 external</a><br>
-                <br>
-                <a _href='/post/76' style='cursor:pointer;color:blue'>Check post #76 spa</a>
+                <a href='/post/23' style='color:white'>Check post #23</a><br>
+                <br>                
                 `;
     }
 }

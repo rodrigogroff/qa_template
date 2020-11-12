@@ -10,10 +10,11 @@ export default class extends MainCtrl {
     }
 
     getHtml() {
-        return  `
-                'Post Demo'
+        return  `                
                 <br>
-                <p>Post #${this.postId} View</a>
+                <h1 style='color:white'> Post Demo </h1>
+                <br>
+                <p style='color:white'>Post #${this.postId} View</a>
                 `;
     }
 }

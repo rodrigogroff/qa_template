@@ -9,8 +9,8 @@ import Popup  from "../Components/Popup";
 //Pages
 import Dashboard from "../Pages/Dashboard";
 import Login from "../Pages/Login";
-//import Posts from "../Pages/Posts";
-//import Post from "../Pages/Post";
+import Posts from "../Pages/Posts";
+import Post from "../Pages/Post";
 //import DataTableClickPagination from "../Pages/DataTableClickPagination";
 
 import "../global.script.js"
