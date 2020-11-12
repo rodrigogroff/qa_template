@@ -1,6 +1,6 @@
 
 //Infrastructure
-import MainCtrl from "../../Infra/MainCtrl.js"
+import MainCtrl from "../../Infra/MainCtrl"
 
 export default class {
 

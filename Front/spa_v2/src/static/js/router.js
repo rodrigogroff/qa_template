@@ -1,5 +1,5 @@
 
-import SPA from "./Main/SPA.js"
+import SPA from "./Main/SPA"
 
 const navigateTo = url => {
     history.pushState(null, null, url);

@@ -1,5 +1,5 @@
 
-import TableUtil from "../Infra/TableUtil.js"
+import TableUtil from "../Infra/TableUtil"
 
 export default class {
 
@@ -13,19 +13,14 @@ export default class {
     }
 
     getHtml() {
-
-        if (this.state.table === null) return '';
-            
-        var injectTableHtml = new TableUtil (   this.state.table, 
-                                                this.state.textColor, 
-                                                this.state.backColor, 
-                                                this.state.type).
-                                                getHtml();
-
-        var injectTableId = this.state.table.id;
-
+        if (this.state.table === null) 
+            return '';
         return `
-            ${injectTableHtml}
+            ${new TableUtil (   this.state.table, 
+                this.state.textColor, 
+                this.state.backColor, 
+                this.state.type).
+                getHtml()}
             `;
     }
 }

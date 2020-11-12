@@ -1,4 +1,9 @@
 
+// ---------------------------------------------
+// This class is for table manipulation ONLY
+// Use this for displaying table results
+// ---------------------------------------------
+
 export default class {
 
     constructor(tableobj, color, bgColor, styleClass) 

@@ -15,4 +15,5 @@ https://codecanyon.net/item/slim-image-cropper-responsive-uploading-and-ratio-cr
 
 
 
-imagens serem lidas com 'loading'
+multi lingua
+imagens / seu barco

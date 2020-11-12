@@ -1,4 +1,10 @@
 
+// -----------------------------------------------
+// This is the main base class for the SPA pages
+// All base functions / utils HERE
+// avoid allocation and multiple instancing
+// -----------------------------------------------
+
 export default class {
     
     constructor(params) {        

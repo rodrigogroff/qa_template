@@ -2,7 +2,6 @@
 export default class {
 
     constructor(title, text, btnCloseLabel, btnSaveLabel, modalId) {
-
         this.title = title;
         this.subtitle = subtitle;
         this.text = text;

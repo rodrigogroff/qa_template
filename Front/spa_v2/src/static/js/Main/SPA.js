@@ -1,16 +1,17 @@
 
 //Infrastructure
-import MainCtrl from "../Infra/MainCtrl.js"
+import MainCtrl from "../Infra/MainCtrl"
 
-//Main Menu
-import Menu from "../Components/Menu.js";
+//Components
+import Menu from "../Components/Menu";
+import Popup  from "../Components/Popup";
 
 //Pages
-import Dashboard from "../Pages/Dashboard.js";
-import Login from "../Pages/Login.js";
-//import Posts from "../Pages/Posts.js";
-//import Post from "../Pages/Post.js";
-//import DataTableClickPagination from "../Pages/DataTableClickPagination.js";
+import Dashboard from "../Pages/Dashboard";
+import Login from "../Pages/Login";
+//import Posts from "../Pages/Posts";
+//import Post from "../Pages/Post";
+//import DataTableClickPagination from "../Pages/DataTableClickPagination";
 
 import "../global.script.js"
 
@@ -61,28 +62,7 @@ class AppRouter
                     </header>
                     <main>
                         <section class="container">
-                            <div class="sweet-loader">
-                                <div class="box">
-                                    <div class="circle1"></div>
-                                    <div class="circle2"></div>
-                                    <div class="circle3"></div>
-                                </div>
-                            </div>
-                            <div class="popup-overlay" id="popUpSystem"> <!-- if you dont want overlay add class .no-overlay -->
-                                <div class="popup-container" style='margin-top:50px;max-width:350px'>
-                                    <div class="popup-header">
-                                        <h3 class="popup-title" id='popUpSystemTitle'>Standart Popup</h3>
-                                        <span id='popupClose' class="popup-close" data-dismiss="true"><i class="fa fa-times"></i></span>
-                                    </div>
-                                    <div class="popup-content">          
-                                        <span style="font-size:64px;color:red;padding-top:32px;" class="fa fa-exclamation-circle"></span><br>
-                                        <br>
-                                        <span id='popUpSystemText' style="padding-top:16px;"></span>
-                                        <br>
-                                        <br>                                        
-                                    </div>                                    
-                                </div>
-                            </div>
+                            ${Popup.getHtml()}
                             ${this.getProperView(newState, params).getHtml()}
                         </section>
                     </main>

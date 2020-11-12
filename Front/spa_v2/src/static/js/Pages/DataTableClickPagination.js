@@ -1,18 +1,17 @@
 
 //Infrastructure
-import MainCtrl from "../Infra/MainCtrl.js"
+import MainCtrl from "../Infra/MainCtrl"
 
 //Components
-import DataTableClick from "../Components/DataTableClick.js";
-import DataTablePagination from "../Components/DataTablePagination.js";
+import DataTableClick from "../Components/DataTableClick";
+import DataTablePagination from "../Components/DataTablePagination";
 
 export default class extends MainCtrl {
 
     constructor(params) {
         super(params)
-        
-        $(document).ready(function () 
-        {
+
+        $(document).ready(function () {
             load();
 
             $(document).bind('click', function (e) {
@@ -21,35 +20,30 @@ export default class extends MainCtrl {
 
                 if (e != undefined)
                     if (e.target != undefined)
-                        if (e.target.attributes != undefined)
-                        {
-                            if (e.target.attributes._page != undefined)
-                            {
+                        if (e.target.attributes != undefined) {
+                            if (e.target.attributes._page != undefined) {
                                 if (e.target.attributes._page.value != undefined)
-                                    setPage( parseInt(totItens), 10, parseInt(e.target.attributes._page.value))
+                                    setPage(parseInt(totItens), 10, parseInt(e.target.attributes._page.value))
                             }
-                            else if (e.target.attributes._par_table != undefined)
-                            {
+                            else if (e.target.attributes._par_table != undefined) {
                                 if (e.target.attributes._par_table.value == 'menuTable')
-                                    alert (e.target.attributes.id.value);
+                                    alert(e.target.attributes.id.value);
                             }
                         }
             })
         });
 
-        function load()
-        {
+        function load() {
             // ----------------------
             // process here
             // --------------------
 
             sessionStorage.setItem("totItens_reportName", 263);
-            
-            setPage(263,10,5);
+
+            setPage(263, 10, 5);
         }
 
-        function setPage(totItens, itensPerPage, currentPage)
-        {            
+        function setPage(totItens, itensPerPage, currentPage) {
             $("#loading").show();
 
             setTimeout(() => {
@@ -66,8 +60,7 @@ export default class extends MainCtrl {
                 // mock!
                 var start = (currentPage - 1) * itensPerPage + 1;
                 var end = start + itensPerPage;
-                while (true)
-                {
+                while (true) {
                     var row = [];
                     row.push('Alfred ' + start)
                     row.push('555-5451')
@@ -77,27 +70,27 @@ export default class extends MainCtrl {
                     if (start >= end) break;
                 }
 
-                var injectTable = new DataTableClick(table).getHtml(); 
-                var injectPagination = new DataTablePagination(totItens,itensPerPage,currentPage).getHtml(); 
-                
+                var injectTable = new DataTableClick(table).getHtml();
+                var injectPagination = new DataTablePagination(totItens, itensPerPage, currentPage).getHtml();
+
                 var result = `
                             ${injectPagination}
                             ${injectTable}
                             <br>                            
                             `;
 
-                $("#data").html( result );
-                
+                $("#data").html(result);
+
             }, 500);
         }
     }
 
     getHtml() {
-        return  `
-                    DataTable PaginationDemo
-                    <div id='data'></div>
-                    <br>
-                    <br>
-            `;
+        return `
+                DataTable PaginationDemo
+                <div id='data'></div>
+                <br>
+                <br>
+                `;
     }
 }

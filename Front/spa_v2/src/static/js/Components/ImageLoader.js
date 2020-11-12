@@ -2,10 +2,13 @@
 export default class {
 
     static loadAsync(id, url) {
+        $('#' + id).css("display", "none");
         setTimeout(() => {
             $('#' + id).attr('src', url).on('load', function () {
-                if (!this.complete || typeof this.naturalWidth == "undefined" || this.naturalWidth == 0) { } else
+                if (!this.complete || typeof this.naturalWidth == "undefined" || this.naturalWidth == 0) { } else {
                     $('#loading_img_' + id).css("display", "none");
+                    $('#' + id).css("display", "block");
+                }                    
             });
         }, 100);
     }

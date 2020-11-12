@@ -1,4 +1,8 @@
 
+// --------------------------------------------------
+//  back and front end contracts / endpoints HERE
+// --------------------------------------------------
+
 export default class {
 
     constructor(params) {        

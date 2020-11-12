@@ -1,4 +1,8 @@
 
+// -------------------------------------------
+// back end access functions HERE
+// -------------------------------------------
+
 const ApiLocation = {
     api_host: 'http://localhost',
     api_port: '18524',
