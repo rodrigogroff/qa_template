@@ -1,4 +1,5 @@
 
+//Infrastructure
 import MainCtrl from "../Infra/MainCtrl"
 
 export default class {
@@ -24,6 +25,7 @@ export default class {
 								<ul>
 									<li><a href="/login" style='cursor:pointer'>Login</a></li>
 									<li><a href="/posts" style='cursor:pointer'>Posts</a></li>
+									<li><a href="/datatableclickpagination" style='cursor:pointer'>Table</a></li>
 									<li><a href="#" >Register</a></li>
 									<li><a href="#" >Forgot Password</a></li>
 								</ul>

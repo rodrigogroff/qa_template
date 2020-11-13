@@ -9,12 +9,12 @@ export default class extends MainCtrl {
     }
 
     getHtml() {
-        return  `
+        return  MainCtrl.HtmlCleanup(`
                 <br>        
-                <h1 style='color:white'> Posts Demo </h1>
+                <h1> Posts Demo </h1>
                 <br>
-                <a href='/post/23' style='color:white'>Check post #23</a><br>
+                <a href='/post/23'>Check post #23</a><br>
                 <br>                
-                `;
+                `);
     }
 }

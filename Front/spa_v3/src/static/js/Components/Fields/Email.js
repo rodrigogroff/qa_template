@@ -8,7 +8,7 @@ export default class {
         return MainCtrl.HtmlCleanup(`
             <div class="form-row no-padding">
                 <i class="fa fa-envelope" id='failBtnMail'></i>
-                <input id="formMail" type="text" class="form-element" placeholder="Username or Email">
+                <input id="formMail" type="text" class="form-element" placeholder="${MainCtrl.MultiLanguage(4)}">
             </div>
             `);
     }
@@ -20,7 +20,9 @@ export default class {
             else {
                 MainCtrl.errorField('#failBtnMail')
                 if (_params.msg == true)
-                    MainCtrl.displaySystemPopup('Error', 'Invalid Email')
+                    MainCtrl.displaySystemPopup(
+                        MainCtrl.MultiLanguage(5), 
+                        MainCtrl.MultiLanguage(6))
             }
             return false;
         }

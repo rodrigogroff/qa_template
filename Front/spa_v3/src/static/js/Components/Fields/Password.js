@@ -11,10 +11,10 @@ export default class {
                 <table width='100%'>
                     <tr>
                         <td valign='top' width='90%'>
-                            <input id="formPass" type="password" class="form-element" placeholder="Password">
+                            <input id="formPass" type="password" class="form-element" placeholder="${MainCtrl.MultiLanguage(7)}">
                         </td>
                         <td valign='top'>
-                            <i class="fa fa-eye" id='seePass' title='See password'></i>
+                            <i class="fa fa-eye" id='seePass' title='${MainCtrl.MultiLanguage(8)}'></i>
                         </td>
                     </tr>
                 </table>
@@ -44,7 +44,7 @@ export default class {
             else {
                 MainCtrl.errorField('#failBtnPass')
                 if (_params.msg == true)
-                    MainCtrl.displaySystemPopup('Error', 'Invalid Password')
+                    MainCtrl.displaySystemPopup(MainCtrl.MultiLanguage(5), MainCtrl.MultiLanguage(9))
             }
             return false;
         }

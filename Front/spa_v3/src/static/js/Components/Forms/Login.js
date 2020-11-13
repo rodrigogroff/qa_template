@@ -7,15 +7,18 @@ import Endpoints from "../../Infra/Endpoints"
 import EmailField from "../Fields/Email"
 import PasswordField from "../Fields/Password"
 import ImgLoader from "../ImageLoader"
+import Label from "../Label"
+import Popup  from "../Popup";
 
 export default class {
 
     static getHtml() {
         return MainCtrl.HtmlCleanup(`
         <div style="width:296px" class="form-row-group-dark"> 
-            <div class="form-divider"></div>
+            <br>
+            <br>    
             <div align='center'>
-                ${ImgLoader.getHtml('logoId', 'max-height:20px')}
+                ${ImgLoader.getHtml('logoId', 'max-height:90px', 'img shadow')}                
             </div>
             <br>
             <div class="form-row-group with-icons" align="left">                    
@@ -24,35 +27,38 @@ export default class {
             </div>
             <br>                
             <div class="form-row txt-center">
-                <a href="/forgot">Forgot password?</a>
+                <a href="/forgot">
+                    ${Label.getHtml('span','fp', MainCtrl.MultiLanguage(0))}
+                </a>
             </div>
             <br>
             <div class="form-row">
                 <a id="btnSubmit" class="button circle block green">
-                    Login <i class="fa fa-spinner fa-spin" id='loading' style="display:none;"></i>
+                    ${MainCtrl.MultiLanguage(1)} <i class="fa fa-spinner fa-spin" id='loading' style="display:none;"></i>
                 </a>
             </div>
             <br>
             <div class="form-row txt-center">
-                Not registered? <a href="/signup">Sign Up</a>
+                ${MainCtrl.MultiLanguage(2)} <a href="/signup">${MainCtrl.MultiLanguage(3)}</a>
             </div>
             <br>
         </div>
+        ${Popup.getHtml()}
         `);
     }
 
-    static validate(_params) {        
+    static validate(_params) {
         if (_params.fields == null)
             _params.fields = this.extractFormData();
 
         // component checking
-        if (!(EmailField.validate(_params) &&           
-                PasswordField.validate(_params))) {
+        if (!(EmailField.validate(_params) &&
+            PasswordField.validate(_params))) {
             return false;
-        }   
+        }
 
         document.activeElement.blur();  // ok -> loose focus
-        return true;    
+        return true;
     }
 
     static extractFormData() {

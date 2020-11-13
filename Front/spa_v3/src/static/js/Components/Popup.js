@@ -1,4 +1,5 @@
 
+//Infrastructure
 import MainCtrl from "../Infra/MainCtrl"
 
 export default class {
@@ -9,10 +10,10 @@ export default class {
 
     static getHtml() {
         return MainCtrl.HtmlCleanup(`
-            <div class="popup-overlay" id="popUpSystem"> <!-- if you dont want overlay add class .no-overlay -->
+            <div class="popup-overlay" id="popUpSystem">
                 <div class="popup-container" style='margin-top:50px;max-width:350px'>
                     <div class="popup-header">
-                        <h3 class="popup-title" id='popUpSystemTitle'>Standart Popup</h3>
+                        <h3 class="popup-title" id='popUpSystemTitle'></h3>
                         <span id='popupClose' class="popup-close" data-dismiss="true"><i class="fa fa-times"></i></span>
                     </div>
                     <div class="popup-content">          

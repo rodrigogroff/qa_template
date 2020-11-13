@@ -4,7 +4,6 @@ import MainCtrl from "../Infra/MainCtrl"
 
 //Components
 import Menu from "../Components/Menu";
-import Popup  from "../Components/Popup";
 
 //Pages
 import Dashboard from "../Pages/Dashboard";
@@ -53,7 +52,7 @@ class AppRouter
                 ${Menu.getHtml()}
                 <div class="wrapper-inline" >
                     <header>
-                        <h1 class="page-title">TEMPLATE</h1>
+                        <h1 class="page-title" style='color:white'>TEMPLATE</h1>
                         <div class="navi-menu-button">
                             <em></em>
                             <em></em>
@@ -61,8 +60,7 @@ class AppRouter
                         </div>
                     </header>
                     <main>
-                        <section class="container">
-                            ${Popup.getHtml()}
+                        <section class="container">                            
                             ${this.getProperView(newState, params).getHtml()}
                         </section>
                     </main>

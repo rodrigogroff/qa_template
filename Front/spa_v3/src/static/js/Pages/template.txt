@@ -18,10 +18,10 @@ import Form from "../Components/Forms/xxx"
 export default class extends MainCtrl {
 
     getHtml() {
-        return `
+        return MainCtrl.HtmlCleanup(`
             <br>
             ${Form.getHtml()}
-            `;
+            `);
     }
 
     constructor(params) {

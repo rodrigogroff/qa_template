@@ -8,16 +8,25 @@ import DataTablePagination from "../Components/DataTablePagination";
 
 export default class extends MainCtrl {
 
+    getHtml() {
+        return `
+                DataTable PaginationDemo
+                <div id='data'></div>
+                <br>
+                <br>
+                `;
+    }
+
     constructor(params) {
         super(params)
 
         $(document).ready(function () {
-            load();
+
+            sessionStorage.setItem("totItens_reportName", 263);
+            setPage(263, 10, 5);
 
             $(document).bind('click', function (e) {
-
                 var totItens = sessionStorage.getItem("totItens_reportName")
-
                 if (e != undefined)
                     if (e.target != undefined)
                         if (e.target.attributes != undefined) {
@@ -33,23 +42,12 @@ export default class extends MainCtrl {
             })
         });
 
-        function load() {
-            // ----------------------
-            // process here
-            // --------------------
-
-            sessionStorage.setItem("totItens_reportName", 263);
-
-            setPage(263, 10, 5);
-        }
-
         function setPage(totItens, itensPerPage, currentPage) {
-            $("#loading").show();
-
+            MainCtrl.loadingOn();
+            
             setTimeout(() => {
 
-                $("#loading").hide();
-
+                MainCtrl.loadingOff();
                 var table = {
                     'id': 'menuTable',
                     'header': ['Name', 'Cell Phone'],
@@ -70,27 +68,19 @@ export default class extends MainCtrl {
                     if (start >= end) break;
                 }
 
-                var injectTable = new DataTableClick(table).getHtml();
-                var injectPagination = new DataTablePagination(totItens, itensPerPage, currentPage).getHtml();
-
-                var result = `
-                            ${injectPagination}
-                            ${injectTable}
-                            <br>                            
-                            `;
-
-                $("#data").html(result);
-
+                $("#data").html(
+                    MainCtrl.HtmlCleanup(`
+                        <div align='center' width='600px'>
+                            ${new DataTablePagination(totItens, itensPerPage, currentPage).getHtml()}
+                            <div style="width:296px" class="form-row-group-dark">
+                                <br>
+                                ${new DataTableClick(table).getHtml()}
+                                <br>
+                            </div>
+                        </div>
+                        <br>
+                        `));
             }, 500);
         }
-    }
-
-    getHtml() {
-        return `
-                DataTable PaginationDemo
-                <div id='data'></div>
-                <br>
-                <br>
-                `;
     }
 }

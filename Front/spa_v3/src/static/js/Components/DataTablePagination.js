@@ -1,4 +1,5 @@
 
+//Infrastructure
 import MainCtrl from "../Infra/MainCtrl"
 
 export default class {
@@ -24,8 +25,8 @@ export default class {
         var next = this.currentPage + 1;
         if (next > endPage) next = endPage;
 
-        var buttonHtml = "<button class='btn btn-shadow btn-xs btn-light mr-3 mb-5'>";
-        var buttonSelHtml = "<button class='btn btn-shadow btn-xs btn-success mr-3 mb-5'>";        
+        var buttonHtml = "<button class='buttonSmall'>";
+        var buttonSelHtml = "<button class='buttonSmall green'>";        
         var term = '</button>'
         var injectButtons = buttonHtml.replace("class=", "_page='" + 1 + "' class=") + 'First' + term +
                             buttonHtml.replace("class=", "_page='" + previous + "' class=") + 'Previous' + term;
@@ -46,8 +47,8 @@ export default class {
                          buttonHtml.replace("class=", "_page='" + endPage + "' class=") + 'Last' + term;
 
         return MainCtrl.HtmlCleanup(`
-            <div align='left'>
-                <table>
+            <div align='center'>
+                <table width='900px'>
                     <tr height='52px'>
                         <td valign='middle' width='250px'><span style='font-size:small'>Showing results [${startRes} to ${endRes}] of ${injectTotItens}</span></td>
                         <td valign='middle'>${injectButtons}</td>

@@ -10,11 +10,11 @@ export default class extends MainCtrl {
     }
 
     getHtml() {
-        return  `                
+        return MainCtrl.HtmlCleanup(`                
                 <br>
-                <h1 style='color:white'> Post Demo </h1>
+                <h1> Post Demo </h1>
                 <br>
-                <p style='color:white'>Post #${this.postId} View</a>
-                `;
+                <p>Post #${this.postId} View</a>
+                `);
     }
 }

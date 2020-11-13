@@ -146,7 +146,7 @@ nav.menu ul.main-menu>li li a{
 	width: 100%;
 	bottom: 0;
 	top: 0;
-	background-color: #7795d0;
+	background-color: #fafafa;
 	overflow: auto;
 }
 .wrapper.with-bg-image .wrapper-inline{
@@ -158,13 +158,11 @@ header{
 	top: 0;
 	left: 0;
 	right: 0;
-	background-color: #FFF;
+	background-color: #069;
 	height: 50px;
 	border-bottom:solid 1px #EEE;
 	padding: 10px;
-
 }
-
 header.no-background{
 	background-color: transparent;
 	border-bottom: none;
@@ -180,7 +178,6 @@ header.no-background a{
 header.no-background .navi-menu-button em{
 	background: #FFF;
 }
-
 header.set-bg{
 	background-color: #FFF;
 	border-bottom:solid 1px #EEE;
@@ -189,13 +186,18 @@ header.set-bg{
 	-moz-box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.1);
 	box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.1);
 }
+img.shadow{
+	-webkit-box-shadow: 0px 1px 12px 0px rgba(0,0,0,0.5);
+	-moz-box-shadow: 0px 1px 12px 0px rgba(0,0,0,0.5);
+	box-shadow: 0px 1px 12px 0px rgba(0,0,0,0.5);
+}
 header.set-bg a{
 	color: #667F97;
 }
 header.set-bg .navi-menu-button em{
 	background: #667F97;
+	background-color: white;
 }
-
 header .go-back-link{
 	width: 30px;
 	height: 30px;
@@ -237,7 +239,7 @@ header.with-search-icon .page-title{
 .navi-menu-button em{
 	width: 24px;
 	height: 2px;
-	background-color: #667F97;
+	background-color: whitesmoke;
 	display: block;
 	position: absolute;
 	border-radius: 30px;
@@ -315,7 +317,7 @@ section.container{
 }
 .form-row-group-dark{
 	border-radius: 3px;
-	background-color: #e9e9ff;
+	background-color: #f0f0f0;
 	border:solid 1px #a9a9a9;
 	-webkit-box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.2);
 	-moz-box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.2);
@@ -391,6 +393,22 @@ select.form-element{
 	box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.2);
 	cursor: pointer;
 }
+
+.buttonSmall{
+	background-color: #FFF;
+	margin-right:4px;
+	border:none;
+	border-radius: 3px;
+	text-align: center;
+	font-weight: 600;
+	outline: none;
+	-webkit-box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.2);
+	-moz-box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.2);
+	box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.2);
+	cursor: pointer;
+}
+
+
 .button.circle{
 	border-radius: 40px;
 }

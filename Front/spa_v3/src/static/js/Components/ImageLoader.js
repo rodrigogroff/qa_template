@@ -13,10 +13,9 @@ export default class {
         }, 100);
     }
 
-    static getHtml(id, style) {
-        if (style==undefined) style='';
-        else    
-            style = "style='" + style + "'"            
-        return `<img id='${id}' ${style} /><i class="fa fa-spinner fa-spin" id='loading_img_${id}' style="display:block;"></i>`;
+    static getHtml(id, style, _class) {
+        if (style==undefined) style=''; else style = "style='" + style + "'"      
+        if (_class==undefined) _class=''; else _class = "class='" + _class + "'"
+        return `<img id='${id}' ${style} ${_class} /><i class="fa fa-spinner fa-spin" id='loading_img_${id}' style="display:block;"></i>`;
     }
 }

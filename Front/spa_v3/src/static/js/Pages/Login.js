@@ -12,34 +12,36 @@ import ImageLoader from "../Components/ImageLoader"
 export default class extends MainCtrl {
 
     getHtml() {
-        return `
+        return MainCtrl.HtmlCleanup(`
             <br>
             ${Form.getHtml()}
-            `;
+            `);
     }
 
     constructor(params) {
         super(params)
 
+        // -----------------------------------------------------------------------------
         // All page events here --------------------------------------------------------
+        // -----------------------------------------------------------------------------
 
         $(document).ready(function () {
             $('#formMail').focus() // user does not need to click in first field
-            ImageLoader.loadAsync('logoId', 'https://lirp-cdn.multiscreensite.com/97c59373/dms3rep/multi/opt/LOGO.CONVEYbranco+total-1920w.png');
+            ImageLoader.loadAsync('logoId', '/static/img/avatar.png');
         });
 
         $(document).on('keydown', function (e) {
             switch (e.keyCode) {
                 case 9: Form.validate({ focus: false, msg: false, fields: null }); break;          //tab                
-                case 13: btnSubmit_Click(); break;                                                      //enter
+                case 13: btnSubmit_Click(); break;                                                 //enter
             }
         });
 
         $(document).bind('click', function (e) {
             switch ($(e.target).attr('id')) {
-                case 'btnSubmit': btnSubmit_Click(); break;                                                     // login                
-                case 'seePass': PasswordField.btnSeePassword(); break;                                          // password eye                
-                case 'popupClose': Form.validate({ focus: false, msg: false, fields: null }); break;       // close -> error (x)
+                case 'btnSubmit': btnSubmit_Click(); break;                                             // login                
+                case 'seePass': PasswordField.btnSeePassword(); break;                                  // password eye                
+                case 'popupClose': Form.validate({ focus: false, msg: false, fields: null }); break;    // close -> error (x)
             }
         });
 
@@ -52,7 +54,9 @@ export default class extends MainCtrl {
             backend(formData)
         }
 
+        // ----------------------------------------------------------------------------
         // backend access here --------------------------------------------------------
+        // ----------------------------------------------------------------------------
 
         function backend(formData) {
             new FetchCtrl().
@@ -63,14 +67,16 @@ export default class extends MainCtrl {
                     if (resp.ok == true)
                         serviceOk(resp.payload)     // output service data 
                     else
-                        MainCtrl.displaySystemPopup('Error', resp.msg);
+                        MainCtrl.displaySystemPopup(MainCtrl.MultiLanguage(5), resp.msg);
                 })
                 .catch(resp => {
-                    MainCtrl.displaySystemPopup('Error', resp.msg)
+                    MainCtrl.displaySystemPopup(MainCtrl.MultiLanguage(5), resp.msg)
                 });
         }
 
-        // Flow and routing decision here --------------------------------------------------------
+        // -----------------------------------------------------------------------------
+        // Flow and routing decision here ----------------------------------------------
+        // -----------------------------------------------------------------------------
 
         function serviceOk(payload) {
             MainCtrl.loadingOff()

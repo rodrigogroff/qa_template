@@ -27,7 +27,7 @@ export default class {
             this.lineData = lineData;
         }
         else {
-            this.lineData = "<br><button class='btn btn-dark btn-lg'>No results were found</button><br>";
+            this.lineData = "<br><button class='button circle'>No results were found</button><br>";
         }  
     }
 

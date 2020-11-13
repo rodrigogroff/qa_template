@@ -5,6 +5,8 @@
 // avoid allocation and multiple instancing
 // -----------------------------------------------
 
+import AppLanguage from '../Components/Language/AppLanguage'
+
 export default class {
     
     constructor(params) {        
@@ -17,6 +19,18 @@ export default class {
 
     static HtmlCleanup(str) {
         return str.split(/\>[\n\t\s]*\</g).join('><').split(/[\n\t]*/gm).join('')
+    }
+
+    static MultiLanguage(index) {
+        var curLanguage = this.getFromStorage('appLanguage');
+        if (curLanguage == undefined) {
+            curLanguage = 2;
+            this.setToStorage ('appLanguage', curLanguage)
+        }
+
+        var str = new AppLanguage().langs [curLanguage].labels [index]
+        console.log(str);
+        return str;
     }
 
     static getFromStorage(tag) {
