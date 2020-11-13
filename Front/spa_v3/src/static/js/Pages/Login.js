@@ -27,7 +27,8 @@ export default class extends MainCtrl {
 
         $(document).ready(function () {
             $('#formMail').focus() // user does not need to click in first field
-            ImageLoader.loadAsync('logoId', '/static/img/avatar.png');
+            MainCtrl.SetLanguageHTMLSelect()            
+            ImageLoader.loadAsync('logoId', '/static/img/avatar.png');            
         });
 
         $(document).on('keydown', function (e) {
@@ -35,6 +36,12 @@ export default class extends MainCtrl {
                 case 9: Form.validate({ focus: false, msg: false, fields: null }); break;          //tab                
                 case 13: btnSubmit_Click(); break;                                                 //enter
             }
+        });
+
+        $(document).on('change','#languageSel',function(){            
+            if (MainCtrl.MultiLanguageChange($('#languageSel').val())) {
+                setTimeout(() => { location.href = '/login'; }, 100);
+            }            
         });
 
         $(document).bind('click', function (e) {

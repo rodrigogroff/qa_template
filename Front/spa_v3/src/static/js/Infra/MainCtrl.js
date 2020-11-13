@@ -21,16 +21,27 @@ export default class {
         return str.split(/\>[\n\t\s]*\</g).join('><').split(/[\n\t]*/gm).join('')
     }
 
+    static MultiLanguageChange(index) {
+        var curLanguage = this.getFromStorage('appLanguage');
+        if (curLanguage != index - 1) {
+            this.setToStorage ('appLanguage', index - 1)
+            return true;
+        }
+        return false;
+    }
+
     static MultiLanguage(index) {
         var curLanguage = this.getFromStorage('appLanguage');
         if (curLanguage == undefined) {
             curLanguage = 2;
             this.setToStorage ('appLanguage', curLanguage)
         }
+        curLanguage = parseInt(curLanguage)        
+        return new AppLanguage().langs [curLanguage].labels [index];
+    }
 
-        var str = new AppLanguage().langs [curLanguage].labels [index]
-        console.log(str);
-        return str;
+    static SetLanguageHTMLSelect() {
+        $('#languageSel').val(parseInt(this.getFromStorage("appLanguage")) + 1)
     }
 
     static getFromStorage(tag) {
@@ -77,7 +88,7 @@ export default class {
     }
 
     static updateHTML(idElement, html) {
-        document.querySelector(idElement).innerHTML = html;
+        $('#' + idElement).html(html)        
     }
 
     static disableButton(btn){

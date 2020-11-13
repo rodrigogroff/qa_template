@@ -9,6 +9,7 @@ import PasswordField from "../Fields/Password"
 import ImgLoader from "../ImageLoader"
 import Label from "../Label"
 import Popup  from "../Popup";
+import SelectLanguage from "../Language/Select"
 
 export default class {
 
@@ -16,10 +17,13 @@ export default class {
         return MainCtrl.HtmlCleanup(`
         <div style="width:296px" class="form-row-group-dark"> 
             <br>
+            <table><tr><td width='120px'>${MainCtrl.MultiLanguage(10)}</td><td width='50%'>${SelectLanguage.getHtml()}</td></tr></table>
+            <br>
             <br>    
             <div align='center'>
                 ${ImgLoader.getHtml('logoId', 'max-height:90px', 'img shadow')}                
             </div>
+            <br>
             <br>
             <div class="form-row-group with-icons" align="left">                    
                 ${EmailField.getHtml()}
