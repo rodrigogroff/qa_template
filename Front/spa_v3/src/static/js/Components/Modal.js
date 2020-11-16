@@ -1,8 +1,8 @@
 
 //Infrastructure
-import MainCtrl from "../Infra/MainCtrl"
+import BaseCtrl from "../Infra/BaseCtrl"
 
-export default class {
+export default class extends BaseCtrl {
 
     constructor(title, text, btnCloseLabel, btnSaveLabel, modalId) {
         this.title = title;
@@ -13,7 +13,7 @@ export default class {
         this.modalId = modalId;
     }
 
-    getHtml() {
+    static getHtml() {
 
         var injectLabelTitle = this.title;
         var injectLabelText = this.text;
@@ -24,7 +24,7 @@ export default class {
         var idLabelClose = this.modalId + "_close";
         var idLabelSave = this.modalId + "_save";
 
-        return MainCtrl.HtmlCleanup(`
+        return this.HtmlCleanup(`
             <div class="popup-overlay" id="${idModal}">
                 <div class="popup-container">
                     <div class="popup-header">

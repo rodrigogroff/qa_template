@@ -1,9 +1,9 @@
 
 //Infrastructure
-import MainCtrl from "../Infra/MainCtrl"
+import BaseCtrl from "../Infra/BaseCtrl"
 import TableUtil from "../Infra/TableUtil"
 
-export default class {
+export default class extends BaseCtrl {
 
     constructor(table, textColor, backColor, type) {
         this.state = {
@@ -14,10 +14,10 @@ export default class {
         };
     }
 
-    getHtml() {
+    static getHtml() {
         if (this.state.table === null) 
             return '';
-        return MainCtrl.HtmlCleanup(`
+        return this.HtmlCleanup(`
             ${new TableUtil (   this.state.table, 
                 this.state.textColor, 
                 this.state.backColor, 

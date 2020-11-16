@@ -1,8 +1,8 @@
 
 //Infrastructure
-import MainCtrl from "../Infra/MainCtrl"
+import BaseCtrl from "../Infra/BaseCtrl"
 
-export default class {
+export default class extends BaseCtrl {
 
     constructor(totItens, itensPerPage, currentPage) {
         this.totItens = totItens;
@@ -10,7 +10,7 @@ export default class {
         this.currentPage = currentPage;        
     }
 
-    getHtml() {
+    static getHtml() {
 
         var injectTotItens = this.totItens;
         var initPage = this.currentPage - 5;
@@ -46,7 +46,7 @@ export default class {
         injectButtons += buttonHtml.replace("class=", "_page='" + next + "' class=") + 'Next' + term +
                          buttonHtml.replace("class=", "_page='" + endPage + "' class=") + 'Last' + term;
 
-        return MainCtrl.HtmlCleanup(`
+        return this.HtmlCleanup(`
             <div align='center'>
                 <table width='900px'>
                     <tr height='52px'>

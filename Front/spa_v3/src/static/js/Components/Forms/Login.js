@@ -11,13 +11,13 @@ import Label from "../Label"
 import Popup  from "../Popup";
 import SelectLanguage from "../Language/Select"
 
-export default class {
+export default class extends MainCtrl {
 
     static getHtml() {
-        return MainCtrl.HtmlCleanup(`
+        return this.HtmlCleanup(`
         <div style="width:296px" class="form-row-group-dark"> 
             <br>
-            <table><tr><td width='120px'>${MainCtrl.MultiLanguage(10)}</td><td width='50%'>${SelectLanguage.getHtml()}</td></tr></table>
+            <table><tr><td width='120px'>${this.MultiLanguage(10)}</td><td width='50%'>${SelectLanguage.getHtml()}</td></tr></table>
             <br>
             <br>    
             <div align='center'>
@@ -32,18 +32,18 @@ export default class {
             <br>                
             <div class="form-row txt-center">
                 <a href="/forgot">
-                    ${Label.getHtml('span','fp', MainCtrl.MultiLanguage(0))}
+                    ${Label.getHtml('span','fp', this.MultiLanguage(0))}
                 </a>
             </div>
             <br>
             <div class="form-row">
                 <a id="btnSubmit" class="button circle block green">
-                    ${MainCtrl.MultiLanguage(1)} <i class="fa fa-spinner fa-spin" id='loading' style="display:none;"></i>
+                    ${this.MultiLanguage(1)} <i class="fa fa-spinner fa-spin" id='loading' style="display:none;"></i>
                 </a>
             </div>
             <br>
             <div class="form-row txt-center">
-                ${MainCtrl.MultiLanguage(2)} <a href="/signup">${MainCtrl.MultiLanguage(3)}</a>
+                ${this.MultiLanguage(2)} <a href="/signup">${this.MultiLanguage(3)}</a>
             </div>
             <br>
         </div>
@@ -55,12 +55,13 @@ export default class {
         if (_params.fields == null)
             _params.fields = this.extractFormData();
 
-        // component checking
-        if (!(EmailField.validate(_params) &&
-            PasswordField.validate(_params))) {
-            return false;
-        }
+        var fieldEmail = EmailField.validate(_params)
+        var fieldPass = PasswordField.validate(_params)
 
+        // component checking
+        if (!(fieldEmail && fieldPass))
+            return false;
+        
         document.activeElement.blur();  // ok -> loose focus
         return true;
     }

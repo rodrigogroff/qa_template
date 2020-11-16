@@ -1,15 +1,15 @@
 
 //Infrastructure
-import MainCtrl from "../Infra/MainCtrl"
+import BaseCtrl from "../Infra/BaseCtrl"
 
-export default class {
+export default class extends BaseCtrl {
 
 	constructor(params) {
 		this.params = params;
 	}
 
 	static getHtml() {
-		return MainCtrl.HtmlCleanup(`
+		return this.HtmlCleanup(`
 			<div class="nav-menu" align='left'>
 				<nav class="menu">
 					<div class="nav-header">
