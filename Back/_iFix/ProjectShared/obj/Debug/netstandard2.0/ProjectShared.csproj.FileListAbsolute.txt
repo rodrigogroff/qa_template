@@ -1,0 +1,9 @@
+C:\Users\rodri\source\repos\qa_template\Back\_iFix\ProjectShared\bin\Debug\netstandard2.0\ProjectShared.deps.json
+C:\Users\rodri\source\repos\qa_template\Back\_iFix\ProjectShared\bin\Debug\netstandard2.0\ProjectShared.dll
+C:\Users\rodri\source\repos\qa_template\Back\_iFix\ProjectShared\bin\Debug\netstandard2.0\ProjectShared.pdb
+C:\Users\rodri\source\repos\qa_template\Back\_iFix\ProjectShared\obj\Debug\netstandard2.0\ProjectShared.csprojAssemblyReference.cache
+C:\Users\rodri\source\repos\qa_template\Back\_iFix\ProjectShared\obj\Debug\netstandard2.0\ProjectShared.AssemblyInfoInputs.cache
+C:\Users\rodri\source\repos\qa_template\Back\_iFix\ProjectShared\obj\Debug\netstandard2.0\ProjectShared.AssemblyInfo.cs
+C:\Users\rodri\source\repos\qa_template\Back\_iFix\ProjectShared\obj\Debug\netstandard2.0\ProjectShared.csproj.CoreCompileInputs.cache
+C:\Users\rodri\source\repos\qa_template\Back\_iFix\ProjectShared\obj\Debug\netstandard2.0\ProjectShared.dll
+C:\Users\rodri\source\repos\qa_template\Back\_iFix\ProjectShared\obj\Debug\netstandard2.0\ProjectShared.pdb

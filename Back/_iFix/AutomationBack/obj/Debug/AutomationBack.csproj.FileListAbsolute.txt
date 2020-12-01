@@ -1,0 +1,12 @@
+C:\Users\rodri\source\repos\qa_template\Back\_iFix\AutomationBack\bin\Debug\AutomationBack.exe.config
+C:\Users\rodri\source\repos\qa_template\Back\_iFix\AutomationBack\bin\Debug\AutomationBack.exe
+C:\Users\rodri\source\repos\qa_template\Back\_iFix\AutomationBack\bin\Debug\AutomationBack.pdb
+C:\Users\rodri\source\repos\qa_template\Back\_iFix\AutomationBack\bin\Debug\Newtonsoft.Json.dll
+C:\Users\rodri\source\repos\qa_template\Back\_iFix\AutomationBack\bin\Debug\ProjectShared.dll
+C:\Users\rodri\source\repos\qa_template\Back\_iFix\AutomationBack\bin\Debug\ProjectShared.pdb
+C:\Users\rodri\source\repos\qa_template\Back\_iFix\AutomationBack\bin\Debug\Newtonsoft.Json.xml
+C:\Users\rodri\source\repos\qa_template\Back\_iFix\AutomationBack\obj\Debug\AutomationBack.csprojAssemblyReference.cache
+C:\Users\rodri\source\repos\qa_template\Back\_iFix\AutomationBack\obj\Debug\AutomationBack.csproj.CoreCompileInputs.cache
+C:\Users\rodri\source\repos\qa_template\Back\_iFix\AutomationBack\obj\Debug\AutomationBack.csproj.CopyComplete
+C:\Users\rodri\source\repos\qa_template\Back\_iFix\AutomationBack\obj\Debug\AutomationBack.exe
+C:\Users\rodri\source\repos\qa_template\Back\_iFix\AutomationBack\obj\Debug\AutomationBack.pdb
