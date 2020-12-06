@@ -3,8 +3,12 @@
 ################################################################################
 
 /Back/Integration/bin
-/.vs/Solution
 /Back/Integration/obj
+/.vs/Solution
 /Back/Master/bin
 /Back/Master/obj
 /Back/UnitTesting/bin
+/Back/UnitTesting/obj
+/packages
+/testresults
+/Front/nano_v1/node_modules
