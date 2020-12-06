@@ -17,6 +17,7 @@ namespace Api.Master.Controllers
     public partial class MasterController : ControllerBase
     {
         public LocalNetwork network;
+        public bool _doNotSendEmail = false;
 
         public MasterController(IOptions<LocalNetwork> _network)
         {
@@ -25,7 +26,7 @@ namespace Api.Master.Controllers
         }
 
         [NonAction]
-        protected AuthenticatedUser GetCurrentAuthenticatedUser()
+        protected DtoAuthenticatedUser GetCurrentAuthenticatedUser()
         {
             var handler = new JwtSecurityTokenHandler();
             var authHeader = Request.Headers["Authorization"].ToString().Replace("Bearer ", "");
@@ -37,7 +38,7 @@ namespace Api.Master.Controllers
             var tokenS = handler.ReadToken(authHeader) as JwtSecurityToken;
             var claims = tokenS.Claims;
 
-            return new AuthenticatedUser
+            return new DtoAuthenticatedUser
             {
                 _id = claims.FirstOrDefault(claim => claim.Type == "_id")?.Value,                
                 email = claims.FirstOrDefault(claim => claim.Type == "email")?.Value,
@@ -46,7 +47,7 @@ namespace Api.Master.Controllers
         }
 
         [NonAction]
-        public string ComposeTokenForSession(AuthenticatedUser au)
+        public string ComposeTokenForSession(DtoAuthenticatedUser au)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes(LocalNetwork.Secret);

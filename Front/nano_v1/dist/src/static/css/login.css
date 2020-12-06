@@ -1,6 +1,6 @@
 
 a {
-	color: rgb(34, 98, 138);
+	color: lightskyblue;
 	text-decoration: none;
 	font-weight: 400;
 	outline: none;
@@ -41,9 +41,9 @@ body {
 	background-color: #CFCFCF;
 	font-family: 'Segoe UI';
 	font-size: 14px;
-	color: #1d3247;
-	line-height: 1.4;
-	font-weight: 400;
+	color: #4476a8;
+	line-height: 1.1;
+	font-weight: 200;
 	box-sizing: border-box;
 	-webkit-font-smoothing: antialiased;
 }
@@ -168,7 +168,7 @@ header {
 	top: 0;
 	left: 0;
 	right: 0;
-	background-color: #000000;
+	background-color: white;
 	height: 50px;
 	border-bottom: solid 1px #666666;
 	padding: 10px;

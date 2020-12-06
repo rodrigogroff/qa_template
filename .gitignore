@@ -3,3 +3,8 @@
 ################################################################################
 
 /Back/Integration/bin
+/.vs/Solution
+/Back/Integration/obj
+/Back/Master/bin
+/Back/Master/obj
+/Back/UnitTesting/bin

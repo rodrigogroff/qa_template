@@ -33,10 +33,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Controller\Domains\User\Login\v1\Tokenized\lojista\**" />
-    <Content Remove="Controller\Domains\User\Login\v1\Tokenized\lojista\**" />
-    <EmbeddedResource Remove="Controller\Domains\User\Login\v1\Tokenized\lojista\**" />
-    <None Remove="Controller\Domains\User\Login\v1\Tokenized\lojista\**" />
+    <Compile Remove="Controller\Domains\User\Login\Tokenized\lojista\**" />
+    <Content Remove="Controller\Domains\User\Login\Tokenized\lojista\**" />
+    <EmbeddedResource Remove="Controller\Domains\User\Login\Tokenized\lojista\**" />
+    <None Remove="Controller\Domains\User\Login\Tokenized\lojista\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -44,20 +44,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Appium.WebDriver" Version="3.0.0.2" />
     <PackageReference Include="ClosedXML" Version="0.95.3" />
-    <PackageReference Include="Dapper" Version="2.0.4" />
+    <PackageReference Include="Dapper" Version="2.0.78" />
     <PackageReference Include="LinqToExcel" Version="1.11.0" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
-    <PackageReference Include="MySql.Data" Version="8.0.21" />
-    <PackageReference Include="Nancy" Version="2.0.0" />
-    <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
-    <PackageReference Include="Selenium.Support" Version="3.141.0" />
-    <PackageReference Include="Selenium.WebDriver" Version="3.141.0" />
-    <PackageReference Include="SqlLocalDb" Version="1.1.0" />
-    <PackageReference Include="System.Data.SqlClient" Version="4.6.1" />
-    <PackageReference Include="System.IO.FileSystem.AccessControl" Version="4.6.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="Npgsql" Version="5.0.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -67,6 +60,12 @@
     <Reference Include="mscorlib">
       <HintPath>..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\mscorlib.dll</HintPath>
     </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Repository\CreateDB_pg.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
   <ProjectExtensions><VisualStudio><UserProperties appsettings_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>
