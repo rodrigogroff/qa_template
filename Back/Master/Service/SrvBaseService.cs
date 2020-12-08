@@ -5,6 +5,8 @@ using System.IO;
 using System.Net.Mail;
 using System.Security.Cryptography;
 using Npgsql;
+using System.Net.Mail;
+using System.Text;
 
 namespace Master.Service
 {
@@ -16,9 +18,9 @@ namespace Master.Service
 
         #region - const values - 
 
-        public const string _emailSmtp = "slayer.vortigo@zohomail.com";
-        public const string _passwordSmtp = "Gustavo@2012";
-        public const string _smtp = "smtp.zoho.com";
+        public const string _emailSmtp = "server@nanojs.com.br";
+        public const string _passwordSmtp = "Fernanda@2012";
+        public const string _smtp = "email-ssl.com.br";
         public const int _smtpPort = 587;
 
         #endregion
@@ -46,40 +48,46 @@ namespace Master.Service
                                 I(myDate.Substring(0, 2)));
         }
 
-        public void SendEmail(string email, string subject, string texto, List<string> attachs = null)
+
+       
+        public void SendEmail(string _email, string subject, string texto, List<string> attachs = null)
         {
             if (_doNotSendEmail)
                 return;
 
             #region - code - 
 
+            MailMessage email = new MailMessage
+            {
+                From = new MailAddress("<" + _emailSmtp + ">")
+            };
+            email.To.Add(_email);
+            email.Priority = MailPriority.Normal;
+            email.IsBodyHtml = false;
+            email.Subject = subject;
+            email.Body = texto;
+                
+            email.SubjectEncoding = Encoding.GetEncoding("ISO-8859-1");
+            email.BodyEncoding = Encoding.GetEncoding("ISO-8859-1");
+            SmtpClient emailSmtp = new SmtpClient
+            {
+                Credentials = new System.Net.NetworkCredential(_emailSmtp, _passwordSmtp),//e-mail e senha do remetente
+                Host = "smtp." + "nanojs.com.br",                    
+                Port = 587
+            };
+
             try
             {
-                MailMessage message = new System.Net.Mail.MailMessage(_emailSmtp, email, subject, texto);
-
-                SmtpClient smtp = new SmtpClient
-                {
-                    Host = _smtp,
-                    Port = _smtpPort,
-                    Credentials = new System.Net.NetworkCredential(_emailSmtp, _passwordSmtp),
-                    EnableSsl = true
-                };
-
-                message.IsBodyHtml = true;
-
-                if (attachs != null)
-                    foreach (var item in attachs)
-                        message.Attachments.Add(new Attachment(item));
-
-                smtp.Send(message);
+                emailSmtp.Send(email);                    
             }
-            catch (Exception ex)
+            catch (Exception erro)
             {
-
+                throw new Exception("erro: " + erro.Message);
             }
-
+            
             #endregion
         }
+        
 
         public string OnlyNumbers(string cpf)
         {
@@ -128,3 +136,4 @@ namespace Master.Service
         }
     }
 }
+

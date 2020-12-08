@@ -2,6 +2,7 @@ C:\Users\rodri\source\repos\qa_template\Back\UnitTesting\bin\Debug\netcoreapp3.1
 C:\Users\rodri\source\repos\qa_template\Back\UnitTesting\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
 C:\Users\rodri\source\repos\qa_template\Back\UnitTesting\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
 C:\Users\rodri\source\repos\qa_template\Back\UnitTesting\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+C:\Users\rodri\source\repos\qa_template\Back\UnitTesting\bin\Debug\netcoreapp3.1\Repository\CreateDB_pg.sql
 C:\Users\rodri\source\repos\qa_template\Back\UnitTesting\bin\Debug\netcoreapp3.1\UnitTesting.dll.config
 C:\Users\rodri\source\repos\qa_template\Back\UnitTesting\bin\Debug\netcoreapp3.1\UnitTesting.deps.json
 C:\Users\rodri\source\repos\qa_template\Back\UnitTesting\bin\Debug\netcoreapp3.1\UnitTesting.runtimeconfig.json
@@ -60,6 +61,7 @@ C:\Users\rodri\source\repos\qa_template\Back\UnitTesting\bin\Debug\netcoreapp3.1
 C:\Users\rodri\source\repos\qa_template\Back\UnitTesting\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll
 C:\Users\rodri\source\repos\qa_template\Back\UnitTesting\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.TestPlatform.TestFramework.dll
 C:\Users\rodri\source\repos\qa_template\Back\UnitTesting\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+C:\Users\rodri\source\repos\qa_template\Back\UnitTesting\bin\Debug\netcoreapp3.1\Npgsql.dll
 C:\Users\rodri\source\repos\qa_template\Back\UnitTesting\bin\Debug\netcoreapp3.1\NuGet.Frameworks.dll
 C:\Users\rodri\source\repos\qa_template\Back\UnitTesting\bin\Debug\netcoreapp3.1\SqlLocalDb.dll
 C:\Users\rodri\source\repos\qa_template\Back\UnitTesting\bin\Debug\netcoreapp3.1\System.Drawing.Common.dll
@@ -130,6 +132,9 @@ C:\Users\rodri\source\repos\qa_template\Back\UnitTesting\bin\Debug\netcoreapp3.1
 C:\Users\rodri\source\repos\qa_template\Back\UnitTesting\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
 C:\Users\rodri\source\repos\qa_template\Back\UnitTesting\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
 C:\Users\rodri\source\repos\qa_template\Back\UnitTesting\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+C:\Users\rodri\source\repos\qa_template\Back\UnitTesting\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\Microsoft.Win32.SystemEvents.dll
+C:\Users\rodri\source\repos\qa_template\Back\UnitTesting\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.0\System.Drawing.Common.dll
+C:\Users\rodri\source\repos\qa_template\Back\UnitTesting\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Drawing.Common.dll
 C:\Users\rodri\source\repos\qa_template\Back\UnitTesting\bin\Debug\netcoreapp3.1\Master.dll
 C:\Users\rodri\source\repos\qa_template\Back\UnitTesting\bin\Debug\netcoreapp3.1\Microsoft.Data.Tools.Schema.Sql.dll
 C:\Users\rodri\source\repos\qa_template\Back\UnitTesting\bin\Debug\netcoreapp3.1\Microsoft.Data.Tools.Schema.Sql.UnitTesting.dll
@@ -146,8 +151,3 @@ C:\Users\rodri\source\repos\qa_template\Back\UnitTesting\obj\Debug\netcoreapp3.1
 C:\Users\rodri\source\repos\qa_template\Back\UnitTesting\obj\Debug\netcoreapp3.1\UnitTesting.dll
 C:\Users\rodri\source\repos\qa_template\Back\UnitTesting\obj\Debug\netcoreapp3.1\UnitTesting.pdb
 C:\Users\rodri\source\repos\qa_template\Back\UnitTesting\obj\Debug\netcoreapp3.1\UnitTesting.genruntimeconfig.cache
-C:\Users\rodri\source\repos\qa_template\Back\UnitTesting\bin\Debug\netcoreapp3.1\Npgsql.dll
-C:\Users\rodri\source\repos\qa_template\Back\UnitTesting\bin\Debug\netcoreapp3.1\Repository\CreateDB_pg.sql
-C:\Users\rodri\source\repos\qa_template\Back\UnitTesting\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\Microsoft.Win32.SystemEvents.dll
-C:\Users\rodri\source\repos\qa_template\Back\UnitTesting\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.0\System.Drawing.Common.dll
-C:\Users\rodri\source\repos\qa_template\Back\UnitTesting\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Drawing.Common.dll
