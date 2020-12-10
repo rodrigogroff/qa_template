@@ -1,0 +1,7 @@
+C:\Users\rodri\source\repos\qa_template\Deploy\bin\Debug\Deploy.exe.config
+C:\Users\rodri\source\repos\qa_template\Deploy\bin\Debug\Deploy.exe
+C:\Users\rodri\source\repos\qa_template\Deploy\bin\Debug\Deploy.pdb
+C:\Users\rodri\source\repos\qa_template\Deploy\obj\Debug\Deploy.csprojAssemblyReference.cache
+C:\Users\rodri\source\repos\qa_template\Deploy\obj\Debug\Deploy.csproj.CoreCompileInputs.cache
+C:\Users\rodri\source\repos\qa_template\Deploy\obj\Debug\Deploy.exe
+C:\Users\rodri\source\repos\qa_template\Deploy\obj\Debug\Deploy.pdb

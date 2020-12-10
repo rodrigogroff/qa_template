@@ -34,6 +34,7 @@ namespace Api.Master.Controllers
             {
                 token,
                 user = auth,                
+                tst =  "1!"
             });
         }
     }

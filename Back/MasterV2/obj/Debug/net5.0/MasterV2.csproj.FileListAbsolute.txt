@@ -17,7 +17,6 @@ C:\Users\rodri\source\repos\qa_template\Back\MasterV2\bin\Debug\net5.0\Microsoft
 C:\Users\rodri\source\repos\qa_template\Back\MasterV2\bin\Debug\net5.0\Microsoft.IdentityModel.Tokens.dll
 C:\Users\rodri\source\repos\qa_template\Back\MasterV2\bin\Debug\net5.0\Npgsql.dll
 C:\Users\rodri\source\repos\qa_template\Back\MasterV2\bin\Debug\net5.0\System.IdentityModel.Tokens.Jwt.dll
-C:\Users\rodri\source\repos\qa_template\Back\MasterV2\obj\Debug\net5.0\MasterV2.csprojAssemblyReference.cache
 C:\Users\rodri\source\repos\qa_template\Back\MasterV2\obj\Debug\net5.0\MasterV2.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\rodri\source\repos\qa_template\Back\MasterV2\obj\Debug\net5.0\MasterV2.AssemblyInfoInputs.cache
 C:\Users\rodri\source\repos\qa_template\Back\MasterV2\obj\Debug\net5.0\MasterV2.AssemblyInfo.cs

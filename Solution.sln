@@ -13,7 +13,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{F9F59221
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "App", "App", "{AC8DB5EF-DFE8-4FA2-AB70-3855D88BC05F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MasterV2", "Back\MasterV2\MasterV2.csproj", "{777E875A-7B15-4B14-8738-7CF0CB0E5F6E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MasterV2", "Back\MasterV2\MasterV2.csproj", "{777E875A-7B15-4B14-8738-7CF0CB0E5F6E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
