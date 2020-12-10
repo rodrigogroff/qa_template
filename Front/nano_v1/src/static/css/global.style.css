@@ -1,7 +1,7 @@
 a{
 	color: lightskyblue;
 	text-decoration: none;
-	font-weight: 700;
+	font-weight: 500;
 	outline: none;
 }
 body *{
@@ -12,7 +12,7 @@ input,button, select, textarea, label{
 	font-size: 14px;
 	color: #667F97;
 	line-height: 1.4;
-	font-weight: 600;
+	font-weight: 500;
 }
 ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
   color: #667F97;
@@ -34,7 +34,7 @@ body{
 	font-size: 14px;
 	color: #4476a8;
 	line-height: 1.1;
-	font-weight: 200;
+	font-weight: 500;
 	box-sizing: border-box;
 	-webkit-font-smoothing: antialiased;
 }
@@ -120,7 +120,7 @@ nav.menu ul.main-menu>li>a{
 	color: #FFF;
 	padding: 8px 20px;
 	border-bottom: solid 1px rgba(0,0,0,0.1);
-	font-weight: 600;
+	font-weight: 500;
 }
 nav.menu ul.main-menu>li>a>i{
 	display: inline-block;
@@ -139,7 +139,7 @@ nav.menu ul.main-menu>li li a{
 	color: #fff;
 	padding: 8px 20px 8px 48px;
 	border-bottom: solid 1px rgba(0,0,0,0.1);
-	font-weight: 400;
+	font-weight: 500;
 }
 .wrapper-inline{
 	position: absolute;
@@ -388,7 +388,7 @@ select.form-element{
 	border:none;
 	border-radius: 3px;
 	text-align: center;
-	font-weight: 600;
+	font-weight: 500;
 	outline: none;
 	-webkit-box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.2);
 	-moz-box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.2);
@@ -402,7 +402,7 @@ select.form-element{
 	border:none;
 	border-radius: 3px;
 	text-align: center;
-	font-weight: 600;
+	font-weight: 500;
 	outline: none;
 	-webkit-box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.2);
 	-moz-box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.2);
@@ -610,7 +610,7 @@ select.form-element{
 	right: 20px;
 	height: 33px;
 	line-height: 33px;
-	font-weight: 400;
+	font-weight: 500;
 	cursor: pointer;
 	font-size: 14px;
 }
@@ -862,7 +862,7 @@ select.form-element{
 	padding: 4px 12px;
 	background-color: #FFF;
 	border:solid 1px #DDD;
-	font-weight: 400;
+	font-weight: 500;
 	border-radius: 15px;
 	margin:0 5px 5px 0;
 }
@@ -1003,13 +1003,13 @@ select.form-element{
 	padding: 0;
 	margin: 0;
 	margin-bottom: 4px;
-	font-weight: 900;
+	font-weight: 700;
 	color: #333;
 }
 .post-item .post-title a{
 	font-size: 18px;
 	color: #069;
-	font-weight: 900;
+	font-weight: 700;
 	line-height: 18px;
 }
 .post-item .post-header span{
@@ -1042,7 +1042,7 @@ select.form-element{
 }
 .post-item .author-name{
 	font-size: 12px;
-	font-weight: 400;
+	font-weight: 500;
 	white-space: nowrap;
 }
 .post-item .author-name b{
@@ -1312,7 +1312,7 @@ select.form-element{
 	text-align: center;
 	color: #FFF;
 	font-size: 18px;
-	font-weight: 900;
+	font-weight: 700;
 	margin: 0;
 	padding: 0;
 	margin-top: 20px;
@@ -1336,7 +1336,7 @@ select.form-element{
 .author-item .author-number > div > span{
 	display: block;
 	font-size: 18px;
-	font-weight: 400;
+	font-weight: 500;
 	color: #FFF;
 }
 .album-item{
@@ -1626,7 +1626,7 @@ select.form-element{
 }
 .product-view-price .old-price{
 	opacity: 0.5;
-	font-weight: 400;
+	font-weight: 500;
 	text-decoration: line-through;
 }
 .panel{

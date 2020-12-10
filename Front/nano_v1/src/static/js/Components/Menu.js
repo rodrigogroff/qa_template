@@ -31,7 +31,7 @@ export class MenuAppLanguage {
       // ptBr (2)
       {
         labels: [
-          "Painél de controle" /* 0 */,
+          "Painel de controle" /* 0 */,
           "Usuário" /* 1 */,
           "Login" /* 2 */,
           "Registrar" /* 3 */,
@@ -45,7 +45,7 @@ export class MenuAppLanguage {
 export function Menu_MultiLanguage(index) {
   var curLanguage = localStorage.getItem("appLanguage");
   if (curLanguage == undefined) {
-    curLanguage = 2;
+    curLanguage = 0;
     // ptBR default
     localStorage.setItem("appLanguage", curLanguage);
   }
