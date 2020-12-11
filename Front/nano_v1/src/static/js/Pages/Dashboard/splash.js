@@ -8,7 +8,7 @@ export default class {
       "src/static/img/splash.png",
       "max-width:100%;max-height:100%;padding-top:90px"
     )}
-            v1.02
-        </div>`;
+    <div align='center'>v1.02</div>
+    </div>`;
   }
 }

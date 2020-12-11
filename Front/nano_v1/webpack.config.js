@@ -1,7 +1,5 @@
-
 const path = require('path');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   mode: 'production',
@@ -12,7 +10,7 @@ module.exports = {
     alias: {
       '@app': path.resolve(__dirname, 'src/static/js')
     }
-  },  
+  },
   entry: {
     '/src/static/Login': './src/static/js/pages/Login/router.js',
     '/src/static/Dashboard': './src/static/js/pages/Dashboard/router.js',
@@ -33,6 +31,5 @@ module.exports = {
   },
   plugins: [
     new CleanWebpackPlugin(),
-    new CopyPlugin({ patterns: [ { from: './src/static/js/server.js', to: './server.js' }, ], options: { concurrency: 100, } }),    
   ]
 }

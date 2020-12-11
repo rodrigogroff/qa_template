@@ -1,1 +1,18 @@
-const compression=require("compression"),express=require("express"),path=require("path"),app=express(),shouldCompress=(e,s)=>!e.headers["x-no-compression"]&&compression.filter(e,s);app.use(compression({filter:shouldCompress,threshold:0})),app.use("/src",express.static(path.resolve(__dirname,"src"))),app.get("/",((e,s)=>{s.sendFile(path.resolve(__dirname,"./index_dashboard.html"))})),app.get("/login",((e,s)=>{s.sendFile(path.resolve(__dirname,"./index_login.html"))})),app.get("/register",((e,s)=>{s.sendFile(path.resolve(__dirname,"./index_register.html"))})),app.get("/forgot",((e,s)=>{s.sendFile(path.resolve(__dirname,"./index_forgot.html"))})),app.listen(5060,(()=>console.log("Server running...")));
+
+const compression = require('compression');
+const express = require("express");
+const path = require("path");
+const app = express();
+const shouldCompress = (req, res) => {
+  if (req.headers['x-no-compression']) return false;
+  return compression.filter(req, res);
+};
+app.use(compression({ filter: shouldCompress, threshold: 0 }));
+app.use("/src", express.static(path.resolve(__dirname, "src")));
+/* routing start */
+app.get("/", (req, res) => { res.sendFile(path.resolve(__dirname, "./index_dashboard.html")); });
+app.get("/login", (req, res) => { res.sendFile(path.resolve(__dirname, "./index_login.html")); });
+app.get("/register", (req, res) => { res.sendFile(path.resolve(__dirname, "./index_register.html")); });
+app.get("/forgot", (req, res) => { res.sendFile(path.resolve(__dirname, "./index_forgot.html")); });
+/* routing end */
+app.listen(80, () => console.log("Server running..."));
