@@ -32,33 +32,16 @@ export default class {
 
     return `<div style="width:296px;" class="form-row-group-dark">
                     <div style='min-height:355px'>                        
-                        <table><tr><td><h3><b>${registerMsg}</b></h3></td><td width='20px'></td><td><h4 style='color:#009E96'>${stepMsg} 2/4</h4></td></tr></table>
+                        <table><tr><td><h3>${registerMsg}</h3></td><td width='20px'></td><td><h4 style='color:#009E96'>${stepMsg} 2/4</h4></td></tr></table>
                         <br>
                         <div class="form-row-group" align="left" id='registerIdForm'>
-                            <label for='${
-                              elements.emailID
-                            }' style='padding-left:20px'><b>${placeholderEmail_label}</b></label>
-                            ${EmailField.getHtml(
-                              elements.emailID,
-                              placeholderEmail
-                            )}
+                            <label for='${elements.emailID}' style='padding-left:20px'><b>${placeholderEmail_label}</b></label>
+                            ${EmailField.getHtml(elements.emailID, placeholderEmail)}
                             <br>
-                            <label for='${
-                              elements.passwordID
-                            }' style='padding-left:20px'><b>${label_password}</b></label>
-                            ${PasswordField.getHtml(
-                              elements.passwordID,
-                              "",
-                              placeholderPass_Title
-                            )}
-                            <label for='${
-                              elements.passwordConfID
-                            }' style='padding-left:20px'><b>${label_passwordConf}</b></label>
-                            ${PasswordField.getHtml(
-                              elements.passwordConfID,
-                              "",
-                              placeholderPass_Title
-                            )}
+                            <label for='${elements.passwordID}' style='padding-left:20px'><b>${label_password}</b></label>
+                            ${PasswordField.getHtml(elements.passwordID, "", placeholderPass_Title)}
+                            <label for='${elements.passwordConfID}' style='padding-left:20px'><b>${label_passwordConf}</b></label>
+                            ${PasswordField.getHtml(elements.passwordConfID, "", placeholderPass_Title)}
                             <br>
                         </div>
                         <br>
@@ -66,18 +49,10 @@ export default class {
                     <div>
                         <table width='100%'>
                             <tr>
-                                <td><a id="${
-                                  elements.btnPrev
-                                }" class="button circle block green">${prevMsg}</a></td>
+                                <td><a id="${elements.btnPrev}" class="button circle block green">${prevMsg}</a></td>
                                 <td width='20px'></td>
-                                <td><a id="${
-                                  elements.btnNext
-                                }" class="button circle block green">
-                                        ${buildTable2TD(
-                                          nextMsg,
-                                          BaseLoader(),
-                                          elements.btnNext
-                                        )}
+                                <td><a id="${elements.btnNext}" class="button circle block green">
+                                      ${buildTable2TD(nextMsg, BaseLoader(), elements.btnNext)}
                                     </a>
                                 </td>
                             </tr>

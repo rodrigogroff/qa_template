@@ -2,10 +2,8 @@
 import { MultiLanguage } from "../language";
 
 import InputNumberField from "@app/Components/Fields/Number";
-
 import Popup from "@app/Components/Modals/Popup";
 import PopupConfirm from "@app/Components/Modals/PopupConfirm";
-
 import { buildTable2TD, BaseLoader } from "@app/Components/Images/BaseLoader";
 
 export default class {

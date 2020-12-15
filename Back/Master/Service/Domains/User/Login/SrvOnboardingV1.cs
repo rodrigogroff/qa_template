@@ -112,13 +112,16 @@ namespace Master.Service
 
                     if (user != null)
                     {
-                        Error = new DtoServiceError
+                        if (user.bTokenized == true)
                         {
-                            message = getLanguage(dto._language, 5),
-                            debugInfo = "[1]"
-                        };
+                            Error = new DtoServiceError
+                            {
+                                message = getLanguage(dto._language, 5),
+                                debugInfo = "[1]"
+                            };
 
-                        return false;
+                            return false;
+                        }                                                    
                     }
 
                     user = repository.GetUserBySocial(db, dto.sID);
@@ -130,7 +133,7 @@ namespace Master.Service
                             Error = new DtoServiceError
                             {
                                 message = getLanguage(dto._language, 6),
-                                debugInfo = "[1]"
+                                debugInfo = "[2]"
                             };
 
                             return false;
@@ -146,6 +149,7 @@ namespace Master.Service
                     }
 
                     if (user == null)
+                    {
                         repository.InsertUser(db, new Infra.Entity.Database.User
                         {
                             bAdmin = false,
@@ -159,6 +163,7 @@ namespace Master.Service
                             stSocialID = dto.sID,
                             stToken = token,
                         });
+                    }
                     else
                     {
                         user.bTokenized = false;

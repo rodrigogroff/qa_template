@@ -178,7 +178,7 @@ namespace Integration
                 stSocialID = "90511603053",
                 stToken = "",
                 dtLastLogin = DateTime.Now,
-                stEmail = "rodrigo.groff@gmail.com_xxxx",
+                stEmail = "rodrigo.groff@gmail.com",
                 stName = "rodrigo",
                 stPassword = "rodrigo"
             });

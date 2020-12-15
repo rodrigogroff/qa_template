@@ -1,3 +1,4 @@
+
 import {
   getCurrentLanguage,
   MultiLanguageChange,
@@ -83,37 +84,20 @@ export default class {
       var _valParams = { focus: false, msg: false, fields: null };
       switch (e.keyCode) {
         case 9:
-          switch (
-          GetCurrentView() // tab
-          ) {
-            case defs.form1:
-              Form1.validate(_valParams);
-              break;
-            case defs.form2:
-              Form2.validate(_valParams);
-              break;
-            case defs.form3:
-              Form3.validate(_valParams);
-              break;
+          switch (GetCurrentView()) {
+            case defs.form1: Form1.validate(_valParams); break;
+            case defs.form2: Form2.validate(_valParams); break;
+            case defs.form3: Form3.validate(_valParams); break;
           }
           break;
         case 13:
-          switch (
-          GetCurrentView() // enter
-          ) {
-            case defs.form1:
-              next_form1_Click();
-              break;
-            case defs.form2:
-              next_form2_Click();
-              break;
-            case defs.form3:
-              next_form3_Click();
-              break;
+          switch (GetCurrentView()) {
+            case defs.form1: next_form1_Click(); break;
+            case defs.form2: next_form2_Click(); break;
+            case defs.form3: next_form3_Click(); break;
           }
           break;
-        default:
-          break;
+        default: break;
       }
     });
 
@@ -125,46 +109,27 @@ export default class {
         case pageTags.form1:
           var elements = Form1.elements();
           switch (click_id) {
-            case elements.btnNext:
-              next_form1_Click();
-              break;
+            case elements.btnNext: next_form1_Click(); break;
           }
           break;
         case pageTags.form2:
           var elements = Form2.elements();
           switch (click_id) {
-            case elements.btnPrev:
-              previous_form2_click();
-              break;
-            case elements.btnNext:
-              next_form2_Click();
-              break;
-            case "seePass" + elements.passwordID:
-              PasswordField.btnSeePassword(elements.passwordID);
-              break;
-            case "seePass" + elements.passwordConfID:
-              PasswordField.btnSeePassword(elements.passwordConfID);
-              break;
+            case elements.btnPrev: previous_form2_click(); break;
+            case elements.btnNext: next_form2_Click(); break;
+            case "seePass" + elements.passwordID: PasswordField.btnSeePassword(elements.passwordID); break;
+            case "seePass" + elements.passwordConfID: PasswordField.btnSeePassword(elements.passwordConfID); break;
           }
           break;
         case pageTags.form3:
           var elements = Form3.elements();
           switch (click_id) {
-            case elements.btnPrev:
-              GetNewHTML(GetPageTags().form2);
-              break;
-            case elements.btnNext:
-              next_form3_Click();
-              break;
-            case "seePass" + elements.passwordID:
-              PasswordField.btnSeePassword(elements.passwordID);
-              break;
-            case "seePass" + elements.passwordConfID:
-              PasswordField.btnSeePassword(elements.passwordConfID);
-              break;
+            case elements.btnPrev: GetNewHTML(GetPageTags().form2); break;
+            case elements.btnNext: next_form3_Click(); break;
+            case "seePass" + elements.passwordID: PasswordField.btnSeePassword(elements.passwordID); break;
+            case "seePass" + elements.passwordConfID: PasswordField.btnSeePassword(elements.passwordConfID); break;
           }
           break;
-
         default:
           break;
       }
@@ -186,31 +151,11 @@ export default class {
     function GetNewHTML(newState) {
       PushState(newState);
       var tags = GetPageTags();
-      switch (
-      newState // HTML
-      ) {
-        case tags.form1:
-          updateHTML("currentForm", Form1.getHtml());
-          break;
-        case tags.form2:
-          updateHTML("currentForm", Form2.getHtml());
-          break;
-        case tags.form3:
-          updateHTML("currentForm", Form3.getHtml());
-          break;
-        case tags.form4:
-          updateHTML("currentForm", Form4.getHtml());
-          break;
-      }
-      switch (
-      newState // POST OP
-      ) {
-        case tags.form1:
-          Form1.maskUp();
-          break;
-        case tags.form3:
-          Form3.maskUp();
-          break;
+      switch (newState) {
+        case tags.form1: updateHTML("currentForm", Form1.getHtml()); Form1.maskUp(); break;
+        case tags.form2: updateHTML("currentForm", Form2.getHtml()); break;
+        case tags.form3: updateHTML("currentForm", Form3.getHtml()); Form3.maskUp(); break;
+        case tags.form4: updateHTML("currentForm", Form4.getHtml()); break;
       }
     }
 
@@ -325,7 +270,6 @@ export default class {
       if (!Form3.validate({ focus: false, msg: true, fields: null })) return;
 
       var pageData = GetCurrentPageData();
-
       var elements = Form3.elements();
 
       var formData = DtoCheckToken(

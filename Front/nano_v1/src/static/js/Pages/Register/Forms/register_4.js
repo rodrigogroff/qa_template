@@ -18,7 +18,7 @@ export default class {
 
     return `<div style="width:296px;" class="form-row-group-dark">
                     <div style='min-height:355px'>
-                        <table><tr><td><h3><b>${registerMsg}</b></h3></td><td width='20px'></td><td><h4 style='color:#009E96'>${stepMsg} 4/4</h4></td></tr></table>
+                        <table><tr><td><h3>${registerMsg}</h3></td><td width='20px'></td><td><h4 style='color:#009E96'>${stepMsg} 4/4</h4></td></tr></table>
                         <div class="form-row-group" align="left" id='registerIdForm'>
                             <br>
                             <div align='center'>
