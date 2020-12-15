@@ -126,12 +126,9 @@ export default class {
           switch (click_id) {
             case elements.btnPrev: GetNewHTML(GetPageTags().form2); break;
             case elements.btnNext: next_form3_Click(); break;
-            case "seePass" + elements.passwordID: PasswordField.btnSeePassword(elements.passwordID); break;
-            case "seePass" + elements.passwordConfID: PasswordField.btnSeePassword(elements.passwordConfID); break;
           }
           break;
-        default:
-          break;
+        default: break;
       }
     });
 
@@ -248,7 +245,7 @@ export default class {
       loadingOff();
       GetNewHTML(GetPageTags().form3);
       var elements = Form3.elements();
-      timerFuncCleanup(elements.timerID, 15);
+      timerFuncCleanup(elements.timerID, 3 * 60);
       timerFuncDec(elements.timerID, endTime);
     }
 
@@ -260,10 +257,6 @@ export default class {
     // -------------------------------------------------------------------------
     // form3 functions ---------------------------------------------------------
     // -------------------------------------------------------------------------
-
-    function previous_form3_Click() {
-
-    }
 
     function next_form3_Click() {
       if (IsLoading()) return;

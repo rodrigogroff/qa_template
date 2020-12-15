@@ -14,6 +14,7 @@ namespace Master.Infra.Entity.Database
         public string stPassword { get; set; }
         public DateTime? dtLastLogin { get; set; }
         public DateTime? dtCreation { get; set; }
+        public DateTime? dtTokenExpires { get; set; }
         public string stToken { get; set; }
     }
 }

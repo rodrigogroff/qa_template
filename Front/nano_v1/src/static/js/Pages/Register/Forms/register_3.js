@@ -20,7 +20,6 @@ export default class {
 
   static getHtml() {
     var elements = this.elements();
-
     var registerMsg = MultiLanguage(3);
     var nextMsg = MultiLanguage(16);
     var stepMsg = MultiLanguage(17);
@@ -34,7 +33,7 @@ export default class {
                     ${Popup.getHtml()} 
                     ${PopupConfirm.getHtml(elements._mdl_confID, elements._mdl_btn_confID, resendToken)}
                     <div style='min-height:355px'>
-                    <table><tr><td><h3><b>${registerMsg}</b></h3></td><td width='20px'></td><td><h4 style='color:#009E96'>${stepMsg} 3/4</h4></td></tr></table>
+                    <table><tr><td><h3>${registerMsg}</h3></td><td width='20px'></td><td><h4 style='color:#009E96'>${stepMsg} 3/4</h4></td></tr></table>
                         <div class="form-row-group" align="left" id='registerIdForm'>
                             <br>    
                             <span style='padding-left:20px'><b>${title}</b></span>

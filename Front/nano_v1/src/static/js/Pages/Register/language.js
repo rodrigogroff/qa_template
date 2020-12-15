@@ -120,7 +120,7 @@ export class AppLanguage {
           "Parabéns!" /*31*/,
           "Seu cadastro está completo, faça o login com o botão abaixo." /*32*/,
           "Re-enviar Token" /*33*/,
-          "Seu Token expirou.Use o botão abaixo para enviar o token novamente." /*34*/,
+          "Seu Token expirou. Use o botão abaixo para enviar o token novamente." /*34*/,
         ],
       },
     ];

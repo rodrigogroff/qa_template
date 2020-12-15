@@ -17,18 +17,21 @@ namespace Master.Service
                 "Ops, something went wrong", /* 0 */
                 "Email not found", /* 1 */
                 "Invalid Token", /* 2 */
+                "Token expired!", /* 3 */
             },
             new List<string> // spanish
             {
                 "Ops, algo salió mal", /* 0 */
                 "El correo electrónico no encontrado", /* 1 */
                 "Simbolo no valido", /* 2 */
+                "¡Token caducado!", /* 3 */
             },
             new List<string> // pt-br
             {
                 "Ops, algo deu errado", /* 0 */
                 "Email não encontrado", /* 1 */
                 "Token inválido", /* 2 */
+                "Token expirado", /* 3 */
             },
         };
 
@@ -73,6 +76,17 @@ namespace Master.Service
                         Error = new DtoServiceError
                         {
                             message = getLanguage(obj._language, 2),
+                            debugInfo = "[1]"
+                        };
+
+                        return false;
+                    }
+
+                    if (DateTime.Now > user.dtTokenExpires)
+                    {
+                        Error = new DtoServiceError
+                        {
+                            message = getLanguage(obj._language, 3),
                             debugInfo = "[1]"
                         };
 

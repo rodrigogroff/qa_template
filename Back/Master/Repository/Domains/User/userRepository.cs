@@ -21,8 +21,8 @@ namespace Master.Repository
     {
         public void InsertUser(NpgsqlConnection db, User usr)
         {
-            using (var cmd = new NpgsqlCommand("INSERT INTO \"User\"(\"stEmail\",\"stName\",\"bActive\",\"bAdmin\",\"bTokenized\",\"stSocialID\",\"stPassword\",\"dtLastLogin\",\"dtCreation\",\"stToken\") " +
-                "VALUES(@stEmail,@stName,@bActive,@bAdmin,@bTokenized,@stSocialID,@stPassword,@dtLastLogin,@dtCreation,@stToken);", db))
+            using (var cmd = new NpgsqlCommand("INSERT INTO \"User\"(\"stEmail\",\"stName\",\"bActive\",\"bAdmin\",\"bTokenized\",\"stSocialID\",\"stPassword\",\"dtLastLogin\",\"dtCreation\",\"stToken\",\"dtTokenExpires\") " +
+                "VALUES(@stEmail,@stName,@bActive,@bAdmin,@bTokenized,@stSocialID,@stPassword,@dtLastLogin,@dtCreation,@stToken,@dtTokenExpires);", db))
             {
                 cmd.Parameters.AddWithValue("stEmail", ((object)usr.stEmail) ?? DBNull.Value);
                 cmd.Parameters.AddWithValue("stName", ((object)usr.stName) ?? DBNull.Value);
@@ -34,6 +34,7 @@ namespace Master.Repository
                 cmd.Parameters.AddWithValue("dtLastLogin", ((object)usr.dtLastLogin) ?? DBNull.Value);
                 cmd.Parameters.AddWithValue("dtCreation", ((object)usr.dtCreation) ?? DBNull.Value); 
                 cmd.Parameters.AddWithValue("stToken", ((object)usr.stToken) ?? DBNull.Value);
+                cmd.Parameters.AddWithValue("dtTokenExpires", ((object)usr.dtTokenExpires) ?? DBNull.Value);
 
                 cmd.ExecuteNonQuery();
             }
@@ -51,6 +52,7 @@ namespace Master.Repository
                 "\"stPassword\" = @stPassword, " +
                 "\"dtLastLogin\" = @dtLastLogin, " +
                 "\"dtCreation\" = @dtCreation, " +
+                "\"dtTokenExpires\" = @dtTokenExpires, " +
                 "\"stToken\" = @stToken " +
                 "where id=@id", db))
             {
@@ -63,6 +65,7 @@ namespace Master.Repository
                 cmd.Parameters.AddWithValue("stPassword", ((object)usr.stPassword) ?? DBNull.Value);
                 cmd.Parameters.AddWithValue("dtLastLogin", ((object)usr.dtLastLogin) ?? DBNull.Value);
                 cmd.Parameters.AddWithValue("dtCreation", ((object)usr.dtCreation) ?? DBNull.Value);
+                cmd.Parameters.AddWithValue("dtCreation", ((object)usr.dtTokenExpires) ?? DBNull.Value);
                 cmd.Parameters.AddWithValue("stToken", ((object)usr.stToken) ?? DBNull.Value);
 
                 cmd.Parameters.AddWithValue("id", usr.id);

@@ -16,7 +16,7 @@ export default class {
 
   static getHtml() {
     var elements = this.elements();
-
+    var _languages = new AppLanguage().availableLanguages;
     var language = MultiLanguage(10);
     var registerMsg = MultiLanguage(3);
     var nextMsg = MultiLanguage(16);
@@ -26,7 +26,7 @@ export default class {
 
     return `<div style="width:296px;" class="form-row-group-dark"><br>
                     <div style='min-height:355px'>                        
-                        <table><tr><td width='120px'><label for="languageSel">${language}</label></td><td width='50%'>${LanguageSelect.getHtml(new AppLanguage().availableLanguages)}</td></tr></table>
+                        <table><tr><td width='120px'><label for="languageSel">${language}</label></td><td width='50%'>${LanguageSelect.getHtml(_languages)}</td></tr></table>
                         <table><tr><td><h3>${registerMsg}</h3></td><td width='20px'></td><td><h4 style='color:#009E96'>${stepMsg} 1/4</h4></td></tr></table>
                         <br>
                         <div class="form-row-group" align="left" id='registerIdForm'>                            

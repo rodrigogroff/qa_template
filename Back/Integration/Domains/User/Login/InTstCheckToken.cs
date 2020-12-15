@@ -4,6 +4,7 @@ using Master.Infra.Entity.Database;
 using Master.Repository;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Npgsql;
+using System;
 
 namespace Integration
 {
@@ -38,6 +39,7 @@ namespace Integration
             {
                 stSocialID = "90511603053",
                 stEmail = "123456@123456.com",
+                dtTokenExpires = DateTime.Now.AddSeconds (60),
                 stToken = "102030",
             });
 
@@ -53,12 +55,35 @@ namespace Integration
         }
 
         [TestMethod]
-        public void Fail()
+        public void Fail_invalid_token()
         {
             var tst = Setup(new User
             {
                 stSocialID = "90511603053",
                 stEmail = "123456@123456.com",
+                dtTokenExpires = DateTime.Now.AddSeconds(60),
+                stToken = "102030",
+            });
+
+            var ret = tst.Post(new DtoCheckToken
+            {
+                _language = "0",
+                sToken = "999999",
+                sID = "90511603053",
+            });
+
+            if (!ret.ToString().Contains("BadRequest"))
+                Assert.Fail();
+        }
+
+        [TestMethod]
+        public void Fail_token_expired()
+        {
+            var tst = Setup(new User
+            {
+                stSocialID = "90511603053",
+                stEmail = "123456@123456.com",
+                dtTokenExpires = DateTime.Now.AddSeconds(-60),
                 stToken = "102030",
             });
 

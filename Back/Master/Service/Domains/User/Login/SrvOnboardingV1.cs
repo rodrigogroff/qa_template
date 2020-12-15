@@ -162,12 +162,14 @@ namespace Master.Service
                             stPassword = dto.sPass,
                             stSocialID = dto.sID,
                             stToken = token,
+                            dtTokenExpires = DateTime.Now.AddSeconds(3*60),
                         });
                     }
                     else
                     {
                         user.bTokenized = false;
                         user.stToken = token;
+                        user.dtTokenExpires = DateTime.Now.AddSeconds(3 * 60);
 
                         repository.UpdateUser(db, user);
                     }

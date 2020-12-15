@@ -10,4 +10,5 @@ ALTER TABLE public."User" ADD COLUMN if not exists "stSocialID" character varyin
 ALTER TABLE public."User" ADD COLUMN if not exists "stPassword" character varying(20);
 ALTER TABLE public."User" ADD COLUMN if not exists "dtLastLogin" timestamp without time zone;
 ALTER TABLE public."User" ADD COLUMN if not exists "dtCreation" timestamp without time zone;
+ALTER TABLE public."User" ADD COLUMN if not exists "dtTokenExpires" timestamp without time zone;
 ALTER TABLE public."User" ADD COLUMN if not exists "stToken" character varying(20);
