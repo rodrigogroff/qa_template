@@ -102,14 +102,13 @@ namespace Master.Service
 
             try
             {
-                //prep
                 dto.sEmail = dto.sEmail.ToLower().Trim();
                 dto.sID = dto.sID.ToLower().Trim();
                 dto.sName = dto.sName.ToLower().Trim();
 
                 using (var db = GetConnection(network))
                 {
-                    var user = repository.GetUserByEmail(db, dto.sEmail);
+                    var user = repository.GetUserByEmail(db, dto.sEmail.ToLower().Trim());
 
                     if (user != null)
                     {
@@ -126,13 +125,16 @@ namespace Master.Service
 
                     if (user != null)
                     {
-                        Error = new DtoServiceError
+                        if (user.bTokenized == true)
                         {
-                            message = getLanguage(dto._language, 6),
-                            debugInfo = "[1]"
-                        };
+                            Error = new DtoServiceError
+                            {
+                                message = getLanguage(dto._language, 6),
+                                debugInfo = "[1]"
+                            };
 
-                        return false;
+                            return false;
+                        }
                     }
 
                     var rnd = new Random();
@@ -143,19 +145,27 @@ namespace Master.Service
                         Thread.Sleep(33);
                     }
 
-                    repository.InsertUser(db, new Infra.Entity.Database.User
+                    if (user == null)
+                        repository.InsertUser(db, new Infra.Entity.Database.User
+                        {
+                            bAdmin = false,
+                            bActive = true,
+                            bTokenized = false,
+                            dtCreation = DateTime.Now,
+                            dtLastLogin = null,
+                            stEmail = dto.sEmail,
+                            stName = dto.sName,
+                            stPassword = dto.sPass,
+                            stSocialID = dto.sID,
+                            stToken = token,
+                        });
+                    else
                     {
-                        bAdmin = false,
-                        bActive = true,
-                        bTokenized = false,
-                        dtCreation = DateTime.Now,
-                        dtLastLogin = null,
-                        stEmail = dto.sEmail,
-                        stName = dto.sName,
-                        stPassword = dto.sPass,
-                        stSocialID = dto.sID,
-                        stToken = token,
-                    });
+                        user.bTokenized = false;
+                        user.stToken = token;
+
+                        repository.UpdateUser(db, user);
+                    }
 
                     SendEmail(dto.sEmail.ToLower(), "Onboarding", "Token: " + token);
                 }

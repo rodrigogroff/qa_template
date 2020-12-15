@@ -17,7 +17,7 @@ namespace UnitTesting
             var repo = new FakeRepo_User();
 
             var srv = new SrvOnboardingV1(repo) {
-                _doNotSendEmail = true
+                _sendEmail = false
             };
 
             if (!srv.Exec(network, new DtoOnboarding

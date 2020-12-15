@@ -40,7 +40,7 @@ namespace Integration
                 stEmail = "a@a.com",
             });
 
-            tst._doNotSendEmail = true;
+            tst._sendEmail = false;
 
             var ret = tst.Post(new DtoResendToken
             {                
@@ -61,7 +61,7 @@ namespace Integration
                 stEmail = "a@a.com",
             });
 
-            tst._doNotSendEmail = true;
+            tst._sendEmail = false;
 
             var ret = tst.Post(new DtoResendToken
             {

@@ -17,7 +17,7 @@ namespace Api.Master.Controllers
     public partial class MasterController : ControllerBase
     {
         public LocalNetwork network;
-        public bool _doNotSendEmail = false;
+        public bool _sendEmail = true;
 
         public MasterController(IOptions<LocalNetwork> _network)
         {

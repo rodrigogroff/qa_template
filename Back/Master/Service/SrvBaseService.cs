@@ -12,7 +12,7 @@ namespace Master.Service
 {
     public class SrvBaseService 
     {
-        public bool _doNotSendEmail = false;
+        public bool _sendEmail = false;
 
         public DtoServiceError Error;        
 
@@ -52,7 +52,7 @@ namespace Master.Service
        
         public void SendEmail(string _email, string subject, string texto, List<string> attachs = null)
         {
-            if (_doNotSendEmail)
+            if (!_sendEmail)
                 return;
 
             #region - code - 

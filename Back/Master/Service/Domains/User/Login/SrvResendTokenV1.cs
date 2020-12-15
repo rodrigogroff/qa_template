@@ -72,8 +72,6 @@ namespace Master.Service
                         return false;
                     }
 
-
-
                     var token = "";
                     var rnd = new Random();
                     for (int i = 0; i < 4; i++)

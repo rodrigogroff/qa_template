@@ -17,7 +17,7 @@ namespace UnitTesting
             var repo = new FakeRepo_User();
             var srv = new SrvPasswordRecoveryV1(repo)
             {
-                _doNotSendEmail = true
+                _sendEmail = false
             };
 
             if (!srv.Exec(network, new DtoPasswordRecovery
@@ -39,7 +39,7 @@ namespace UnitTesting
             var repo = new FakeRepo_User();
             var srv = new SrvPasswordRecoveryV1(repo)
             {
-                _doNotSendEmail = true
+                _sendEmail = false
             };
 
             if (srv.Exec(network, new DtoPasswordRecovery

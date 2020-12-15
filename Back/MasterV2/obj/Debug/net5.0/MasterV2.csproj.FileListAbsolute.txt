@@ -31,3 +31,4 @@ C:\Users\rodri\source\repos\qa_template\Back\MasterV2\obj\Debug\net5.0\MasterV2.
 C:\Users\rodri\source\repos\qa_template\Back\MasterV2\obj\Debug\net5.0\ref\MasterV2.dll
 C:\Users\rodri\source\repos\qa_template\Back\MasterV2\obj\Debug\net5.0\MasterV2.pdb
 C:\Users\rodri\source\repos\qa_template\Back\MasterV2\obj\Debug\net5.0\MasterV2.genruntimeconfig.cache
+C:\Users\rodri\source\repos\qa_template\Back\MasterV2\obj\Debug\net5.0\MasterV2.csprojAssemblyReference.cache

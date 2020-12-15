@@ -20,8 +20,11 @@ import {
   postPublicPortal,
   CheckPopUpCloseClick,
   displaySystemPopup,
+  displaySystemPopupConfirm,
   mockServer,
 } from "@app/Infra/Util";
+
+import { timerFuncDec, timerFuncCleanup } from "@app/Components/Misc/ClockTimer";
 
 import PasswordField from "@app/Components/Fields/Password";
 
@@ -55,6 +58,7 @@ export default class {
   }
 
   constructor(params) {
+
     // -------------------------------------------------------------------------
     // page events here --------------------------------------------------------
     // -------------------------------------------------------------------------
@@ -71,7 +75,7 @@ export default class {
       if (MultiLanguageChange($("#languageSel").val()))
         setTimeout(() => {
           location.href = "/register";
-        }, 100);
+        }, 10);
     });
 
     $(document).on("keydown", function (e) {
@@ -80,7 +84,7 @@ export default class {
       switch (e.keyCode) {
         case 9:
           switch (
-            GetCurrentView() // tab
+          GetCurrentView() // tab
           ) {
             case defs.form1:
               Form1.validate(_valParams);
@@ -95,7 +99,7 @@ export default class {
           break;
         case 13:
           switch (
-            GetCurrentView() // enter
+          GetCurrentView() // enter
           ) {
             case defs.form1:
               next_form1_Click();
@@ -147,7 +151,7 @@ export default class {
           var elements = Form3.elements();
           switch (click_id) {
             case elements.btnPrev:
-              previous_form3_click();
+              GetNewHTML(GetPageTags().form2);
               break;
             case elements.btnNext:
               next_form3_Click();
@@ -183,7 +187,7 @@ export default class {
       PushState(newState);
       var tags = GetPageTags();
       switch (
-        newState // HTML
+      newState // HTML
       ) {
         case tags.form1:
           updateHTML("currentForm", Form1.getHtml());
@@ -199,7 +203,7 @@ export default class {
           break;
       }
       switch (
-        newState // POST OP
+      newState // POST OP
       ) {
         case tags.form1:
           Form1.maskUp();
@@ -298,11 +302,23 @@ export default class {
     function next_form2_flow() {
       loadingOff();
       GetNewHTML(GetPageTags().form3);
+      var elements = Form3.elements();
+      timerFuncCleanup(elements.timerID, 15);
+      timerFuncDec(elements.timerID, endTime);
+    }
+
+    function endTime() {
+      var elements = Form3.elements();
+      displaySystemPopupConfirm(elements._mdl_confID, MultiLanguage(5), MultiLanguage(34));
     }
 
     // -------------------------------------------------------------------------
     // form3 functions ---------------------------------------------------------
     // -------------------------------------------------------------------------
+
+    function previous_form3_Click() {
+
+    }
 
     function next_form3_Click() {
       if (IsLoading()) return;

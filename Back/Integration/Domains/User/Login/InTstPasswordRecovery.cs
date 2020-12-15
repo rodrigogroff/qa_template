@@ -51,7 +51,7 @@ namespace Integration
             });
 
             // do NOT send email on testing....
-            tst._doNotSendEmail = true;
+            tst._sendEmail = false;
 
             var ret = tst.Post(new DtoPasswordRecovery
             {
@@ -69,7 +69,7 @@ namespace Integration
             var tst = Setup(null);
 
             // do NOT send email on testing....
-            tst._doNotSendEmail = true;
+            tst._sendEmail = false;
 
             var ret = tst.Post(new DtoPasswordRecovery
             {

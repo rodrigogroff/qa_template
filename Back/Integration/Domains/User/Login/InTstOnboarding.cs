@@ -37,7 +37,7 @@ namespace Integration
         {
             var tst = Setup(null);
 
-            tst._doNotSendEmail = true;
+            tst._sendEmail = false;
 
             var ret = tst.Post(new DtoOnboarding
             {                
@@ -57,7 +57,7 @@ namespace Integration
         {
             var tst = Setup(null);
 
-            tst._doNotSendEmail = true;
+            tst._sendEmail = false;
 
             var ret = tst.Post(new DtoOnboarding
             {
@@ -77,7 +77,7 @@ namespace Integration
         {
             var tst = Setup(null);
 
-            tst._doNotSendEmail = true;
+            tst._sendEmail = false;
 
             var ret = tst.Post(new DtoOnboarding
             {
@@ -97,7 +97,7 @@ namespace Integration
         {
             var tst = Setup(null);
 
-            tst._doNotSendEmail = true;
+            tst._sendEmail = false;
 
             var ret = tst.Post(new DtoOnboarding
             {
@@ -117,7 +117,7 @@ namespace Integration
         {
             var tst = Setup(null);
 
-            tst._doNotSendEmail = true;
+            tst._sendEmail = false;
 
             var ret = tst.Post(new DtoOnboarding
             {
@@ -150,7 +150,7 @@ namespace Integration
                 stPassword = "rodrigo"
             });
 
-            tst._doNotSendEmail = true;
+            tst._sendEmail = false;
 
             var ret = tst.Post(new DtoOnboarding
             {
@@ -162,6 +162,39 @@ namespace Integration
             });
 
             if (!ret.ToString().Contains("BadRequest"))
+                Assert.Fail();
+        }
+
+        [TestMethod]
+        public void UserExists_but_not_tokenized()
+        {
+            var tst = Setup(new User
+            {
+                id = 1,
+                bActive = true,
+                bAdmin = false,
+                bTokenized = false,
+                dtCreation = DateTime.Now,
+                stSocialID = "90511603053",
+                stToken = "",
+                dtLastLogin = DateTime.Now,
+                stEmail = "rodrigo.groff@gmail.com_xxxx",
+                stName = "rodrigo",
+                stPassword = "rodrigo"
+            });
+
+            tst._sendEmail = false;
+
+            var ret = tst.Post(new DtoOnboarding
+            {
+                _language = "0",
+                sEmail = "rodrigo.groff@gmail.com",
+                sID = "90511603053",
+                sName = "rodrigo",
+                sPass = "rodrigo"
+            });
+
+            if (ret.ToString().Contains("BadRequest"))
                 Assert.Fail();
         }
     }

@@ -17,7 +17,7 @@ namespace UnitTesting
             var repo = new FakeRepo_User();
             var srv = new SrvResendTokenV1(repo)
             {
-                _doNotSendEmail = true
+                _sendEmail = false
             };
 
             if (!srv.Exec(network, new DtoResendToken
@@ -39,7 +39,7 @@ namespace UnitTesting
             var repo = new FakeRepo_User();
             var srv = new SrvResendTokenV1(repo)
             {
-                _doNotSendEmail = true
+                _sendEmail = true
             };
 
             if (srv.Exec(network, new DtoResendToken
@@ -61,7 +61,7 @@ namespace UnitTesting
             var repo = new FakeRepo_User();
             var srv = new SrvResendTokenV1(repo)
             {
-                _doNotSendEmail = true
+                _sendEmail = true
             };
 
             if (srv.Exec(network, new DtoResendToken

@@ -22,7 +22,7 @@ namespace Api.Master.Controllers
         {
             var repo = new DapperUserRepository();
             var srv = new SrvPasswordRecoveryV1(repo) {
-                _doNotSendEmail = this._doNotSendEmail
+                _sendEmail = this._sendEmail
             };
 
             if (!srv.Exec(network, obj))

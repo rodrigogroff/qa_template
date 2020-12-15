@@ -1,6 +1,11 @@
+
 import { MultiLanguage } from "../language";
-import NumberField from "@app/Components/Fields/Number";
+
+import InputNumberField from "@app/Components/Fields/Number";
+
 import Popup from "@app/Components/Modals/Popup";
+import PopupConfirm from "@app/Components/Modals/PopupConfirm";
+
 import { buildTable2TD, BaseLoader } from "@app/Components/Images/BaseLoader";
 
 export default class {
@@ -9,6 +14,9 @@ export default class {
       tokenID: "tokenID",
       btnNext: "btnNext",
       btnPrev: "btnPrev",
+      timerID: "timerID",
+      _mdl_confID: "_mdl_confID",
+      _mdl_btn_confID: "_mdl_btn_confID",
     };
   }
 
@@ -22,41 +30,32 @@ export default class {
     var placeholder = MultiLanguage(27);
     var info = MultiLanguage(28);
     var title = "Token";
+    var resendToken = MultiLanguage(33);
 
     return `<div style="width:296px;" class="form-row-group-dark">
+                    ${Popup.getHtml()} 
+                    ${PopupConfirm.getHtml(elements._mdl_confID, elements._mdl_btn_confID, resendToken)}
                     <div style='min-height:355px'>
                     <table><tr><td><h3><b>${registerMsg}</b></h3></td><td width='20px'></td><td><h4 style='color:#009E96'>${stepMsg} 3/4</h4></td></tr></table>
                         <div class="form-row-group" align="left" id='registerIdForm'>
                             <br>    
                             <span style='padding-left:20px'><b>${title}</b></span>
                             <br>
-                            <label for='${
-                              elements.tokenID
-                            }'><p style='padding-left:20px'>${info}</p></label>
+                            <label for='${elements.tokenID}'><p style='padding-left:20px'>${info}</p></label>
                             <br>
-                            ${NumberField.getHtml(
-                              elements.tokenID,
-                              placeholder
-                            )}
+                            ${InputNumberField.getHtml(elements.tokenID, placeholder)}
                             <br>
+                            <div style='padding-left:20px' align='center'><p id='${elements.timerID}'/></div>
                         </div>
                         <br>
                     </div>
                     <div>
                         <table width='100%'>
                             <tr>
-                                <td><a id="${
-                                  elements.btnPrev
-                                }" class="button circle block green">${prevMsg}</a></td>
+                                <td><a id="${elements.btnPrev}" class="button circle block green">${prevMsg}</a></td>
                                 <td width='20px'></td>
-                                <td><a id="${
-                                  elements.btnNext
-                                }" class="button circle block green">
-                                        ${buildTable2TD(
-                                          nextMsg,
-                                          BaseLoader(),
-                                          elements.btnNext
-                                        )}
+                                <td><a id="${elements.btnNext}" class="button circle block green">
+                                        ${buildTable2TD(nextMsg, BaseLoader(), elements.btnNext)}
                                     </a>
                                 </td>
                             </tr>
@@ -64,7 +63,7 @@ export default class {
                     </div>
                     <br>
                     <br>
-                </div>${Popup.getHtml()}`;
+                </div>`;
   }
 
   static maskUp() {
@@ -74,7 +73,7 @@ export default class {
 
   static validate(_params) {
     var elements = this.elements();
-    return NumberField.validate(
+    return InputNumberField.validate(
       elements.tokenID,
       _params,
       MultiLanguage(5),

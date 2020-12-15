@@ -21,41 +21,27 @@ export default class {
     var registerMsg = MultiLanguage(3);
     var nextMsg = MultiLanguage(16);
     var stepMsg = MultiLanguage(17);
-    var placeholderID = MultiLanguage(18);
     var placeholderID_label = MultiLanguage(19);
-    var placeholderName = MultiLanguage(20);
     var placeholderName_label = MultiLanguage(21);
 
     return `<div style="width:296px;" class="form-row-group-dark"><br>
                     <div style='min-height:355px'>                        
-                        <table><tr><td width='120px'><label for="languageSel">${language}</label></td><td width='50%'>${LanguageSelect.getHtml(
-      new AppLanguage().availableLanguages
-    )}</td></tr></table>
-                        <table><tr><td><h3><b>${registerMsg}</b></h3></td><td width='20px'></td><td><h4 style='color:#009E96'>${stepMsg} 1/4</h4></td></tr></table>
+                        <table><tr><td width='120px'><label for="languageSel">${language}</label></td><td width='50%'>${LanguageSelect.getHtml(new AppLanguage().availableLanguages)}</td></tr></table>
+                        <table><tr><td><h3>${registerMsg}</h3></td><td width='20px'></td><td><h4 style='color:#009E96'>${stepMsg} 1/4</h4></td></tr></table>
                         <br>
                         <div class="form-row-group" align="left" id='registerIdForm'>                            
-                            <label for='${
-                              elements.socialID
-                            }' style='padding-left:20px'><b>${placeholderID_label}</b></label>
+                            <label for='${elements.socialID}' style='padding-left:20px'><b>${placeholderID_label}</b></label>
                             <br>
                             ${StringText.getHtml(elements.socialID, "")}
                             <br>
-                            <label for='${
-                              elements.nameID
-                            }' style='padding-left:20px'><b>${placeholderName_label}</b></label>
+                            <label for='${elements.nameID}' style='padding-left:20px'><b>${placeholderName_label}</b></label>
                             <br>
                             ${StringText.getHtml(elements.nameID, "")}
-                            <br>
+                            <br>                            
                         </div>                        
                     </div>
-                    <div align='center' id="${
-                      elements.btnNext
-                    }" class="button circle block green">
-                        ${buildTable2TD(
-                          nextMsg,
-                          BaseLoader(),
-                          elements.btnNext
-                        )}
+                    <div align='center' id="${elements.btnNext}" class="button circle block green">
+                        ${buildTable2TD(nextMsg, BaseLoader(), elements.btnNext)}
                     </div>
                     <br>
                     <br>                    

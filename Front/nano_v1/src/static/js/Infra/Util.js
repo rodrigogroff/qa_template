@@ -13,7 +13,7 @@ export function getLocation() {
   indexPos++;
   if (indexPos >= lstNodes.length) indexPos = 0;
   sessionStorage.setItem(srvTag, indexPos)
-  return lstNodes [indexPos];
+  return lstNodes[indexPos];
 }
 
 export function SetLanguageHTMLSelect() {
@@ -177,6 +177,12 @@ export function displaySystemPopup(_title, _text) {
   $("#popUpSystemText").text(_text);
 }
 
+export function displaySystemPopupConfirm(mdlID, _title, _text) {
+  fadeIn($("#popUpSystemConfirm_" + mdlID)[0], 50);
+  $("#popUpSystemTitle").text(_title);
+  $("#popUpSystemText").text(_text);
+}
+
 export function imageChange(id, img) {
   $(id).attr("src", "src/static/img/" + img);
 }
@@ -289,11 +295,11 @@ export function getTokenPortal(location, parameters) {
     if (parameters !== null) _params = "?" + parameters;
     fetch(
       ApiLocation.api_host +
-        ":" +
-        ApiLocation.api_port +
-        "/api/" +
-        location +
-        _params,
+      ":" +
+      ApiLocation.api_port +
+      "/api/" +
+      location +
+      _params,
       {
         method: "GET",
         headers: {

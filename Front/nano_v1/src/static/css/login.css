@@ -1,4 +1,3 @@
-
 a {
 	color: lightskyblue;
 	text-decoration: none;
@@ -43,7 +42,7 @@ body {
 	font-size: 14px;
 	color: #4476a8;
 	line-height: 1.1;
-	font-weight: 500;
+	font-weight: 200;
 	box-sizing: border-box;
 	-webkit-font-smoothing: antialiased;
 }
@@ -340,6 +339,8 @@ select.form-element {
 .button.block {
 	display: block;
 	width: 100%;
+	height: 42px;
+	max-height: 42px;
 }
 
 .button:hover,
@@ -414,12 +415,15 @@ select.form-element {
 	body {
 		font-size: 16px;
 	}
+
 	header {
 		padding: 10px 20px;
 	}
+
 	section.container {
 		padding: 0 20px;
 	}
+
 	nav.menu {
 		width: 300px;
 	}
@@ -442,6 +446,7 @@ select.form-element {
 		-webkit-transform: rotate(0deg);
 		transform: rotate(0deg);
 	}
+
 	100% {
 		-webkit-transform: rotate(359deg);
 		transform: rotate(359deg);
@@ -453,6 +458,7 @@ select.form-element {
 		-webkit-transform: rotate(0deg);
 		transform: rotate(0deg);
 	}
+
 	100% {
 		-webkit-transform: rotate(359deg);
 		transform: rotate(359deg);
@@ -463,6 +469,7 @@ select.form-element {
 	0% {
 		opacity: 1
 	}
+
 	100% {
 		opacity: 0
 	}
@@ -573,4 +580,3 @@ select.form-element {
 .ldio-hqohp5x0gi div {
 	box-sizing: content-box;
 }
-

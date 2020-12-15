@@ -54,15 +54,21 @@ namespace Master.Service
                 {
                     var user = repository.GetUserBySocial(db, obj.sID);
 
+                    if (user == null)
+                        return true;
+
                     if (user != null)
                     {
-                        Error = new DtoServiceError
+                        if (user.bTokenized == true)
                         {
-                            message = getLanguage(obj._language, 1),
-                            debugInfo = "[1]"
-                        };
+                            Error = new DtoServiceError
+                            {
+                                message = getLanguage(obj._language, 1),
+                                debugInfo = "[1]"
+                            };
 
-                        return false;
+                            return false;
+                        }
                     }                    
                 }
     

@@ -74,5 +74,33 @@ namespace Integration
             if (!ret.ToString().Contains("BadRequest"))
                 Assert.Fail();
         }
+
+        [TestMethod]
+        public void UserExists_not_tokenized()
+        {
+            var tst = Setup(new User
+            {
+                id = 1,
+                bActive = true,
+                bAdmin = false,
+                bTokenized = false,
+                dtCreation = DateTime.Now,
+                stSocialID = "90511603053",
+                stToken = "",
+                dtLastLogin = DateTime.Now,
+                stEmail = "rodrigo.groff@gmail.com",
+                stName = "rodrigo",
+                stPassword = "rodrigo"
+            });
+
+            var ret = tst.Post(new DtoCheckNewSocial_ID
+            {
+                sID = "90511603053",
+                _language = "0",
+            });
+
+            if (ret.ToString().Contains("BadRequest"))
+                Assert.Fail();
+        }
     }
 }

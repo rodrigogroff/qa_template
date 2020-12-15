@@ -39,6 +39,8 @@ export class AppLanguage {
           "Please inform a valid registered email to receive your last password" /*30*/,
           "Congratulations!" /*31*/,
           "Your registration is complete, please login with the button below." /*32*/,
+          "Resend Token" /*33*/,
+          "Your Token has expired. Please use the button below to send the token again." /*34*/,
         ],
       },
       // spanish (1)
@@ -77,6 +79,8 @@ export class AppLanguage {
           "Por favor, informe un correo electrónico registrado válido para recibir su última contraseña" /*30*/,
           "¡Felicitaciones!" /*31*/,
           "Su registro está completo, inicie sesión con el botón de abajo." /*32*/,
+          "Reenviar Token" /*33*/,
+          "Tu Token ha caducado. Utilice el botón de abajo para enviar el token nuevamente." /*34*/,
         ],
       },
       // ptBr (2)
@@ -115,6 +119,8 @@ export class AppLanguage {
           "Por favor, informe um email cadastrado válido para receber sua última senha" /*30*/,
           "Parabéns!" /*31*/,
           "Seu cadastro está completo, faça o login com o botão abaixo." /*32*/,
+          "Re-enviar Token" /*33*/,
+          "Seu Token expirou.Use o botão abaixo para enviar o token novamente." /*34*/,
         ],
       },
     ];
