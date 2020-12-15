@@ -87,9 +87,7 @@ namespace Master.Service
                         return false;
                     }
 
-                    SendEmail ( email, 
-                                getLanguage(obj._language, 2),
-                                getLanguage(obj._language, 3) + user.stPassword);
+                    SendEmail ( email, getLanguage(obj._language, 2), getLanguage(obj._language, 3) + user.stPassword);
                 }
     
                 return true;

@@ -78,6 +78,10 @@ namespace Master.Service
 
                         return false;
                     }
+
+                    user.bTokenized = true;
+
+                    repository.UpdateUser(db, user);
                 }
     
                 return true;

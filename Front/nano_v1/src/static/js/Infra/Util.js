@@ -172,15 +172,15 @@ export function displaySystemPopup(_title, _text) {
   var btn = sessionStorage.getItem("myBtn");
   $("#loading").hide();
   if (btn != undefined) $(btn).addClass("green");
-  fadeIn($("#popUpSystem")[0], 50);
+  fadeIn($("#popUpSystem")[0], 60);
   $("#popUpSystemTitle").text(_title);
   $("#popUpSystemText").text(_text);
 }
 
 export function displaySystemPopupConfirm(mdlID, _title, _text) {
-  fadeIn($("#popUpSystemConfirm_" + mdlID)[0], 50);
-  $("#popUpSystemTitle").text(_title);
-  $("#popUpSystemText").text(_text);
+  fadeIn($("#popUpSystemConfirm_" + mdlID)[0], 60);
+  $("#popUpSystemConfTitle").text(_title);
+  $("#popUpSystemConfText").text(_text);
 }
 
 export function imageChange(id, img) {
