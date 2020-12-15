@@ -36,8 +36,7 @@ export default class {
                     <table><tr><td><h3>${registerMsg}</h3></td><td width='20px'></td><td><h4 style='color:#009E96'>${stepMsg} 3/4</h4></td></tr></table>
                         <div class="form-row-group" align="left" id='registerIdForm'>
                             <br>    
-                            <span style='padding-left:20px'><b>${title}</b></span>
-                            <br>
+                            <h4 style='padding-left:20px'>${title}</h4></span>                            
                             <label for='${elements.tokenID}'><p style='padding-left:20px'>${info}</p></label>
                             <br>
                             ${InputNumberField.getHtml(elements.tokenID, placeholder)}

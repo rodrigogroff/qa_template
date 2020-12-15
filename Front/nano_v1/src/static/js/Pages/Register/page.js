@@ -10,6 +10,7 @@ import {
   DtoCheckNewSocial_ID,
   DtoOnboarding,
   DtoCheckToken,
+  DtoResendToken,
 } from "@app/Infra/Endpoints";
 
 import {
@@ -126,7 +127,7 @@ export default class {
           switch (click_id) {
             case elements.btnPrev: GetNewHTML(GetPageTags().form2); break;
             case elements.btnNext: next_form3_Click(); break;
-            case elements._mdl_btn_confID: run_onboarding(); break;
+            case elements._mdl_btn_confID: $("#" + elements._mdl_btn_confID).hide(); resendToken(); break;
           }
           break;
         default: break;
@@ -136,12 +137,15 @@ export default class {
     function GetCurrentView() {
       return sessionStorage.getItem(GetPageTags().currentView);
     }
+
     function PushState(newState) {
       sessionStorage.setItem(GetPageTags().currentView, newState);
     }
+
     function GetCurrentPageData() {
       return JSON.parse(localStorage.getItem("currentPageData"));
     }
+
     function SavePageData(newPageData) {
       localStorage.setItem("currentPageData", JSON.stringify(newPageData));
     }
@@ -211,10 +215,7 @@ export default class {
     function next_form2_Click() {
       if (IsLoading()) return;
       if (!Form2.validate({ focus: false, msg: true, fields: null })) return;
-      run_onboarding();
-    }
 
-    function run_onboarding() {
       var pageData = GetCurrentPageData();
       var elements = Form2.elements();
 
@@ -256,6 +257,24 @@ export default class {
     function endTime() {
       var elements = Form3.elements();
       displaySystemPopupConfirm(elements._mdl_confID, MultiLanguage(5), MultiLanguage(34));
+    }
+
+    function resendToken() {
+      var pageData = GetCurrentPageData();
+
+      var formData = DtoResendToken(
+        pageData.socialID,
+        getCurrentLanguage()
+      );
+
+      postPublicPortal(Endpoints().resendToken, formData)
+        .then((resp) => {
+          if (resp.ok == true) next_form2_flow();
+          else displaySystemPopup(MultiLanguage(5), resp.msg);
+        })
+        .catch((resp) => {
+          displaySystemPopup(MultiLanguage(5), resp.msg);
+        });
     }
 
     // -------------------------------------------------------------------------
