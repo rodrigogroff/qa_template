@@ -10,10 +10,7 @@ namespace Api.Master.Controllers
 {
     public partial class CtrlOnboarding : MasterController
     {
-        public CtrlOnboarding(IOptions<LocalNetwork> _network) : base(_network)
-        {
-
-        }
+        public CtrlOnboarding(IOptions<LocalNetwork> _network) : base(_network) { }
 
         [AllowAnonymous]
         [HttpPost]
@@ -26,10 +23,7 @@ namespace Api.Master.Controllers
             if (!srv.Exec(network, obj))
                 return BadRequest(srv.Error);
 
-            return Ok(new
-            {
-
-            });
+            return Ok(new { st_MasterVersion });
         }
     }
 }

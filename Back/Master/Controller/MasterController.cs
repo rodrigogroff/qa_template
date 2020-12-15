@@ -19,6 +19,8 @@ namespace Api.Master.Controllers
         public LocalNetwork network;
         public bool _sendEmail = true;
 
+        public string st_MasterVersion = "01.0001";
+
         public MasterController(IOptions<LocalNetwork> _network)
         {
             if (_network != null)

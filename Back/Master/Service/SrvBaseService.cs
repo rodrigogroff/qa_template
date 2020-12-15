@@ -5,14 +5,13 @@ using System.IO;
 using System.Net.Mail;
 using System.Security.Cryptography;
 using Npgsql;
-using System.Net.Mail;
 using System.Text;
 
 namespace Master.Service
 {
     public class SrvBaseService 
     {
-        public bool _sendEmail = false;
+        public bool _sendEmail = true;
 
         public DtoServiceError Error;        
 

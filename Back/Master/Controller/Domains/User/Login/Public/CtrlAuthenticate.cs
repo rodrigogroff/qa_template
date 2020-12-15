@@ -11,10 +11,7 @@ namespace Api.Master.Controllers
 {
     public partial class CtrlAuthenticate : MasterController
     {
-        public CtrlAuthenticate(IOptions<LocalNetwork> _network) : base(_network)
-        {
-            
-        }
+        public CtrlAuthenticate(IOptions<LocalNetwork> _network) : base(_network) { }
 
         [AllowAnonymous]
         [HttpPost]
@@ -33,8 +30,8 @@ namespace Api.Master.Controllers
             return Ok( new 
             {
                 token,
-                user = auth,                
-                tst =  "1!"
+                user = auth,       
+                st_MasterVersion
             });
         }
     }
