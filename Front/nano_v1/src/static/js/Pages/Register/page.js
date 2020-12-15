@@ -126,6 +126,7 @@ export default class {
           switch (click_id) {
             case elements.btnPrev: GetNewHTML(GetPageTags().form2); break;
             case elements.btnNext: next_form3_Click(); break;
+            case elements._mdl_btn_confID: run_onboarding(); break;
           }
           break;
         default: break;
@@ -210,7 +211,10 @@ export default class {
     function next_form2_Click() {
       if (IsLoading()) return;
       if (!Form2.validate({ focus: false, msg: true, fields: null })) return;
+      run_onboarding();
+    }
 
+    function run_onboarding() {
       var pageData = GetCurrentPageData();
       var elements = Form2.elements();
 

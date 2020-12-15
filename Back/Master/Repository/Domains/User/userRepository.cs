@@ -65,7 +65,7 @@ namespace Master.Repository
                 cmd.Parameters.AddWithValue("stPassword", ((object)usr.stPassword) ?? DBNull.Value);
                 cmd.Parameters.AddWithValue("dtLastLogin", ((object)usr.dtLastLogin) ?? DBNull.Value);
                 cmd.Parameters.AddWithValue("dtCreation", ((object)usr.dtCreation) ?? DBNull.Value);
-                cmd.Parameters.AddWithValue("dtCreation", ((object)usr.dtTokenExpires) ?? DBNull.Value);
+                cmd.Parameters.AddWithValue("dtTokenExpires", ((object)usr.dtTokenExpires) ?? DBNull.Value);
                 cmd.Parameters.AddWithValue("stToken", ((object)usr.stToken) ?? DBNull.Value);
 
                 cmd.Parameters.AddWithValue("id", usr.id);
