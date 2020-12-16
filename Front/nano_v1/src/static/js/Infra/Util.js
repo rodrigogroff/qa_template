@@ -29,6 +29,10 @@ export function setToStorage(tag, val) {
 }
 
 export function mobileCheck() {
+ 
+  return window.innerWidth < 900
+
+  /*
   let check = false;
   (function (a) {
     if (
@@ -42,6 +46,7 @@ export function mobileCheck() {
       check = true;
   })(navigator.userAgent || navigator.vendor || window.opera);
   return check;
+  */
 }
 
 export function CheckPopUpCloseClick(e) {

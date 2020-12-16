@@ -1,5 +1,5 @@
 import { MultiLanguage, AppLanguage } from "../language";
-
+import ImgLoader from "@app/Components/Images/ImageLoader";
 import EmailField from "@app/Components/Fields/Email";
 import PasswordField from "@app/Components/Fields/Password";
 import CheckBoxField from "@app/Components/Fields/CheckBox";
@@ -38,7 +38,7 @@ export default class MyForm {
 
   static htmlMobile() {
     var elements = this.elements();
-
+    var _langs = new AppLanguage().availableLanguages;
     var checkMsg = MultiLanguage(11);
     var forgotMsg = MultiLanguage(0);
     var loginMsg = MultiLanguage(1);
@@ -50,70 +50,39 @@ export default class MyForm {
     var title = MultiLanguage(1);
     var language = MultiLanguage(10);
 
-    return `<div style="width:296px" class="form-row-group-dark"><br>                
-                    ${buildTable2TDEqual(
-                      "<label for='languageSel'>" + language + "</label>",
-                      LanguageSelect.getHtml(
-                        new AppLanguage().availableLanguages
-                      )
-                    )}
+    return `
+    ${Popup.getHtml()}
+    <div style="width:296px" class="form-row-group-dark"><br>                
+                    ${buildTable2TDEqual("<label for='languageSel'>" + language + "</label>", LanguageSelect.getHtml(_langs))}
                     <div class="form-row txt-center" style='padding-top:8px;padding-bottom:18px'>
-                        ${buildTable2TDEqual(
-                          "<h4>" + title + "</h4>",
-                          ncadMsg +
-                            " <a href='/register'>" +
-                            cadHereMsg +
-                            "</a>"
-                        )}
+                        ${buildTable2TDEqual("<h4>" + title + "</h4>", ncadMsg + " <a href='/register'>" + cadHereMsg + "</a>")}
                     </div>
                     <div class="form-row-group" align="left">
-                        <label for='${
-                          elements.formMail
-                        }' style='padding-left:20px'>${placeholderEmail}</label>
+                        <label for='${elements.formMail}' style='padding-left:20px'>${placeholderEmail}</label>
                         ${EmailField.getHtml(elements.formMail, "")}
                         <br>
-                        <label for='${
-                          elements.formPass
-                        }' style='padding-left:20px'>${placeholderPass}</label>
-                        ${PasswordField.getHtml(
-                          elements.formPass,
-                          "",
-                          placeholderPass_Title
-                        )}
+                        <label for='${elements.formPass}' style='padding-left:20px'>${placeholderPass}</label>
+                          ${PasswordField.getHtml(elements.formPass, "", placeholderPass_Title)}
                         <br>
-                        ${CheckBoxField.getHtml(
-                          elements.keepLogged,
-                          checkMsg,
-                          "checked"
-                        )}
+                        ${CheckBoxField.getHtml(elements.keepLogged, checkMsg, "checked")}
                     </div>
                     <br>
                     <div class="form-row">
-                        <div align='center' id="${
-                          elements.btnSubmit
-                        }" class="button circle block green">
-                            ${buildTable2TD(
-                              loginMsg,
-                              BaseLoader(),
-                              elements.btnSubmit
-                            )}
+                        <div align='center' id="${elements.btnSubmit}" class="button circle block green">
+                            ${buildTable2TD(loginMsg, BaseLoader(), elements.btnSubmit)}
                         </div>
                     </div>
                     <br>
                     <div class="form-row txt-center">
-                        <a href="/forgot"> ${Label.getHtml(
-                          "span",
-                          "fp",
-                          forgotMsg
-                        )} </a>                
+                      <a href="/forgot"> ${Label.getHtml("span", "fp", forgotMsg)} </a>
                     </div>
                     <br>         
-                </div>${Popup.getHtml()}`;
+                </div>`;
   }
 
   static htmlDesktop() {
     var elements = this.elements();
-
+    var _langs = new AppLanguage().availableLanguages;
     var checkMsg = MultiLanguage(11);
     var forgotMsg = MultiLanguage(0);
     var loginMsg = MultiLanguage(1);
@@ -122,68 +91,47 @@ export default class MyForm {
     var placeholderEmail = MultiLanguage(23);
     var placeholderPass = MultiLanguage(7);
     var placeholderPass_Title = MultiLanguage(8);
-    var title = MultiLanguage(1);
-    var language = MultiLanguage(10);
+    var title = MultiLanguage(1);    
 
-    return `<div style="width:296px" class="form-row-group-dark"><br>                
-                    ${buildTable2TDEqual(
-                      "<label for='languageSel'>" + language + "</label>",
-                      LanguageSelect.getHtml(
-                        new AppLanguage().availableLanguages
-                      )
-                    )}
-                    <div class="form-row txt-center" style='padding-top:8px;padding-bottom:18px'>
-                        ${buildTable2TDEqual(
-                          "<h4>" + title + "</h4>",
-                          ncadMsg +
-                            " <a href='/register'>" +
-                            cadHereMsg +
-                            "</a>"
-                        )}
-                    </div>
-                    <div class="form-row-group" align="left">
-                        <label for='${
-                          elements.formMail
-                        }' style='padding-left:20px'>${placeholderEmail}</label>
-                        ${EmailField.getHtml(elements.formMail, "")}
-                        <br>
-                        <label for='${
-                          elements.formPass
-                        }' style='padding-left:20px'>${placeholderPass}</label>
-                        ${PasswordField.getHtml(
-                          elements.formPass,
-                          "",
-                          placeholderPass_Title
-                        )}
-                        <br>
-                        ${CheckBoxField.getHtml(
-                          elements.keepLogged,
-                          checkMsg,
-                          "checked"
-                        )}
-                    </div>
-                    <br>
-                    <div class="form-row">
-                        <div align='center' id="${
-                          elements.btnSubmit
-                        }" class="button circle block green">
-                            ${buildTable2TD(
-                              loginMsg,
-                              BaseLoader(),
-                              elements.btnSubmit
-                            )}
-                        </div>
-                    </div>
-                    <br>
-                    <div class="form-row txt-center">
-                        <a href="/forgot"> ${Label.getHtml(
-                          "span",
-                          "fp",
-                          forgotMsg
-                        )} </a>                
-                    </div>
-                    <br>
-                </div>${Popup.getHtml()}`;
+    return `${Popup.getHtml()}
+          <div style="width:1150px" class="form-row-group-dark"><br><br><br>
+            <table width='100%'><tr>
+            <td width='90px'></td>
+            <td valign='top' width='550px'> 
+              ${ImgLoader.getDirectHtml("logoSplash", "src/static/img/splash.png", "max-width:100%;max-height:100%;")}
+            </td>
+            <td width='90px'></td>
+            <td valign='top' width='490px'>
+              <table><tr><td width='150px'><h2>${title}</h2></td><td>${ncadMsg} <a href='/register' style='padding-left:30px'>${cadHereMsg}</a></td></tr></table>
+              <div align='left'>
+                ${LanguageSelect.getHtml(_langs)}                
+              </div>
+              <br>
+              <div class="form-row-group" align="left">
+                  <label for='${elements.formMail}' style='padding-left:20px'>${placeholderEmail}</label>
+                  ${EmailField.getHtml(elements.formMail, "")}
+                  <br>
+                  <label for='${elements.formPass}' style='padding-left:20px'>${placeholderPass}</label>
+                    ${PasswordField.getHtml(elements.formPass, "", placeholderPass_Title)}
+                  <br>
+                  ${CheckBoxField.getHtml(elements.keepLogged, checkMsg, "checked")}
+              </div>
+              <br>
+              <div class="form-row">
+                  <div align='center' id="${elements.btnSubmit}" class="button circle block green">
+                      ${buildTable2TD(loginMsg, BaseLoader(), elements.btnSubmit)}
+                  </div>
+              </div>
+              <br>
+              <div class="form-row txt-center">
+                <a href="/forgot"> ${Label.getHtml("span", "fp", forgotMsg)} </a>
+              </div>
+              <br>
+            </td>
+            <td width='90px'></td>
+            </tr></table>
+          <br>
+          </div>`;
   }
 
   static validate(_params) {
