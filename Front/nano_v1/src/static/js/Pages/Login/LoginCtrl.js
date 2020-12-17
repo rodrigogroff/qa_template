@@ -23,10 +23,13 @@ import {
   displaySystemPopup,
 } from "@app/Infra/Util";
 
-import MyForm from "./Forms/Login";
+import MyForm from "./Views/Login";
 import PasswordField from "@app/Components/Fields/Password";
 
+window.addEventListener("resize", (e) => { updateHTML("mainFormApp", MyForm.getHtml()); });
+
 export default class LoginPage {
+
   getHtml() {
     return MyForm.getHtml();
   }

@@ -11,11 +11,7 @@ import {
 import Label from "@app/Components/Misc/Label";
 import Popup from "@app/Components/Modals/Popup";
 import LanguageSelect from "@app/Components/Selects/LanguageSelect";
-import { updateHTML, mobileCheck } from "@app/Infra/Util";
-
-window.addEventListener("resize", (e) => {
-  MyForm.update();
-});
+import { mobileCheck } from "@app/Infra/Util";
 
 export default class MyForm {
   static elements() {
@@ -27,13 +23,9 @@ export default class MyForm {
     };
   }
 
-  static update() {
-    updateHTML("mainFormApp", MyForm.getHtml());
-  }
-
   static getHtml() {
     if (mobileCheck()) return this.htmlMobile();
-    else return this.htmlDesktop();
+    return this.htmlDesktop();
   }
 
   static htmlMobile() {

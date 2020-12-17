@@ -14,10 +14,13 @@ import {
   CheckPopUpCloseClick,
   displaySystemPopup,
   mockServer,
+  updateHTML,
   displaySystemSuccess,
 } from "@app/Infra/Util";
 
-import MyForm from "./Forms/forgot";
+import MyForm from "./Views/forgot";
+
+window.addEventListener("resize", (e) => { updateHTML("mainFormApp", MyForm.getHtml()); });
 
 export default class {
   constructor(params) {

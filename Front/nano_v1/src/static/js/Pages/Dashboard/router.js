@@ -1,6 +1,6 @@
 import "@app/Infra/global.script";
 import Menu from "@app/Components/Menu";
-import MyPage from "./page";
+import Controller from "./DashboardCtrl";
 
 class AppRouter {
   constructor(url) {
@@ -20,9 +20,7 @@ class AppRouter {
                     <img src='src/static/img/topLogo.png' alt='Nano Logo' style='margin-top:-7px;margin-left:-30px' />
                         <div class="navi-menu-button"><em></em><em></em><em></em></div>
                     </header>
-                    <main><section class="container"><br><div id='mainFormApp'>${new MyPage(
-                      params
-                    ).getHtml()}</div></section></main>
+                    <main><section class="container"><br><div id='mainFormApp'>${new Controller(params).getHtml()}</div></section></main>
                 </div></div>`;
   }
 }

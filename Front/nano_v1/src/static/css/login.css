@@ -309,11 +309,6 @@ select.form-element {
 	border-bottom: solid 1px #EEE;
 }
 
-select.form-element {
-	padding: 0;
-	margin-left: -4px;
-}
-
 .form-element:focus {
 	border-color: #2DD67B;
 }

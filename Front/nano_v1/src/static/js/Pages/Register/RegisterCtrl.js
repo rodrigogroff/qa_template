@@ -30,10 +30,10 @@ import { timerFuncDec, timerFuncCleanup } from "@app/Components/Misc/ClockTimer"
 
 import PasswordField from "@app/Components/Fields/Password";
 
-import Form1 from "./Forms/register_1";
-import Form2 from "./Forms/register_2";
-import Form3 from "./Forms/register_3";
-import Form4 from "./Forms/register_4";
+import Form1 from "./Views/register_1";
+import Form2 from "./Views/register_2";
+import Form3 from "./Views/register_3";
+import Form4 from "./Views/register_4";
 
 function GetPageTags() {
   return {
@@ -54,7 +54,20 @@ function GetPageData() {
   };
 }
 
-export default class {
+window.addEventListener("resize", (e) => {   
+  var tags = GetPageTags();
+  var curView = sessionStorage.getItem(GetPageTags().currentView); 
+  console.log('curView ' + curView)
+  switch (curView) {
+    case tags.form1: updateHTML("currentForm", Form1.getHtml()); Form1.maskUp(); break;
+    case tags.form2: updateHTML("currentForm", Form2.getHtml()); break;
+    case tags.form3: updateHTML("currentForm", Form3.getHtml()); Form3.maskUp(); break;
+    case tags.form4: updateHTML("currentForm", Form4.getHtml()); break;
+  }
+});
+
+export default class Controller{
+  
   getHtml() {
     return "<div id='currentForm'></div>";
   }
@@ -67,7 +80,9 @@ export default class {
 
     $(document).ready(function () {
       var tags = GetPageTags();
+      console.log('forçando form1')
       GetNewHTML(tags.form1);
+      console.log('forçando form1 pronto')
       SetLanguageHTMLSelect();
       SavePageData(GetPageData());
       $("#" + Form1.elements().socialID)[0].focus();

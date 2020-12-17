@@ -1,6 +1,6 @@
 export default class {
   static getHtml() {
-    return `<div class="popup-overlay" id="popUpSystem">
+    return `<div class="popup-overlay" id="popUpSystem" align='center'>
                 <div class="popup-container" style='margin-top:50px;max-width:350px'>
                     <div class="popup-header">
                         <h3 style='padding-left:32px' class="popup-title" id='popUpSystemTitle'></h3>
