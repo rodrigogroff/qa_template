@@ -30,10 +30,10 @@ import { timerFuncDec, timerFuncCleanup } from "@app/Components/Misc/ClockTimer"
 
 import PasswordField from "@app/Components/Fields/Password";
 
-import Form1 from "./Views/register_1";
-import Form2 from "./Views/register_2";
-import Form3 from "./Views/register_3";
-import Form4 from "./Views/register_4";
+import Form1 from "./Views/ViewRegister_1";
+import Form2 from "./Views/ViewRegister_2";
+import Form3 from "./Views/ViewRegister_3";
+import Form4 from "./Views/ViewRegister_4";
 
 function GetPageTags() {
   return {

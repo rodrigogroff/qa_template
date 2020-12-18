@@ -9,8 +9,10 @@ const shouldCompress = (req, res) => {
 };
 app.use(compression({ filter: shouldCompress, threshold: 0 }));
 app.use("/src", express.static(path.resolve(__dirname, "src")));
+
 app.get("/", (req, res) => { res.sendFile(path.resolve(__dirname, "./index_dashboard.html")); });
 app.get("/login", (req, res) => { res.sendFile(path.resolve(__dirname, "./index_login.html")); });
 app.get("/register", (req, res) => { res.sendFile(path.resolve(__dirname, "./index_register.html")); });
 app.get("/forgot", (req, res) => { res.sendFile(path.resolve(__dirname, "./index_forgot.html")); });
+
 app.listen(80, () => console.log("Server running..."));

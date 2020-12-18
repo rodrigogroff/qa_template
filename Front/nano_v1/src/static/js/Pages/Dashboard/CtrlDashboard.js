@@ -1,8 +1,12 @@
-import { MultiLanguage } from "./language";
-import { getFromSession, setToSession, fadeIn, fadeOut } from "@app/Infra/Util";
-import ImgLoader from "@app/Components/Images/ImageLoader";
 
-import Splash from "./splash";
+import { 
+  getFromSession, 
+  setToSession, 
+  fadeIn, 
+  fadeOut,
+} from "@app/Infra/Util";
+
+import ViewSplash from "./Views/ViewSplash";
 
 export default class {
   constructor(params) {
@@ -16,7 +20,7 @@ export default class {
       if (getFromSession("splashed") !== "true") {
         setToSession("splashed", "true");
         $("body").css("background-color", "#FFFFFF");
-        $("#splash").html(Splash.getHtml());
+        $("#splash").html(ViewSplash.getHtml());
         $("#appHeader").css("display", "none");
         setTimeout(function () {
           fadeIn($("#splash")[0], 60);

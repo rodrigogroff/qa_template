@@ -18,7 +18,7 @@ import {
   displaySystemSuccess,
 } from "@app/Infra/Util";
 
-import MyForm from "./Views/forgot";
+import MyForm from "./Views/ViewForgot";
 
 window.addEventListener("resize", (e) => { updateHTML("mainFormApp", MyForm.getHtml()); });
 

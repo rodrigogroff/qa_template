@@ -1,6 +1,6 @@
 import "@app/Infra/global.script.js";
 import Menu from "@app/Components/Menu";
-import Controller from "./RegisterCtrl";
+import Controller from "./CtrlRegister";
 
 class AppRouter {
   constructor(url) {

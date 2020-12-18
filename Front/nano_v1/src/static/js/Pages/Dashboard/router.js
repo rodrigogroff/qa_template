@@ -1,6 +1,6 @@
 import "@app/Infra/global.script";
 import Menu from "@app/Components/Menu";
-import Controller from "./DashboardCtrl";
+import Controller from "./CtrlDashboard";
 
 class AppRouter {
   constructor(url) {

@@ -24,7 +24,7 @@ import {
   displaySystemPopup,
 } from "@app/Infra/Util";
 
-import MyForm from "./Views/Login";
+import MyForm from "./Views/ViewLogin";
 import PasswordField from "@app/Components/Fields/Password";
 
 window.addEventListener("resize", (e) => { updateHTML("mainFormApp", MyForm.getHtml()); });
