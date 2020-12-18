@@ -72,12 +72,12 @@ export default class {
     return `<div class="nav-menu" align='left'><nav class="menu">                
 				<div class="nav-container">
 					<ul class="main-menu">
-                        <li class="active">
-                            <a href="javascript:void(0);">${itens.pnlControl}</a>
-                            <ul>
+            <li class="active">
+              <a href="javascript:void(0);">${itens.pnlControl}</a>
+              <ul>
 								<li><a href="/" style='cursor:pointer'>${itens.dashboardItem}</a></li>								
 							</ul>
-                        </li>
+            </li>
 						<li>
 							<a href="javascript:void(0);">${itens.userItem}</a>
 							<ul>
@@ -85,7 +85,11 @@ export default class {
 								<li><a href="/register" style='cursor:pointer'>${itens.registerItem}</a></li>
 							</ul>
 						</li>						
-					</ul>
+          </ul>
+          <br>
+          <p style='color:white;padding-left:20px'>v1.5.1 R16</p>
+          <br>
+          <br>
 				</div>
 			</nav>
 		</div>`;
