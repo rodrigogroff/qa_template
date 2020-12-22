@@ -1,0 +1,12 @@
+C:\Users\rodri\source\repos\qa_template\MassSetup\bin\Release\MassSetup.exe.config
+C:\Users\rodri\source\repos\qa_template\MassSetup\bin\Release\MassSetup.exe
+C:\Users\rodri\source\repos\qa_template\MassSetup\bin\Release\MassSetup.pdb
+C:\Users\rodri\source\repos\qa_template\MassSetup\bin\Release\Newtonsoft.Json.dll
+C:\Users\rodri\source\repos\qa_template\MassSetup\bin\Release\RestSharp.dll
+C:\Users\rodri\source\repos\qa_template\MassSetup\bin\Release\Newtonsoft.Json.xml
+C:\Users\rodri\source\repos\qa_template\MassSetup\bin\Release\RestSharp.xml
+C:\Users\rodri\source\repos\qa_template\MassSetup\obj\Release\MassSetup.csprojAssemblyReference.cache
+C:\Users\rodri\source\repos\qa_template\MassSetup\obj\Release\MassSetup.csproj.CoreCompileInputs.cache
+C:\Users\rodri\source\repos\qa_template\MassSetup\obj\Release\MassSetup.csproj.CopyComplete
+C:\Users\rodri\source\repos\qa_template\MassSetup\obj\Release\MassSetup.exe
+C:\Users\rodri\source\repos\qa_template\MassSetup\obj\Release\MassSetup.pdb

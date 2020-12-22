@@ -1,17 +1,6 @@
 
-import {
-  getCurrentLanguage,
-  MultiLanguageChange,
-  MultiLanguage,
-} from "./language";
-
-import {
-  Endpoints,
-  DtoCheckNewSocial_ID,
-  DtoOnboarding,
-  DtoCheckToken,
-  DtoResendToken,
-} from "@app/Infra/Endpoints";
+import { getCurrentLanguage, MultiLanguageChange, MultiLanguage, } from "./language";
+import { Endpoints, DtoCheckNewSocial_ID, DtoOnboarding, DtoCheckToken, DtoResendToken, } from "@app/Infra/Endpoints";
 
 import {
   SetLanguageHTMLSelect,

@@ -1,9 +1,5 @@
-import {
-  getCurrentLanguage,
-  MultiLanguage,
-  MultiLanguageChange,
-} from "./language";
 
+import { getCurrentLanguage, MultiLanguage, MultiLanguageChange, } from "./language";
 import { Endpoints, DtoPasswordRecovery } from "@app/Infra/Endpoints";
 
 import {
@@ -35,12 +31,8 @@ export default class {
 
     $(document).on("keydown", function (e) {
       switch (e.keyCode) {
-        case 9:
-          MyForm.validate({ focus: false, msg: false, fields: null });
-          break;
-        case 13:
-          btnSubmit_Click();
-          break;
+        case 9: MyForm.validate({ focus: false, msg: false, fields: null }); break;
+        case 13: btnSubmit_Click(); break;
       }
     });
 

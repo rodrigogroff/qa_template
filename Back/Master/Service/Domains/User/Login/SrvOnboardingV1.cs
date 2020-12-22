@@ -1,5 +1,6 @@
 ﻿using Entities.Api;
 using Entities.Api.Login;
+using Master.Infra.Entity.Database;
 using Master.Repository;
 using System;
 using System.Collections.Generic;
@@ -9,7 +10,7 @@ namespace Master.Service
 {
     public class SrvML_Onboarding : SrvBaseService
     {
-        #region - code - 
+        #region - multi-language - 
 
         List<List<string>> multi_language = new List<List<string>>
         {
@@ -108,7 +109,11 @@ namespace Master.Service
 
                 using (var db = GetConnection(network))
                 {
-                    var user = repository.GetUserByEmail(db, dto.sEmail.ToLower().Trim());
+                    #if MASSLOAD
+                    User user = null;
+                    #else
+
+                    User user = repository.GetUserByEmail(db, dto.sEmail.ToLower().Trim());
 
                     if (user != null)
                     {
@@ -121,7 +126,7 @@ namespace Master.Service
                             };
 
                             return false;
-                        }                                                    
+                        }
                     }
 
                     user = repository.GetUserBySocial(db, dto.sID);
@@ -140,17 +145,23 @@ namespace Master.Service
                         }
                     }
 
-                    var rnd = new Random();
+                    #endif
+
+#if MASSLOAD
+                    var token = "1234";
+#else
                     var token = "";
+                    var rnd = new Random();
                     for (int i = 0; i < 4; i++)
                     {
                         token += rnd.Next(0, 9);
                         Thread.Sleep(33);
                     }
+#endif
 
                     if (user == null)
                     {
-                        repository.InsertUser(db, new Infra.Entity.Database.User
+                        user = new User
                         {
                             bAdmin = false,
                             bActive = true,
@@ -162,8 +173,19 @@ namespace Master.Service
                             stPassword = dto.sPass,
                             stSocialID = dto.sID,
                             stToken = token,
-                            dtTokenExpires = DateTime.Now.AddSeconds(3*60),
-                        });
+                            dtTokenExpires = DateTime.Now.AddSeconds(3 * 60),
+                        };
+
+                        #if MASSLOAD
+                        
+                        user.bTokenized = true;
+                        _sendEmail = false;                        
+                        
+                        #endif
+
+                        user.compile();
+
+                        repository.InsertUser(db, user);
                     }
                     else
                     {

@@ -9,7 +9,7 @@ namespace Master.Service
 {
     public class SrvML_Authenticate : SrvBaseService
     {
-        #region - code - 
+        #region - multi-language - 
 
         List<List<string>> multi_language = new List<List<string>>
         {
@@ -49,8 +49,6 @@ namespace Master.Service
 
         bool ValidadeRequest(DtoLoginInformation dto)
         {
-            #region - code - 
-
             if (string.IsNullOrEmpty(dto.email))
             {
                 Error = new DtoServiceError { message = getLanguage(dto._language, 1) };
@@ -64,8 +62,6 @@ namespace Master.Service
             }
 
             return true;
-
-            #endregion
         }
 
         public bool Exec ( LocalNetwork network, DtoLoginInformation dto, ref DtoAuthenticatedUser loggedUser ) 

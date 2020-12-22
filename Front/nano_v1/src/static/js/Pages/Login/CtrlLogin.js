@@ -1,14 +1,6 @@
-import {
-  getCurrentLanguage,
-  MultiLanguage,
-  MultiLanguageChange,
-} from "./language";
 
-import {
-  Endpoints,
-  DtoLoginInformation,
-  DtoAuthenticatedUser,
-} from "@app/Infra/Endpoints";
+import { getCurrentLanguage, MultiLanguage, MultiLanguageChange } from "./language";
+import { Endpoints, DtoLoginInformation, DtoAuthenticatedUser } from "@app/Infra/Endpoints";
 
 import {
   postPublicPortal,
@@ -49,12 +41,8 @@ export default class LoginPage {
 
     $(document).on("keydown", function (e) {
       switch (e.keyCode) {
-        case 9:
-          MyForm.validate({ focus: false, msg: false, fields: null });
-          break;
-        case 13:
-          btnSubmit_Click();
-          break;
+        case 9: MyForm.validate({ focus: false, msg: false, fields: null }); break;
+        case 13: btnSubmit_Click(); break;
       }
     });
 
@@ -69,12 +57,8 @@ export default class LoginPage {
       if (CheckPopUpCloseClick(e)) return;
       var elements = MyForm.elements();
       switch ($(e.target).attr("id")) {
-        case elements.btnSubmit:
-          btnSubmit_Click();
-          break;
-        case "seePass" + elements.formPass:
-          PasswordField.btnSeePassword(elements.formPass);
-          break;
+        case elements.btnSubmit: btnSubmit_Click(); break;
+        case "seePass" + elements.formPass: PasswordField.btnSeePassword(elements.formPass); break;
       }
     });
 

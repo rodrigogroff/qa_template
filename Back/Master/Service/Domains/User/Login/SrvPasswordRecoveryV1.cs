@@ -8,7 +8,7 @@ namespace Master.Service
 {
     public class SrvML_PasswordRecovery : SrvBaseService
     {
-        #region - code - 
+        #region - multi-language - 
 
         List<List<string>> multi_language = new List<List<string>>
         {

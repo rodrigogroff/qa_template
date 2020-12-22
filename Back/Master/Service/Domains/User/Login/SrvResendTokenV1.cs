@@ -9,7 +9,7 @@ namespace Master.Service
 {
     public class SrvML_ResendToken : SrvBaseService
     {
-        #region - code - 
+        #region - multi-language - 
 
         List<List<string>> multi_language = new List<List<string>>
         {

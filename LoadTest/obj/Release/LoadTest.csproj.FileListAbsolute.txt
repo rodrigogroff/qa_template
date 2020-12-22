@@ -1,0 +1,12 @@
+C:\Users\rodri\source\repos\qa_template\LoadTest\bin\Release\LoadTest.exe.config
+C:\Users\rodri\source\repos\qa_template\LoadTest\bin\Release\LoadTest.exe
+C:\Users\rodri\source\repos\qa_template\LoadTest\bin\Release\LoadTest.pdb
+C:\Users\rodri\source\repos\qa_template\LoadTest\bin\Release\Newtonsoft.Json.dll
+C:\Users\rodri\source\repos\qa_template\LoadTest\bin\Release\RestSharp.dll
+C:\Users\rodri\source\repos\qa_template\LoadTest\bin\Release\Newtonsoft.Json.xml
+C:\Users\rodri\source\repos\qa_template\LoadTest\bin\Release\RestSharp.xml
+C:\Users\rodri\source\repos\qa_template\LoadTest\obj\Release\LoadTest.csprojAssemblyReference.cache
+C:\Users\rodri\source\repos\qa_template\LoadTest\obj\Release\LoadTest.csproj.CoreCompileInputs.cache
+C:\Users\rodri\source\repos\qa_template\LoadTest\obj\Release\LoadTest.csproj.CopyComplete
+C:\Users\rodri\source\repos\qa_template\LoadTest\obj\Release\LoadTest.exe
+C:\Users\rodri\source\repos\qa_template\LoadTest\obj\Release\LoadTest.pdb
