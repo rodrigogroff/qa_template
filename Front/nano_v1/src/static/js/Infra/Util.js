@@ -199,10 +199,6 @@ export function mockServer(val) {
   sessionStorage.setItem("mockServer", val);
 }
 
-export function isAuthenticated() {
-  return localStorage.getItem("token");
-}
-
 export function isFieldContentValid(val, maxLength, fieldType, minlength) {
   if (fieldType == undefined) fieldType = "text";
   if (maxLength == undefined) maxLength = 20;
@@ -246,16 +242,26 @@ export function isFieldContentValid(val, maxLength, fieldType, minlength) {
   return true;
 }
 
-export function cleanLogin() {
-  localStorage.setItem("token", null);
-  localStorage.setItem("email", null);
-  localStorage.setItem("user_name", null);
+export function logout() {
+  localStorage.removeItem("token");
+  localStorage.removeItem("email");
+  localStorage.removeItem("user_name");
 }
 
 export function loginOk(resp) {
   localStorage.setItem("token", resp.token);
-  localStorage.setItem("email", resp.email);
-  localStorage.setItem("user_name", resp.userName);
+  localStorage.setItem("email", resp.user.email);
+  localStorage.setItem("user_name", resp.user.login);
+}
+
+export function isAuthenticated() {
+  var ret  = localStorage.getItem("token");
+  if (ret == null || ret == undefined)
+    return null;
+  return {
+    email: localStorage.getItem("email"),
+    user_name: localStorage.getItem("user_name"),
+  }
 }
 
 export function getTokenPortal(location, parameters) {
