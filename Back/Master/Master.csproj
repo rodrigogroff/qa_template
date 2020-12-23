@@ -40,10 +40,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Controller\Domains\User\Login\Tokenized\lojista\**" />
-    <Content Remove="Controller\Domains\User\Login\Tokenized\lojista\**" />
-    <EmbeddedResource Remove="Controller\Domains\User\Login\Tokenized\lojista\**" />
-    <None Remove="Controller\Domains\User\Login\Tokenized\lojista\**" />
+    <Compile Remove="Controller\Domains\User\Tokenized\lojista\**" />
+    <Content Remove="Controller\Domains\User\Tokenized\lojista\**" />
+    <EmbeddedResource Remove="Controller\Domains\User\Tokenized\lojista\**" />
+    <None Remove="Controller\Domains\User\Tokenized\lojista\**" />
   </ItemGroup>
 
   <ItemGroup>

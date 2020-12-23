@@ -11,6 +11,9 @@ namespace Integration
         public string[] truncateTables =
         {
             "User",
+            "Product",
+            "ProductCatalog",
+            "ProductCatalogLink"
         };
 
         public void SetupDatabase()
@@ -20,7 +23,7 @@ namespace Integration
             db.ExecuteScript(baseDb);
 
             foreach (var item in truncateTables)
-                db.ExecuteScript("truncate table \"" + item + "\"");
+                db.ExecuteScript("truncate table \"" + item + "\" RESTART IDENTITY");
 
             db.Close();
         }

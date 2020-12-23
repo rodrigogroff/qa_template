@@ -26,8 +26,8 @@ ALTER TABLE public."User" ADD COLUMN if not exists "dtLastLogin" timestamp witho
 ALTER TABLE public."User" ADD COLUMN if not exists "dtCreation" timestamp without time zone;
 ALTER TABLE public."User" ADD COLUMN if not exists "dtTokenExpires" timestamp without time zone;
 ALTER TABLE public."User" ADD COLUMN if not exists "stToken" character varying(20);
-CREATE INDEX trigs_email ON public."User" ("nuTrig1_Email", "nuTrig2_Email", "nuTrig3_Email", "nuTrig4_Email", "nuTrig5_Email", "nuTrig6_Email", "nuTrig7_Email", "nuTrig8_Email", "nuTrig9_Email", "nuTrig10_Email");
-CREATE INDEX trigs_sid ON public."User" ("nuTrig1_SocialID", "nuTrig2_SocialID", "nuTrig3_SocialID", "nuTrig4_SocialID");
+CREATE INDEX IF NOT EXISTS trigs_email ON public."User" ("nuTrig1_Email", "nuTrig2_Email", "nuTrig3_Email", "nuTrig4_Email", "nuTrig5_Email", "nuTrig6_Email", "nuTrig7_Email", "nuTrig8_Email", "nuTrig9_Email", "nuTrig10_Email");
+CREATE INDEX IF NOT EXISTS trigs_sid ON public."User" ("nuTrig1_SocialID", "nuTrig2_SocialID", "nuTrig3_SocialID", "nuTrig4_SocialID");
 
 CREATE TABLE IF NOT EXISTS public."Brand" ( id bigserial NOT NULL, PRIMARY KEY (id)) WITH (OIDS = FALSE);
 ALTER TABLE public."Brand" OWNER to postgres;
@@ -104,46 +104,11 @@ ALTER TABLE public."ProductSale" ADD COLUMN if not exists "dtSale" timestamp wit
 CREATE TABLE IF NOT EXISTS public."ProductCatalog" ( id bigserial NOT NULL, PRIMARY KEY (id)) WITH (OIDS = FALSE);
 ALTER TABLE public."ProductCatalog" OWNER to postgres;
 ALTER TABLE public."ProductCatalog" ADD COLUMN if not exists "stTag" character varying(25); -- Livro
-CREATE INDEX tags ON public."ProductCatalog" USING hash ("stTag");
+CREATE INDEX IF NOT EXISTS tags ON public."ProductCatalog" USING hash ("stTag");
 
 CREATE TABLE IF NOT EXISTS public."ProductCatalogLink" ( id bigserial NOT NULL, PRIMARY KEY (id)) WITH (OIDS = FALSE);
 ALTER TABLE public."ProductCatalogLink" OWNER to postgres;
 ALTER TABLE public."ProductCatalogLink" ADD COLUMN if not exists "fkProduct" bigint; -- 1
 ALTER TABLE public."ProductCatalogLink" ADD COLUMN if not exists "fkProductCatalog" bigint; -- 1
-CREATE INDEX fks ON public."ProductCatalogLink" ("fkProduct", "fkProductCatalog" );
-CREATE INDEX prods ON public."ProductCatalogLink" USING hash ("fkProduct");
-
-
-/*
-select * from  public."User" limit 10
-select * from public."User" where "stEmail" = 'vciuymp@loader.com'
-select * from public."User" where "stEmail" = 'vciuymp@loader.com' 
-and "nuTrig1_Email" = 11899105
-and "nuTrig2_Email" = 117121109
-and "nuTrig3_Email" = 11264108
-and "nuTrig4_Email" = 11197100
-and "nuTrig5_Email" = 10111446
-and "nuTrig6_Email" = 99111109
-and "nuTrig7_Email" = 0
-and "nuTrig8_Email" = 0
-and "nuTrig9_Email" = 0
-and "nuTrig10_Email" = 0
-
--- human abstraction
-select p."id", p."stName" from public."Product" p where p.id in (
-select g."fkProduct" from public."ProductCatalogLink" g where g."fkProductCatalog" in (
-select id from public."ProductCatalog" where "stTag" = 'Livro'))
-
--- less human abstraction
-select p."id", p."stName" from public."Product" p 
-join public."ProductCatalogLink" pcl on pcl."fkProduct" = p."id"
-join public."ProductCatalog" pc on pc."id" = pcl."fkProductCatalog" 
-where pc."stTag" = 'Livro'
-
--- optimization 
-with cat as ( select * from public."ProductCatalog" where "stTag" = 'Livro' )
-select p."id", p."stName" from public."Product" p, cat, public."ProductCatalogLink" pcl 
-where cat."id" = pcl."fkProductCatalog" and pcl."fkProductCatalog" = p.id
-
-
-*/
+CREATE INDEX IF NOT EXISTS fks ON public."ProductCatalogLink" ("fkProduct", "fkProductCatalog" );
+CREATE INDEX IF NOT EXISTS prods ON public."ProductCatalogLink" USING hash ("fkProduct");

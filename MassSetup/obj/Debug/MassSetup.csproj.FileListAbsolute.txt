@@ -5,7 +5,6 @@ C:\Users\rodri\source\repos\qa_template\MassSetup\bin\Debug\Newtonsoft.Json.dll
 C:\Users\rodri\source\repos\qa_template\MassSetup\bin\Debug\RestSharp.dll
 C:\Users\rodri\source\repos\qa_template\MassSetup\bin\Debug\Newtonsoft.Json.xml
 C:\Users\rodri\source\repos\qa_template\MassSetup\bin\Debug\RestSharp.xml
-C:\Users\rodri\source\repos\qa_template\MassSetup\obj\Debug\MassSetup.csprojAssemblyReference.cache
 C:\Users\rodri\source\repos\qa_template\MassSetup\obj\Debug\MassSetup.csproj.CoreCompileInputs.cache
 C:\Users\rodri\source\repos\qa_template\MassSetup\obj\Debug\MassSetup.csproj.CopyComplete
 C:\Users\rodri\source\repos\qa_template\MassSetup\obj\Debug\MassSetup.exe
