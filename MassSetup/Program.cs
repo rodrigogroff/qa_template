@@ -9,10 +9,13 @@ namespace LoadTest
     {
         static void Main(string[] args)
         {
+            PopulateUsers();
+        }
+
+        static void PopulateUsers()
+        {
             long number = 1, top = 8;
-
             var threads = new Thread[top];
-
             var random = new Random();
 
             for (int i = 0; i < top; i++)
