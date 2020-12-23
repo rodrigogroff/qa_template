@@ -46,7 +46,7 @@ namespace Integration
             var ret = tst.Post(new DtoResendToken
             {                
                 sID = "90511603053",                
-                _language = "0",
+                _language = 0,
             });
 
             if (ret.ToString().Contains("BadRequest"))
@@ -66,7 +66,7 @@ namespace Integration
 
             var ret = tst.Post(new DtoResendToken
             {
-                _language = "0",
+                _language = 0,
                 sID = "666",
             });
 

@@ -26,7 +26,7 @@ namespace UnitTesting
                 sID = "102030405060",
                 sName = "One",
                 sPass = "Pass",
-                _language = "0"
+                _language = 0
             }))
                 Assert.Fail();
 

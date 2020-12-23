@@ -43,7 +43,7 @@ namespace Integration
             var ret = tst.Post(new DtoCheckNewSocial_ID
             {
                 sID = "6666666666",
-                _language = "0",
+                _language = 0,
             });
 
             if (ret.ToString().Contains("BadRequest"))
@@ -71,7 +71,7 @@ namespace Integration
             var ret = tst.Post(new DtoCheckNewSocial_ID
             {
                 sID = "90511603053",
-                _language = "0",
+                _language = 0,
             });
 
             if (!ret.ToString().Contains("BadRequest"))
@@ -99,7 +99,7 @@ namespace Integration
             var ret = tst.Post(new DtoCheckNewSocial_ID
             {
                 sID = "90511603053",
-                _language = "0",
+                _language = 0,
             });
 
             if (ret.ToString().Contains("BadRequest"))

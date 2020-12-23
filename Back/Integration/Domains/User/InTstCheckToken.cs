@@ -48,7 +48,7 @@ namespace Integration
             {                
                 sToken = "102030",
                 sID = "90511603053",
-                _language = "0",
+                _language = 0,
             });
 
             if (ret.ToString().Contains("BadRequest"))
@@ -68,9 +68,9 @@ namespace Integration
 
             var ret = tst.Post(new DtoCheckToken
             {
-                _language = "0",
                 sToken = "999999",
                 sID = "90511603053",
+                _language = 0,
             });
 
             if (!ret.ToString().Contains("BadRequest"))
@@ -90,7 +90,7 @@ namespace Integration
 
             var ret = tst.Post(new DtoCheckToken
             {
-                _language = "0",
+                _language = 0,
                 sToken = "999999",
                 sID = "90511603053",
             });

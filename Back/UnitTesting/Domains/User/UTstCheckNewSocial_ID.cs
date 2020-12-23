@@ -21,7 +21,7 @@ namespace UnitTesting
             if (!srv.Exec(network, new DtoCheckNewSocial_ID
             {
                 sID = "9999",
-                _language = "0"
+                _language = 0
             }))
                 Assert.Fail();
             
@@ -41,7 +41,7 @@ namespace UnitTesting
             if (srv.Exec(network, new DtoCheckNewSocial_ID
             {
                 sID = "1",
-                _language = "0"
+                _language = 0
             }))
                 Assert.Fail();
 

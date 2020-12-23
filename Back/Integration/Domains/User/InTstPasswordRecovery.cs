@@ -57,7 +57,7 @@ namespace Integration
             var ret = tst.Post(new DtoPasswordRecovery
             {
                 email = "rodrigo.groff@gmail.com",
-                _language = "0",
+                _language = 0,
             });
 
             if (ret.ToString().Contains("BadRequest"))
@@ -74,7 +74,7 @@ namespace Integration
 
             var ret = tst.Post(new DtoPasswordRecovery
             {
-                _language = "0",
+                _language = 0,
                 email = "rodrigo.groff@gmail.com.brrrrrrrrrr",                
             });
 

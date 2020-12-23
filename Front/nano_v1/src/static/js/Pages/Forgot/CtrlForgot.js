@@ -40,7 +40,7 @@ export default class {
       if (MultiLanguageChange($("#languageSel").val()))
         setTimeout(() => {
           location.href = "/forgot";
-        }, 100);
+        }, 10);
     });
 
     document.body.addEventListener("click", (e) => {

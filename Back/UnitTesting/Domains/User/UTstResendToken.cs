@@ -23,7 +23,7 @@ namespace UnitTesting
             if (!srv.Exec(network, new DtoResendToken
             {
                 sID = "1",
-                _language = "0"
+                _language = 0
             }))
                 Assert.Fail();
             
@@ -45,7 +45,7 @@ namespace UnitTesting
             if (srv.Exec(network, new DtoResendToken
             {
                 sID = "2",
-                _language = "0"
+                _language = 0
             }))
                 Assert.Fail();
 
@@ -67,7 +67,7 @@ namespace UnitTesting
             if (srv.Exec(network, new DtoResendToken
             {
                 sID = null,
-                _language = "0"
+                _language = 0
             }))
                 Assert.Fail();
 

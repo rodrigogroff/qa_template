@@ -115,7 +115,7 @@ export class AppLanguage {
 }
 
 export function getCurrentLanguage() {
-  return localStorage.getItem("appLanguage");
+  return parseInt(localStorage.getItem("appLanguage"));
 }
 
 export function MultiLanguageChange(index) {

@@ -3,6 +3,6 @@ namespace Entities.Api
 {
     public class DtoBase
     {
-        public string _language { get; set; }        
+        public int? _language { get; set; }        
     }
 }

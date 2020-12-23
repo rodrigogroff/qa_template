@@ -47,7 +47,7 @@ namespace Integration
                 nuCategory = null,
                 page = 0,
                 pageSize = 10,
-                _language = "0",
+                _language = 0,
             });
 
             if (ret.ToString().Contains("BadRequest"))
@@ -74,7 +74,7 @@ namespace Integration
                 nuCategory = null,
                 page = null,
                 pageSize = null,
-                _language = "0",
+                _language = 0,
             });
 
             if (!ret.ToString().Contains("BadRequest"))

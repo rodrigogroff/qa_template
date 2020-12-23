@@ -46,7 +46,7 @@ namespace Integration
                 sID = "90511603053",
                 sName = "rodrigo",
                 sPass = "rodrigo",
-                _language = "0",
+                _language = 0,
             });
 
             if (ret.ToString().Contains("BadRequest"))
@@ -66,7 +66,7 @@ namespace Integration
                 sID = "90511603053",
                 sName = "rodrigo",
                 sPass = "rodrigo",
-                _language = "0",
+                _language = 0,
             });
 
             if (!ret.ToString().Contains("BadRequest"))
@@ -86,7 +86,7 @@ namespace Integration
                 //sID = "90511603053",
                 sName = "rodrigo",
                 sPass = "rodrigo",
-                _language = "0",
+                _language = 0,
             });
 
             if (!ret.ToString().Contains("BadRequest"))
@@ -106,7 +106,7 @@ namespace Integration
                 sID = "90511603053",
                 //sName = "rodrigo",
                 sPass = "rodrigo",
-                _language = "0",
+                _language = 0,
             });
 
             if (!ret.ToString().Contains("BadRequest"))
@@ -126,7 +126,7 @@ namespace Integration
                 sID = "90511603053",
                 sName = "rodrigo",
                 //sPass = "rodrigo",
-                _language = "0",
+                _language = 0,
             });
 
             if (!ret.ToString().Contains("BadRequest"))
@@ -159,7 +159,7 @@ namespace Integration
                 sID = "90511603053",
                 sName = "rodrigo",
                 sPass = "rodrigo",
-                _language = "0",
+                _language = 0,
             });
 
             if (!ret.ToString().Contains("BadRequest"))
@@ -188,7 +188,7 @@ namespace Integration
 
             var ret = tst.Post(new DtoOnboarding
             {
-                _language = "0",
+                _language = 0,
                 sEmail = "rodrigo.groff@gmail.com",
                 sID = "90511603053",
                 sName = "rodrigo",

@@ -27,7 +27,7 @@ namespace UnitTesting
                 sTag = "Livro",
                 page = 1,
                 pageSize = 10,
-                _language = "0"
+                _language = 0
             }, ref ret))
                 Assert.Fail();
 

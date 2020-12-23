@@ -29,12 +29,12 @@ namespace Master.Service
             },
         };
 
-        public string getLanguage(string indexLanguage, int messageIndex)
+        public string getLanguage(int? indexLanguage, int messageIndex)
         {
-            if (string.IsNullOrEmpty(indexLanguage))
-                indexLanguage = "0";
+            if (indexLanguage == null)
+                indexLanguage = 0;
 
-            return multi_language[Convert.ToInt32(indexLanguage)][messageIndex];
+            return multi_language[(int)indexLanguage][messageIndex];
         }
 
         #endregion
@@ -65,7 +65,19 @@ namespace Master.Service
                 return false;
             }
 
+            if (dto.page < 0 )
+            {
+                Error = new DtoServiceError { message = getLanguage(dto._language, 1) };
+                return false;
+            }
+
             if (dto.pageSize == null)
+            {
+                Error = new DtoServiceError { message = getLanguage(dto._language, 1) };
+                return false;
+            }
+
+            if (dto.pageSize <= 20)
             {
                 Error = new DtoServiceError { message = getLanguage(dto._language, 1) };
                 return false;
@@ -113,7 +125,7 @@ namespace Master.Service
             {
                 Error = new DtoServiceError
                 {
-                    message = getLanguage("0", 0),
+                    message = getLanguage(0, 0),
                     debugInfo = ex.ToString()
                 };
 

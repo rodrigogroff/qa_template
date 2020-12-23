@@ -46,9 +46,12 @@ namespace Master.Service
             },
         };
 
-        public string getLanguage(string indexLanguage, int messageIndex)
+        public string getLanguage(int? indexLanguage, int messageIndex)
         {
-            return multi_language[Convert.ToInt32(indexLanguage)][messageIndex];
+            if (indexLanguage == null)
+                indexLanguage = 0;
+
+            return multi_language[(int)indexLanguage][messageIndex];
         }
 
         #endregion

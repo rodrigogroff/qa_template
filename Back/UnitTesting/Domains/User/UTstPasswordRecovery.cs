@@ -23,7 +23,7 @@ namespace UnitTesting
             if (!srv.Exec(network, new DtoPasswordRecovery
             {
                 email = new UTstUserBase().Base_Ut_user.stEmail,
-                _language = "0"
+                _language = 0
             }))
                 Assert.Fail();
             
@@ -45,7 +45,7 @@ namespace UnitTesting
             if (srv.Exec(network, new DtoPasswordRecovery
             {
                 email = "test1@gmail.com.brrrrrrrrrrrrrrrrrrr",
-                _language = "0"
+                _language = 0
             }))
                 Assert.Fail();
 
