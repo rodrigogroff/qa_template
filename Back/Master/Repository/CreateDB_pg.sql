@@ -51,7 +51,7 @@ ALTER TABLE public."State" ADD COLUMN if not exists "fkCountry" bigint;
 
 CREATE TABLE IF NOT EXISTS public."Product" ( id bigserial NOT NULL, PRIMARY KEY (id)) WITH (OIDS = FALSE);
 ALTER TABLE public."Product" OWNER to postgres;
-ALTER TABLE public."Product" ADD COLUMN if not exists "stName" character varying(200); -- Livro - Nova vida que nasce da vida - 2º Conteúdo formativo para pais e padrinhos
+ALTER TABLE public."Product" ADD COLUMN if not exists "stName" character varying(200);
 ALTER TABLE public."Product" ADD COLUMN if not exists "fkCountry" bigint;
 ALTER TABLE public."Product" ADD COLUMN if not exists "fkBrand" bigint;
 ALTER TABLE public."Product" ADD COLUMN if not exists "fkCategory" bigint;

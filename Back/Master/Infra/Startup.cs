@@ -1,4 +1,6 @@
-﻿using System.Text;
+﻿using System.IO;
+using System.Text;
+using Dapper;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -6,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
+using Npgsql;
 
 namespace Master
 {  
@@ -58,6 +61,14 @@ namespace Master
 
             app.UseAuthentication();
             app.UseMvc();
+
+            //sql migrations
+            var connStr = Configuration["localNetwork:sqlServer"];
+            var baseDb = File.ReadAllText(@"Repository\CreateDB_pg.sql");
+            var db = new NpgsqlConnection(connStr);
+            db.Open();
+            db.Query(baseDb);
+            db.Close();
         }
     }
 }

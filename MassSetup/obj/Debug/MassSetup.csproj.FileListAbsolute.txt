@@ -9,3 +9,4 @@ C:\Users\rodri\source\repos\qa_template\MassSetup\obj\Debug\MassSetup.csproj.Cor
 C:\Users\rodri\source\repos\qa_template\MassSetup\obj\Debug\MassSetup.csproj.CopyComplete
 C:\Users\rodri\source\repos\qa_template\MassSetup\obj\Debug\MassSetup.exe
 C:\Users\rodri\source\repos\qa_template\MassSetup\obj\Debug\MassSetup.pdb
+C:\Users\rodri\source\repos\qa_template\MassSetup\obj\Debug\MassSetup.csprojAssemblyReference.cache
