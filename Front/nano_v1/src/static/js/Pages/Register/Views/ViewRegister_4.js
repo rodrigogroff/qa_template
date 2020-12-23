@@ -1,4 +1,7 @@
 import { MultiLanguage } from "../language";
+import { mobileCheck } from "@app/Infra/Util";
+import ImgLoader from "@app/Components/Images/ImageLoader";
+
 
 export default class {
   static elements() {

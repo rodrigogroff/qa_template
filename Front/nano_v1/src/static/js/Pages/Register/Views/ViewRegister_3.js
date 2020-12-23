@@ -6,6 +6,10 @@ import Popup from "@app/Components/Modals/Popup";
 import PopupConfirm from "@app/Components/Modals/PopupConfirm";
 import { buildTable2TD, BaseLoader } from "@app/Components/Images/BaseLoader";
 
+import { mobileCheck } from "@app/Infra/Util";
+import ImgLoader from "@app/Components/Images/ImageLoader";
+
+
 export default class {
   static elements() {
     return {
