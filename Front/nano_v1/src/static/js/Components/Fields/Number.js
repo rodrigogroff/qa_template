@@ -13,7 +13,7 @@ export default class {
                                 <img src='src/static/img/bolt.png' alt='Number Field' id='fail${id}' style='padding-top:6px' />
                             </td>
                             <td>
-                                <input id="${id}" type="text" class="form-element" placeholder="${placeholderMsg}">
+                                <input id="${id}" type="text" type="tel" pattern="[0-9]*" inputmode="numeric" class="form-element" placeholder="${placeholderMsg}">
                             </td>
                         </tr>
                     </table>

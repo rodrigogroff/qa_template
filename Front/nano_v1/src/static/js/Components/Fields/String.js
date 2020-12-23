@@ -5,7 +5,12 @@ import {
 } from "@app/Infra/Util";
 
 export default class {
-  static getHtml(id, placeholderMsg) {
+  static getHtml(id, placeholderMsg, isNumeric) {
+
+    var numeric = '';
+    if (isNumeric == true)
+      numeric = 'type="tel" pattern="[0-9]*" inputmode="numeric"';
+
     return `<div class="form-row no-padding">
                 <table width='100%'>
                     <tr>
@@ -13,7 +18,7 @@ export default class {
                             <img src='src/static/img/bolt.png' alt='INput Field' id='fail${id}' style='padding-top:6px' />
                         </td>
                         <td>
-                            <input id="${id}" type="text" class="form-element" placeholder="${placeholderMsg}">
+                            <input id="${id}" type="text" class="form-element" ${numeric} placeholder="${placeholderMsg}">
                         </td>
                     </tr>
                 </table>

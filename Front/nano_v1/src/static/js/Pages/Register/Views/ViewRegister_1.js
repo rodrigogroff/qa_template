@@ -80,7 +80,7 @@ export default class Register_1 {
                     <div class="form-row-group" align="left" id='registerIdForm'>
                         <label for='${elements.socialID}' style='padding-left:20px'><b>${placeholderID_label}</b></label>
                         <br>
-                        ${StringText.getHtml(elements.socialID, "")}
+                        ${StringText.getHtml(elements.socialID, "", true)}
                         <br>
                         <label for='${elements.nameID}' style='padding-left:20px'><b>${placeholderName_label}</b></label>
                         <br>

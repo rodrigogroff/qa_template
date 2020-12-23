@@ -87,7 +87,7 @@ export default class {
 						</li>						
           </ul>
           <br>
-          <p style='color:white;padding-left:20px'>v1.5.1 R24</p>
+          <p style='color:white;padding-left:20px'>v1.5.1 R25</p>
           <br>
           <br>
 				</div>
