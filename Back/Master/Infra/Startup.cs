@@ -25,6 +25,7 @@ namespace Master
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.Configure<LocalNetwork>(Configuration.GetSection("localNetwork"));
+            services.AddResponseCompression();
 
             var key = Encoding.ASCII.GetBytes(LocalNetwork.Secret);
             services.AddAuthentication(x =>
@@ -59,6 +60,7 @@ namespace Master
                 .AllowAnyMethod()
                 .AllowAnyHeader());
 
+            app.UseResponseCompression();
             app.UseAuthentication();
             app.UseMvc();
 

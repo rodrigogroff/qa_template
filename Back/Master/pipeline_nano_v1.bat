@@ -17,7 +17,7 @@ xcopy "C:\Pipeline\Backend\nano_v1" "C:\inetpub\nanoServer" /E /D /S /I /Q /Y /F
 iisreset /start
 )
 
-timeout /t 10
+timeout /t 5
 
 xcopy "C:\Users\Administrator\source\repos\qa_template\back\back_version.txt" "C:\Pipeline\back_version.txt" /Y
 
@@ -37,5 +37,5 @@ net stop NanoJS
 net start NanoJS
 )
 
-timeout /t 10
+timeout /t 5
 goto loop
