@@ -1,5 +1,6 @@
 import { AppLanguage, MultiLanguage } from "../language";
 import StringText from "@app/Components/Fields/String";
+import NumberField from "@app/Components/Fields/Number";
 import Popup from "@app/Components/Modals/Popup";
 import LanguageSelect from "@app/Components/Selects/LanguageSelect";
 import { buildTable2TD, BaseLoader } from "@app/Components/Images/BaseLoader";
@@ -39,7 +40,7 @@ export default class Register_1 {
                         <div class="form-row-group" align="left" id='registerIdForm'>
                             <label for='${elements.socialID}' style='padding-left:20px'><b>${placeholderID_label}</b></label>
                             <br>
-                            ${StringText.getHtml(elements.socialID, "")}
+                            ${NumberField.getHtml(elements.socialID, "")}
                             <br>
                             <label for='${elements.nameID}' style='padding-left:20px'><b>${placeholderName_label}</b></label>
                             <br>
