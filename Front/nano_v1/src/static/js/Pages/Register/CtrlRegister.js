@@ -45,8 +45,7 @@ function GetPageData() {
 
 window.addEventListener("resize", (e) => {   
   var tags = GetPageTags();
-  var curView = sessionStorage.getItem(GetPageTags().currentView); 
-  console.log('curView ' + curView)
+  var curView = sessionStorage.getItem(GetPageTags().currentView);   
   switch (curView) {
     case tags.form1: updateHTML("currentForm", Form1.getHtml()); Form1.maskUp(); break;
     case tags.form2: updateHTML("currentForm", Form2.getHtml()); break;
@@ -68,10 +67,8 @@ export default class Controller{
     // -------------------------------------------------------------------------
 
     $(document).ready(function () {
-      var tags = GetPageTags();
-      console.log('forçando form1')
-      GetNewHTML(tags.form1);
-      console.log('forçando form1 pronto')
+      var tags = GetPageTags();      
+      GetNewHTML(tags.form1);      
       SetLanguageHTMLSelect();
       SavePageData(GetPageData());
       $("#" + Form1.elements().socialID)[0].focus();
