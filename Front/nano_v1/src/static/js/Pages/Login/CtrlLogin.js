@@ -23,7 +23,6 @@ window.addEventListener("resize", (e) => {
   var curWidth = window.innerWidth;
   var update = false;
   var last = sessionStorage.getItem('res');
-
   if (lastRes != null && lastRes != undefined)
   {
     if (parseInt(lastRes) != curWidth)
@@ -31,10 +30,8 @@ window.addEventListener("resize", (e) => {
   }
   else  
     update = true;
-
   if(update == true)
     updateHTML("mainFormApp", MyForm.getHtml()); 
-
   sessionStorage.setItem('res', curWidth);
 });
 

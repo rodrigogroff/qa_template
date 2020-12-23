@@ -16,7 +16,22 @@ import {
 
 import MyForm from "./Views/ViewForgot";
 
-window.addEventListener("resize", (e) => { updateHTML("mainFormApp", MyForm.getHtml()); });
+window.addEventListener("resize", (e) => { 
+  var curWidth = window.innerWidth;
+  var update = false;
+  var last = sessionStorage.getItem('res');
+  if (lastRes != null && lastRes != undefined)
+  {
+    if (parseInt(lastRes) != curWidth)
+      update = true;
+  }
+  else  
+    update = true;
+  if(update == true)
+    updateHTML("mainFormApp", MyForm.getHtml()); 
+  sessionStorage.setItem('res', curWidth);
+});
+
 
 export default class {
   constructor(params) {

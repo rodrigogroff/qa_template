@@ -43,15 +43,30 @@ function GetPageData() {
   };
 }
 
-window.addEventListener("resize", (e) => {   
-  var tags = GetPageTags();
-  var curView = sessionStorage.getItem(GetPageTags().currentView);   
-  switch (curView) {
-    case tags.form1: updateHTML("currentForm", Form1.getHtml()); Form1.maskUp(); break;
-    case tags.form2: updateHTML("currentForm", Form2.getHtml()); break;
-    case tags.form3: updateHTML("currentForm", Form3.getHtml()); Form3.maskUp(); break;
-    case tags.form4: updateHTML("currentForm", Form4.getHtml()); break;
+window.addEventListener("resize", (e) => { 
+  var curWidth = window.innerWidth;
+  var update = false;
+  var last = sessionStorage.getItem('res');
+  if (lastRes != null && lastRes != undefined)
+  {
+    if (parseInt(lastRes) != curWidth)
+      update = true;
   }
+  else  
+    update = true;
+  if(update == true)
+  {
+    var tags = GetPageTags();
+    var curView = sessionStorage.getItem(GetPageTags().currentView);   
+    switch (curView) {
+      case tags.form1: updateHTML("currentForm", Form1.getHtml()); Form1.maskUp(); break;
+      case tags.form2: updateHTML("currentForm", Form2.getHtml()); break;
+      case tags.form3: updateHTML("currentForm", Form3.getHtml()); Form3.maskUp(); break;
+      case tags.form4: updateHTML("currentForm", Form4.getHtml()); break;
+    }
+  }
+    
+  sessionStorage.setItem('res', curWidth);
 });
 
 export default class Controller{
