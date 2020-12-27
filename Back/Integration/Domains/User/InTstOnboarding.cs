@@ -15,7 +15,7 @@ namespace Integration
         {
             #region - code - 
 
-            var tst = new CtrlOnboarding(null) { network = new Master.LocalNetwork { sqlServer = connStr } };
+            var tst = new CtrlOnboarding(null,null) { network = new Master.LocalNetwork { sqlServer = connStr } };
 
             SetupDatabase();
 

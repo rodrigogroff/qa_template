@@ -26,6 +26,7 @@ namespace Master
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.Configure<LocalNetwork>(Configuration.GetSection("localNetwork"));
             services.AddResponseCompression();
+            services.AddMemoryCache();
 
             var key = Encoding.ASCII.GetBytes(LocalNetwork.Secret);
             services.AddAuthentication(x =>

@@ -7,6 +7,7 @@ using Entities.Api.User;
 using Master;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 
@@ -17,14 +18,18 @@ namespace Api.Master.Controllers
     public partial class MasterController : ControllerBase
     {
         public LocalNetwork network;
+        private IMemoryCache cache;
         public bool _sendEmail = true;
 
         public string st_MasterVersion = "01.0001";
 
-        public MasterController(IOptions<LocalNetwork> _network)
+        public MasterController(IOptions<LocalNetwork> _network, IMemoryCache _cache)
         {
             if (_network != null)
                 this.network = _network.Value;
+
+            if (_cache != null)
+                cache = _cache;
         }
 
         [NonAction]

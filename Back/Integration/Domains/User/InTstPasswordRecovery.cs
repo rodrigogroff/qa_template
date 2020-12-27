@@ -15,7 +15,7 @@ namespace Integration
         {
             #region - code - 
 
-            var tst = new CtrlPasswordRecovery(null) { network = new Master.LocalNetwork { sqlServer = connStr } };
+            var tst = new CtrlPasswordRecovery(null,null) { network = new Master.LocalNetwork { sqlServer = connStr } };
 
             SetupDatabase();
 

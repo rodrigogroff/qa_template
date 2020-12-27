@@ -15,7 +15,7 @@ namespace Integration
         {
             #region - code - 
 
-            var tst = new CtrlCheckNewSocial_ID(null) { network = new Master.LocalNetwork { sqlServer = connStr } };
+            var tst = new CtrlCheckNewSocial_ID(null,null) { network = new Master.LocalNetwork { sqlServer = connStr } };
 
             SetupDatabase();
 

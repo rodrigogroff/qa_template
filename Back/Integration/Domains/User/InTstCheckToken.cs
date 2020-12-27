@@ -15,7 +15,7 @@ namespace Integration
         {
             #region - code - 
 
-            var tst = new CtrlCheckToken(null) { network = new Master.LocalNetwork { sqlServer = connStr } };
+            var tst = new CtrlCheckToken(null,null) { network = new Master.LocalNetwork { sqlServer = connStr } };
 
             SetupDatabase();
 

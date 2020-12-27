@@ -17,7 +17,7 @@ namespace Integration
 
             u.compile();
 
-            var tst = new CtrlAuthenticate(null) { network = new Master.LocalNetwork { sqlServer = connStr } };
+            var tst = new CtrlAuthenticate(null,null) { network = new Master.LocalNetwork { sqlServer = connStr } };
 
             SetupDatabase();
 
