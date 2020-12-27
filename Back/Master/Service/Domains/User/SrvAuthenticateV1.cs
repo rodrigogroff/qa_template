@@ -75,6 +75,8 @@ namespace Master.Service
                 
                 using (var db = GetConnection(network))
                 {
+                    dto.email = dto.email.Trim().ToLower();
+
                     var user = repository.GetUserByEmail(db, dto.email);
 
                     if (user == null)
