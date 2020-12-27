@@ -1,0 +1,17 @@
+C:\Users\rodri\source\repos\qa_template\Back\MasterV2\obj\Release\net5.0\PubTmp\Out\Repository\CreateDB_pg.sql
+C:\Users\rodri\source\repos\qa_template\Back\MasterV2\obj\Release\net5.0\PubTmp\Out\MasterV2.exe
+C:\Users\rodri\source\repos\qa_template\Back\MasterV2\obj\Release\net5.0\PubTmp\Out\appsettings.Development.json
+C:\Users\rodri\source\repos\qa_template\Back\MasterV2\obj\Release\net5.0\PubTmp\Out\appsettings.json
+C:\Users\rodri\source\repos\qa_template\Back\MasterV2\obj\Release\net5.0\PubTmp\Out\MasterV2.dll
+C:\Users\rodri\source\repos\qa_template\Back\MasterV2\obj\Release\net5.0\PubTmp\Out\MasterV2.deps.json
+C:\Users\rodri\source\repos\qa_template\Back\MasterV2\obj\Release\net5.0\PubTmp\Out\MasterV2.runtimeconfig.json
+C:\Users\rodri\source\repos\qa_template\Back\MasterV2\obj\Release\net5.0\PubTmp\Out\MasterV2.pdb
+C:\Users\rodri\source\repos\qa_template\Back\MasterV2\obj\Release\net5.0\PubTmp\Out\Dapper.dll
+C:\Users\rodri\source\repos\qa_template\Back\MasterV2\obj\Release\net5.0\PubTmp\Out\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\rodri\source\repos\qa_template\Back\MasterV2\obj\Release\net5.0\PubTmp\Out\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\rodri\source\repos\qa_template\Back\MasterV2\obj\Release\net5.0\PubTmp\Out\Microsoft.IdentityModel.Logging.dll
+C:\Users\rodri\source\repos\qa_template\Back\MasterV2\obj\Release\net5.0\PubTmp\Out\Microsoft.IdentityModel.Protocols.dll
+C:\Users\rodri\source\repos\qa_template\Back\MasterV2\obj\Release\net5.0\PubTmp\Out\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\rodri\source\repos\qa_template\Back\MasterV2\obj\Release\net5.0\PubTmp\Out\Microsoft.IdentityModel.Tokens.dll
+C:\Users\rodri\source\repos\qa_template\Back\MasterV2\obj\Release\net5.0\PubTmp\Out\Npgsql.dll
+C:\Users\rodri\source\repos\qa_template\Back\MasterV2\obj\Release\net5.0\PubTmp\Out\System.IdentityModel.Tokens.Jwt.dll

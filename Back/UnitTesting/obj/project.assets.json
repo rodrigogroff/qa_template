@@ -2,7 +2,7 @@
   "version": 3,
   "targets": {
     ".NETCoreApp,Version=v3.1": {
-      "ClosedXML/0.95.3": {
+      "ClosedXML/0.95.4": {
         "type": "package",
         "dependencies": {
           "DocumentFormat.OpenXml": "2.7.2",
@@ -890,7 +890,7 @@
           "lib/netstandard2.0/Newtonsoft.Json.dll": {}
         }
       },
-      "Npgsql/5.0.0": {
+      "Npgsql/5.0.1.1": {
         "type": "package",
         "dependencies": {
           "System.Runtime.CompilerServices.Unsafe": "4.6.0"
@@ -2160,11 +2160,11 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v2.2",
         "dependencies": {
-          "ClosedXML": "0.95.3",
+          "ClosedXML": "0.95.4",
           "Dapper": "2.0.78",
           "LinqToExcel": "1.11.0",
           "Newtonsoft.Json": "12.0.3",
-          "Npgsql": "5.0.0"
+          "Npgsql": "5.0.1.1"
         },
         "compile": {
           "bin/placeholder/Master.dll": {}
@@ -2176,14 +2176,14 @@
     }
   },
   "libraries": {
-    "ClosedXML/0.95.3": {
-      "sha512": "Ud8+fHLzZRjtSk7NMxl5krRCXZ5zD92TdfhLEt22YFBkqWD4BI8Vhxir9VDcFCeOD2JVa/hzpkbWqE3TeC84WQ==",
+    "ClosedXML/0.95.4": {
+      "sha512": "YixFPzUJ4Ni2AaW/FbPgzFvdtjIzE/4NKROwI1RqIQHWka7QN9Spt4sHuXaSk9PLmXBkk8newHGW0UWLcLs5GA==",
       "type": "package",
-      "path": "closedxml/0.95.3",
+      "path": "closedxml/0.95.4",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "closedxml.0.95.3.nupkg.sha512",
+        "closedxml.0.95.4.nupkg.sha512",
         "closedxml.nuspec",
         "lib/net40/ClosedXML.dll",
         "lib/net40/ClosedXML.pdb",
@@ -2193,7 +2193,8 @@
         "lib/net46/ClosedXML.xml",
         "lib/netstandard2.0/ClosedXML.dll",
         "lib/netstandard2.0/ClosedXML.pdb",
-        "lib/netstandard2.0/ClosedXML.xml"
+        "lib/netstandard2.0/ClosedXML.xml",
+        "nuget-logo.png"
       ]
     },
     "coverlet.collector/1.2.0": {
@@ -3366,10 +3367,10 @@
         "packageIcon.png"
       ]
     },
-    "Npgsql/5.0.0": {
-      "sha512": "kLhzs5OVkljEO6eTSnhaYxY+Cej1hcS7cOb4gP7gylKc5CMMTfmsGGdUW7Ooj5XjeWgx67h9/bj67XjBBlBPxg==",
+    "Npgsql/5.0.1.1": {
+      "sha512": "vblKEzmyX/RkrC8ykx4yaiEOiURovDSnEw93KkY6nKDRJRLES95OM6hN4aYOoHfwkzPgENSFu1JMbMenoL1k9w==",
       "type": "package",
-      "path": "npgsql/5.0.0",
+      "path": "npgsql/5.0.1.1",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -3381,7 +3382,7 @@
         "lib/netstandard2.0/Npgsql.xml",
         "lib/netstandard2.1/Npgsql.dll",
         "lib/netstandard2.1/Npgsql.xml",
-        "npgsql.5.0.0.nupkg.sha512",
+        "npgsql.5.0.1.1.nupkg.sha512",
         "npgsql.nuspec",
         "postgresql.png"
       ]
