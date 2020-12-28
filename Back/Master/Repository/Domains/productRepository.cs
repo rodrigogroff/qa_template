@@ -13,6 +13,10 @@ namespace Master.Repository
         void InsertProduct(NpgsqlConnection db, Product obj);
         void InsertProductCatalog(NpgsqlConnection db, ProductCatalog obj);
         void InsertProductCatalogLink(NpgsqlConnection db, ProductCatalogLink obj);
+
+        Brand GetBrand(NpgsqlConnection db, long id);
+        Category GetCategory(NpgsqlConnection db, long id);
+        Product GetProduct(NpgsqlConnection db, long id);
     }
 
     public class DapperProductRepository : IDapperProductRepository
@@ -54,6 +58,21 @@ namespace Master.Repository
 
                 cmd.ExecuteNonQuery();
             }
+        }
+
+        Brand IDapperProductRepository.GetBrand(NpgsqlConnection db, long id)
+        {
+            return db.QueryFirstOrDefault<Brand>("select * from \"Brand\" where id = " + id);            
+        }
+
+        Category IDapperProductRepository.GetCategory(NpgsqlConnection db, long id)
+        {
+            return db.QueryFirstOrDefault<Category>("select * from \"Category\" where id = " + id);
+        }
+
+        Product IDapperProductRepository.GetProduct(NpgsqlConnection db, long id)
+        {
+            return db.QueryFirstOrDefault<Product>("select * from \"Product\" where id = " + id);
         }
 
         List<Product> IDapperProductRepository.GetProducts(NpgsqlConnection db, string sTag, long? nuCategory, int page, int pageSize)

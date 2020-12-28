@@ -9,6 +9,21 @@ namespace UnitTesting
     {
         #region - code - 
 
+        public Brand GetBrand(NpgsqlConnection db, long id)
+        {
+            return null;
+        }
+
+        public Category GetCategory(NpgsqlConnection db, long id)
+        {
+            return null;
+        }
+
+        public Product GetProduct(NpgsqlConnection db, long id)
+        {
+            return null;
+        }
+
         #endregion
         public List<Product> GetProducts(NpgsqlConnection db, string sTag, long? nuCategory, int page, int pageSize)
         {

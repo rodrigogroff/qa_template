@@ -1,10 +1,12 @@
 ﻿using Entities.Api;
 using Entities.Api.Product;
+using Master.Infra.Entity.Database;
 using Master.Repository;
 using Microsoft.Extensions.Caching.Memory;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Master.Service
 {
@@ -123,22 +125,111 @@ namespace Master.Service
                                                          (int)request.pageSize );
 
                     ret.totalRecords = lstProd.Count;
-
                     ret.results = new List<DtoProduct>();
+
+                    var threads = new List<int> { 1, 2 };
 
                     for (int i = 0; i < lstProd.Count; i++)
                     {
                         var item = lstProd[i];
 
-                        ret.results.Add(new DtoProduct
+                        var finalProd = new DtoProduct
                         {
                             name = item.stName,
                             serial = "45445454564456546546"
-                        });
+                        };
+
+                        Parallel.ForEach(threads, th =>
+                        {
+                            switch (th)
+                            {
+                                case 1: // brand
+                                    {
+                                        #region - brand -
+
+                                        if (cacheOn)
+                                        {
+                                            var tagCache_brand = "Brand_" + item.fkBrand;
+                                            var result = GetCachedData(tagCache_brand, network.cacheServer, 10);
+
+                                            if (result != null)
+                                            {
+                                                var brandCache = JsonConvert.DeserializeObject<Brand>(result);
+                                                finalProd.brand = brandCache.stName;
+                                            }
+                                            else
+                                            {
+                                                using (var db_brand = GetConnection(network))
+                                                {
+                                                    var brandCache = repository.GetBrand(db_brand, item.fkBrand);
+                                                    finalProd.brand = brandCache.stName;
+
+                                                    var retStr = System.Text.Json.JsonSerializer.Serialize(brandCache);
+                                                    UpdateCachedData(tagCache_brand, retStr, network.cacheServer, 10);
+                                                }
+                                            }
+                                        }
+                                        else
+                                        {
+                                            using (var db_brand = GetConnection(network))
+                                            {
+                                                var brandDB = repository.GetBrand(db_brand, item.fkBrand);
+                                                finalProd.brand = brandDB.stName;
+                                            }
+                                        }
+
+                                        #endregion
+
+                                        break;
+                                    }
+
+                                case 2: // category
+                                    {
+                                        #region - category -
+
+                                        if (cacheOn)
+                                        {
+                                            var tagCache_Categ = "Category_" + item.fkCategory;
+                                            var result = GetCachedData(tagCache_Categ, network.cacheServer, 10);
+
+                                            if (result != null)
+                                            {
+                                                var brandCache = JsonConvert.DeserializeObject<Category>(result);
+                                                finalProd.brand = brandCache.stName;
+                                            }
+                                            else
+                                            {
+                                                using (var db_categ = GetConnection(network))
+                                                {
+                                                    var categoryCache = repository.GetCategory(db_categ, item.fkCategory);
+                                                    finalProd.category = categoryCache.stName;
+
+                                                    var retStr = System.Text.Json.JsonSerializer.Serialize(categoryCache);
+                                                    UpdateCachedData(tagCache_Categ, retStr, network.cacheServer, 10);
+                                                }
+                                            }
+                                        }
+                                        else
+                                        {
+                                            using (var db_categ = GetConnection(network))
+                                            {
+                                                var categoryCache = repository.GetCategory(db_categ, item.fkCategory);
+                                                finalProd.category = categoryCache.stName;
+                                            }
+                                        }
+
+                                        #endregion
+
+                                        break;
+                                    }
+                            }
+                        });                        
+
+                        ret.results.Add(finalProd);
                     }
 
                     if (cacheOn) {
-                        var retStr = System.Text.Json.JsonSerializer.Serialize(ret);                        
+                        var retStr = System.Text.Json.JsonSerializer.Serialize(ret);
                         UpdateCachedData ( tagCache, retStr, network.cacheServer, 1);
                     }
                 }

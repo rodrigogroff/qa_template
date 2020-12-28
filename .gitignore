@@ -5,6 +5,8 @@
 /Back/Integration/bin
 /Back/Integration/obj
 /.vs/Solution
+/Back/Cache/bin
+/Back/Cache/obj
 /Back/Master/bin
 /Back/Master/obj
 /Back/UnitTesting/bin
