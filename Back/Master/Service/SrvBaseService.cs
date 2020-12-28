@@ -6,6 +6,9 @@ using System.Net.Mail;
 using System.Security.Cryptography;
 using Npgsql;
 using System.Text;
+using RestSharp;
+using Newtonsoft.Json.Linq;
+using Microsoft.Extensions.Caching.Memory;
 
 namespace Master.Service
 {
@@ -13,7 +16,9 @@ namespace Master.Service
     {
         public bool _sendEmail = true;
 
-        public DtoServiceError Error;        
+        public DtoServiceError Error;
+
+        public IMemoryCache _cache;
 
         #region - const values - 
 
@@ -46,8 +51,6 @@ namespace Master.Service
                                 I(myDate.Substring(3, 2)),
                                 I(myDate.Substring(0, 2)));
         }
-
-
        
         public void SendEmail(string _email, string subject, string texto, List<string> attachs = null)
         {
@@ -87,6 +90,66 @@ namespace Master.Service
             #endregion
         }
         
+        public string GetCachedData(string tagCache, string cacheServer, int minutes_boost)
+        {
+            #region - code - 
+
+            try
+            {
+                // check for internal cache
+                string data;
+                if (_cache.TryGetValue(tagCache, out data))
+                    return data;
+                
+                // search cache server
+                var restRequest = new RestRequest("api/getCache", Method.GET);
+                restRequest.AddParameter("_tag", tagCache);                
+                var cli = new RestClient(cacheServer);
+                var retCache = cli.Execute(restRequest);
+                if (retCache.StatusCode.ToString() == "BadRequest")
+                    return null;
+                var re = retCache.Content;
+                var r1 = re.Substring(1, re.Length - 2);
+                var final = r1.Replace("\\\"", "\"");
+
+                // update internal
+                _cache.Set(tagCache, final, DateTimeOffset.Now.AddMinutes(minutes_boost));
+
+                // return to service
+                return final;
+            }
+            catch
+            {
+                return null;
+            }
+
+            #endregion
+        }
+
+        public void UpdateCachedData(string tagCache, string cacheValue, string cacheServer, int minutes_boost)
+        {
+            #region - code - 
+
+            try
+            {
+                // update cache server
+                var restRequest = new RestRequest("api/updateCache", Method.GET);
+                var final = JObject.Parse(cacheValue).ToString().Replace("\r\n", "");
+                restRequest.AddParameter("_tag", tagCache);
+                restRequest.AddParameter("_value", final);                                
+                var cli = new RestClient(cacheServer);
+                cli.Execute(restRequest);
+
+                // update internal
+                _cache.Set(tagCache, final, DateTimeOffset.Now.AddMinutes(minutes_boost));
+            }
+            catch
+            {
+
+            }
+
+            #endregion
+        }
 
         public string OnlyNumbers(string cpf)
         {

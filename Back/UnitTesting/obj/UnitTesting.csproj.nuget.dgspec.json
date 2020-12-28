@@ -63,6 +63,10 @@
               "target": "Package",
               "version": "[2.2.0, )"
             },
+            "Microsoft.Extensions.Caching.Abstractions": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
             "Microsoft.NETCore.App": {
               "suppressParent": "All",
               "target": "Package",
@@ -76,6 +80,10 @@
             "Npgsql": {
               "target": "Package",
               "version": "[5.0.1.1, )"
+            },
+            "RestSharp": {
+              "target": "Package",
+              "version": "[105.2.3, )"
             }
           },
           "imports": [

@@ -19,7 +19,7 @@ namespace Api.Master.Controllers
         public ActionResult Post([FromBody] DtoProductListing obj)
         {
             var repo = new DapperProductRepository();
-            var srv = new SrvProductListingV1(repo);            
+            var srv = new SrvProductListingV1(repo, cache);            
             var ret = new DtoProductListingResult();
 
             if (!srv.Exec(network, obj, ref ret))

@@ -16,7 +16,7 @@ namespace UnitTesting
             var network = new LocalNetwork() { sqlServer = connStr };
             var repo = new FakeRepo_Product();
 
-            var srv = new SrvProductListingV1(repo) {
+            var srv = new SrvProductListingV1(repo, null) {
                 _sendEmail = false
             };
 

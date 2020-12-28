@@ -1,6 +1,8 @@
 ﻿using Entities.Api;
 using Entities.Api.Product;
 using Master.Repository;
+using Microsoft.Extensions.Caching.Memory;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 
@@ -44,9 +46,10 @@ namespace Master.Service
     {
         IDapperProductRepository repository;
 
-        public SrvProductListingV1(IDapperProductRepository _repository) 
+        public SrvProductListingV1(IDapperProductRepository _repository, IMemoryCache cache) 
         {
             repository = _repository;
+            _cache = cache;
         }
 
         bool ValidadeRequest(DtoProductListing dto)
@@ -87,6 +90,11 @@ namespace Master.Service
 
             #endregion
         }
+        
+        public string GetCacheTag(DtoProductListing request)
+        {
+            return request.sTag + "_" + request.nuCategory + "_" + request.page + "_" + request.pageSize;
+        }
 
         public bool Exec ( LocalNetwork network, DtoProductListing request, ref DtoProductListingResult ret )
         {
@@ -97,6 +105,17 @@ namespace Master.Service
 
                 using (var db = GetConnection(network))
                 {
+                    var tagCache = GetCacheTag(request);
+                    var cacheOn = !string.IsNullOrEmpty(network.cacheServer);
+
+                    if (cacheOn) {
+                        var result = GetCachedData(tagCache, network.cacheServer, 1);
+                        if (result != null) {
+                            ret = JsonConvert.DeserializeObject<DtoProductListingResult>(result);
+                            return true;
+                        }
+                    }
+
                     var lstProd = repository.GetProducts(db, 
                                                          request.sTag,
                                                          request.nuCategory, 
@@ -116,6 +135,11 @@ namespace Master.Service
                             name = item.stName,
                             serial = "45445454564456546546"
                         });
+                    }
+
+                    if (cacheOn) {
+                        var retStr = System.Text.Json.JsonSerializer.Serialize(ret);                        
+                        UpdateCachedData ( tagCache, retStr, network.cacheServer, 1);
                     }
                 }
     

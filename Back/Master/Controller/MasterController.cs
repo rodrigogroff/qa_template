@@ -18,7 +18,8 @@ namespace Api.Master.Controllers
     public partial class MasterController : ControllerBase
     {
         public LocalNetwork network;
-        private IMemoryCache cache;
+        public IMemoryCache cache;
+
         public bool _sendEmail = true;
 
         public string st_MasterVersion = "01.0001";

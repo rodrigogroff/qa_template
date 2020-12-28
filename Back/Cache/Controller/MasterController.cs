@@ -4,13 +4,6 @@ using Microsoft.Extensions.Caching.Memory;
 
 namespace Cache
 {
-    public class DtoCache
-    {
-        public string _tag { get; set; }
-
-        public string _value { get; set; }
-    }
-
     [AllowAnonymous]
     [ApiController]
     public partial class MasterController : ControllerBase
@@ -21,25 +14,22 @@ namespace Cache
         {
             _memoryCache = memoryCache;
         }
-
-        [AllowAnonymous]
+        
         [HttpGet]
         [Route("api/getCache")]
-        public ActionResult getCache([FromBody] string tag)
+        public ActionResult getCache(string _tag)
         {            
             string data; 
-            if (!_memoryCache.TryGetValue(tag, out data))
+            if (!_memoryCache.TryGetValue(_tag, out data))
                 return BadRequest();
-
             return Ok(data);
         }
-
-        [AllowAnonymous]
-        [HttpPost]
+        
+        [HttpGet]
         [Route("api/updateCache")]
-        public ActionResult updateCache([FromBody] DtoCache obj)
+        public ActionResult updateCache(string _tag, string _value)
         {
-            _memoryCache.Set(obj._tag, obj._value);
+            _memoryCache.Set(_tag, _value);
             return Ok();
         }
     }
