@@ -1,0 +1,41 @@
+
+----------------------
+FULL NODE
+----------------------
+
+Instalar VS Community  (com opção Git for windows e GitHub)
+https://visualstudio.microsoft.com/pt-br/thank-you-downloading-visual-studio/?sku=Community&rel=16
+Verificar instalação, logar com usuário regitrado na Microsoft
+
+Instalar VS Code
+https://code.visualstudio.com/download
+
+Instalar Node
+https://nodejs.org/en/download/
+
+Instalar PostgreSQL
+https://www.enterprisedb.com/downloads/postgres-postgresql-downloads
+Colocar password "Gustavo123"
+
+Habilitar porta 18524 no firewall IN/OUT
+(advanced properties)
+
+Publicar localmente o app "Cache"
+Copiar arquivos para "c:\inetpub\cache" no servidor destino
+criar um application pool no IIS com "No Managed Code" e "Integrated"
+criar um site no IIS chamado de "NanoCache" na porta 57946 e o app pool criado acima
+
+clonar repositório em "C:\Users\Administrator\source\repos\qa_template"
+
+Publicar localmente o app "Master"
+Copiar arquivos para "c:\inetpub\nanoServer" no servidor destino
+criar um application pool no IIS com "No Managed Code" e "Integrated"
+criar um site no IIS chamado de "NanoServer" na porta 18524 e o app pool criado acima
+
+Seguir os passos no link abaixo
+https://www.luiztools.com.br/post/como-rodar-nodejs-em-servidor-windows/
+Executar script "install_service.js" no projeto 'front'
+Verificar se o serviço 'NanoJS' foi criado com sucesso
+
+executar bat de atualização
+"pipeline_nano_v1.bat"

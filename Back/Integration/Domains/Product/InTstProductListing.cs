@@ -24,7 +24,14 @@ namespace Integration
 
                 var repo = new DapperProductRepository();
 
-                repo.InsertProduct(db, new Product { stName = "Livro", nuPrice = 12345, stDesc = "Livro desc" });
+                var repoAdmin = new DapperAdminRepository();
+
+                repoAdmin.InsertBrand(db, new Brand { stName = "Samsung" });
+                repoAdmin.InsertBrand(db, new Brand { stName = "Toshiba" });
+
+                repoAdmin.InsertCategory(db, new Category { stName = "TVs", fkMainCategory = 0, fkCountry = 1 });
+
+                repo.InsertProduct(db, new Product { stName = "Livro", nuPrice = 12345, stDesc = "Livro desc", fkBrand = 1, fkCategory = 1, fkCountry = 1 });
                 repo.InsertProductCatalog(db, new ProductCatalog { stTag = "Livro" });
                 repo.InsertProductCatalogLink(db, new ProductCatalogLink { fkProduct = 1, fkProductCatalog = 1 });
 
@@ -43,10 +50,11 @@ namespace Integration
 
             var ret = tst.Post(new DtoProductListing
             {                
-                sTag = "Livro",
-                nuCategory = null,
+                tag = "Livro",
+                category = 1,
                 page = 0,
-                pageSize = 10,
+                pageSize = 99,
+                orderBy = 1,
                 _language = 0,
             });
 
@@ -70,8 +78,8 @@ namespace Integration
 
             var ret = tst.Post(new DtoProductListing
             {
-                sTag = "Livro",
-                nuCategory = null,
+                tag = "Livro",
+                category = null,
                 page = null,
                 pageSize = null,
                 _language = 0,

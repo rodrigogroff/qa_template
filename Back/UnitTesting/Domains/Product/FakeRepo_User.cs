@@ -7,25 +7,7 @@ namespace UnitTesting
 {
     public class FakeRepo_Product : IDapperProductRepository
     {
-        #region - code - 
-
-        public Brand GetBrand(NpgsqlConnection db, long id)
-        {
-            return null;
-        }
-
-        public Category GetCategory(NpgsqlConnection db, long id)
-        {
-            return null;
-        }
-
-        public Product GetProduct(NpgsqlConnection db, long id)
-        {
-            return null;
-        }
-
-        #endregion
-        public List<Product> GetProducts(NpgsqlConnection db, string sTag, long? nuCategory, int page, int pageSize)
+        public List<Product> GetProducts(NpgsqlConnection db, string sTag, long? nuCategory, int page, int pageSize, int orderBy)
         {
             if (sTag == "Livro")
             {
@@ -34,6 +16,9 @@ namespace UnitTesting
                     new Product
                     {
                         id = 1,
+                        fkCategory = 1,
+                        fkBrand = 1,
+                        fkCountry = 1,
                         stName = "Livro",
                         nuPrice = 123456,
                         stDesc = "Livro Desc"

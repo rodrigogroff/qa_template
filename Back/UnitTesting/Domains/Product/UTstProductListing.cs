@@ -14,9 +14,10 @@ namespace UnitTesting
             #region - code - 
 
             var network = new LocalNetwork() { sqlServer = connStr };
-            var repo = new FakeRepo_Product();
+            var repoProduct = new FakeRepo_Product();
+            var repoAdmin = new FakeRepo_Admin();
 
-            var srv = new SrvProductListingV1(repo, null) {
+            var srv = new SrvProductListingV1(repoProduct, repoAdmin, null) {
                 _sendEmail = false
             };
 
@@ -24,9 +25,11 @@ namespace UnitTesting
 
             if (!srv.Exec(network, new DtoProductListing
             {
-                sTag = "Livro",
-                page = 1,
-                pageSize = 10,
+                tag = "Livro",
+                category = 1,               
+                page = 0,
+                pageSize = 99,
+                orderBy = 1,
                 _language = 0
             }, ref ret))
                 Assert.Fail();

@@ -47,23 +47,21 @@ namespace Master.Service
     public class SrvProductListingV1 : SrvML_ProductListing
     {
         IDapperProductRepository repository;
+        IDapperAdminRepository adminRepository;
 
-        public SrvProductListingV1(IDapperProductRepository _repository, IMemoryCache cache) 
+        public SrvProductListingV1( IDapperProductRepository _repository,
+                                    IDapperAdminRepository _adminRepository, 
+                                    IMemoryCache cache) 
         {
             repository = _repository;
+            adminRepository = _adminRepository;
             _cache = cache;
         }
 
         bool ValidadeRequest(DtoProductListing dto)
         {
             #region - code - 
-
-            if (string.IsNullOrEmpty(dto.sTag))
-            {
-                Error = new DtoServiceError { message = getLanguage(dto._language, 1) };
-                return false;
-            }
-
+            
             if (dto.page == null)
             {
                 Error = new DtoServiceError { message = getLanguage(dto._language, 1) };
@@ -88,6 +86,12 @@ namespace Master.Service
                 return false;
             }
 
+            if (dto.orderBy == null)
+            {
+                Error = new DtoServiceError { message = getLanguage(dto._language, 1) };
+                return false;
+            }
+
             return true;
 
             #endregion
@@ -95,7 +99,7 @@ namespace Master.Service
         
         public string GetCacheTag(DtoProductListing request)
         {
-            return request.sTag + "_" + request.nuCategory + "_" + request.page + "_" + request.pageSize;
+            return "ProductListing_" + (request.tag ?? "") + "_" + (request.category?.ToString() ?? "") + "_" + request.page + "_" + request.pageSize + "_" + request.orderBy;
         }
 
         public bool Exec ( LocalNetwork network, DtoProductListing request, ref DtoProductListingResult ret )
@@ -118,20 +122,20 @@ namespace Master.Service
                         }
                     }
 
-                    var lstProd = repository.GetProducts(db, 
-                                                         request.sTag,
-                                                         request.nuCategory, 
+                    var lst = repository.GetProducts(db, 
+                                                         request.tag,
+                                                         request.category, 
                                                          (int)request.page,
-                                                         (int)request.pageSize );
+                                                         (int)request.pageSize,
+                                                         (int)request.orderBy );
 
-                    ret.totalRecords = lstProd.Count;
+                    ret.totalRecords = lst.Count;
                     ret.results = new List<DtoProduct>();
 
                     var threads = new List<int> { 1, 2 };
-
-                    for (int i = 0; i < lstProd.Count; i++)
+                    for (int i = 0; i < lst.Count; i++)
                     {
-                        var item = lstProd[i];
+                        var item = lst[i];
 
                         var finalProd = new DtoProduct
                         {
@@ -143,7 +147,7 @@ namespace Master.Service
                         {
                             switch (th)
                             {
-                                case 1: // brand
+                                case 1: 
                                     {
                                         #region - brand -
 
@@ -161,7 +165,7 @@ namespace Master.Service
                                             {
                                                 using (var db_brand = GetConnection(network))
                                                 {
-                                                    var brandCache = repository.GetBrand(db_brand, item.fkBrand);
+                                                    var brandCache = adminRepository.GetBrand(db_brand, item.fkBrand);
                                                     finalProd.brand = brandCache.stName;
 
                                                     var retStr = System.Text.Json.JsonSerializer.Serialize(brandCache);
@@ -173,7 +177,7 @@ namespace Master.Service
                                         {
                                             using (var db_brand = GetConnection(network))
                                             {
-                                                var brandDB = repository.GetBrand(db_brand, item.fkBrand);
+                                                var brandDB = adminRepository.GetBrand(db_brand, item.fkBrand);
                                                 finalProd.brand = brandDB.stName;
                                             }
                                         }
@@ -183,7 +187,7 @@ namespace Master.Service
                                         break;
                                     }
 
-                                case 2: // category
+                                case 2: 
                                     {
                                         #region - category -
 
@@ -201,7 +205,7 @@ namespace Master.Service
                                             {
                                                 using (var db_categ = GetConnection(network))
                                                 {
-                                                    var categoryCache = repository.GetCategory(db_categ, item.fkCategory);
+                                                    var categoryCache = adminRepository.GetCategory(db_categ, item.fkCategory);
                                                     finalProd.category = categoryCache.stName;
 
                                                     var retStr = System.Text.Json.JsonSerializer.Serialize(categoryCache);
@@ -213,7 +217,7 @@ namespace Master.Service
                                         {
                                             using (var db_categ = GetConnection(network))
                                             {
-                                                var categoryCache = repository.GetCategory(db_categ, item.fkCategory);
+                                                var categoryCache = adminRepository.GetCategory(db_categ, item.fkCategory);
                                                 finalProd.category = categoryCache.stName;
                                             }
                                         }

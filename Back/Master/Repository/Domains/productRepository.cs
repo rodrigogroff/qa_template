@@ -9,14 +9,10 @@ namespace Master.Repository
 {
     public interface IDapperProductRepository
     {
-        List<Product> GetProducts(NpgsqlConnection db, string sTag, long? nuCategory, int page, int pageSize);
+        List<Product> GetProducts(NpgsqlConnection db, string sTag, long? nuCategory, int page, int pageSize, int orderBy);
         void InsertProduct(NpgsqlConnection db, Product obj);
         void InsertProductCatalog(NpgsqlConnection db, ProductCatalog obj);
         void InsertProductCatalogLink(NpgsqlConnection db, ProductCatalogLink obj);
-
-        Brand GetBrand(NpgsqlConnection db, long id);
-        Category GetCategory(NpgsqlConnection db, long id);
-        Product GetProduct(NpgsqlConnection db, long id);
     }
 
     public class DapperProductRepository : IDapperProductRepository
@@ -60,26 +56,20 @@ namespace Master.Repository
             }
         }
 
-        Brand IDapperProductRepository.GetBrand(NpgsqlConnection db, long id)
+        List<Product> IDapperProductRepository.GetProducts(NpgsqlConnection db, string sTag, long? nuCategory, int page, int pageSize, int orderBy)
         {
-            return db.QueryFirstOrDefault<Brand>("select * from \"Brand\" where id = " + id);            
-        }
-
-        Category IDapperProductRepository.GetCategory(NpgsqlConnection db, long id)
-        {
-            return db.QueryFirstOrDefault<Category>("select * from \"Category\" where id = " + id);
-        }
-
-        Product IDapperProductRepository.GetProduct(NpgsqlConnection db, long id)
-        {
-            return db.QueryFirstOrDefault<Product>("select * from \"Product\" where id = " + id);
-        }
-
-        List<Product> IDapperProductRepository.GetProducts(NpgsqlConnection db, string sTag, long? nuCategory, int page, int pageSize)
-        {
-            var query = "with cat as ( select * from \"ProductCatalog\" where \"stTag\" = 'Livro' ) " +
+            var query = "with cat as ( select * from \"ProductCatalog\" where \"stTag\" = '" + sTag + "' ) " +
                 "select p.* from \"Product\" p, cat, \"ProductCatalogLink\" pcl " +
                 "where cat.\"id\" = pcl.\"fkProductCatalog\" and pcl.\"fkProductCatalog\" = p.id ";
+
+            if (nuCategory != null)
+                query += " and p.\"fkCategory\" = " + nuCategory;
+
+            switch (orderBy)
+            {
+                default: case 1: query += " order by p.id asc"; break;
+                case 2: query += " order by p.id desc"; break;                
+            }
 
             return db.Query<Product>( query ).ToList();
         }

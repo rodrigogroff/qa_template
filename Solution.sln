@@ -14,6 +14,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "App", "App", "{AC8DB5EF-DFE8-4FA2-AB70-3855D88BC05F}"
 	ProjectSection(SolutionItems) = preProject
 		Back\back_version.txt = Back\back_version.txt
+		Install.txt = Install.txt
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoadTest", "LoadTest\LoadTest.csproj", "{C7AFA0FC-0D8D-4169-9A1C-80F82FE79AD2}"

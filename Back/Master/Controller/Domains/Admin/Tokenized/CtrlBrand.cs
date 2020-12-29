@@ -1,24 +1,28 @@
-﻿using Entities.Api.User;
-using Master.Infra.Entity.Database;
+﻿using Entities.Api.Admin;
+using Master;
 using Master.Repository;
 using Master.Service;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Caching.Memory;
+using Microsoft.Extensions.Options;
 
 namespace Api.Master.Controllers
 {
-    public partial class MasterController
-    {        
-        [HttpGet]
-        [Route("api/brands")]
-        public ActionResult<DtoUserList> brands(string search)
+    public partial class CtrlBrand : MasterController
+    {
+        public CtrlBrand(IOptions<LocalNetwork> _network, IMemoryCache _cache) : base(_network, _cache) { }
+
+        [AllowAnonymous]
+        [HttpPost]
+        [Route("api/brandListing_v1")]
+        public ActionResult brandListing([FromBody] DtoBrandListing obj)
         {
-            var au = GetCurrentAuthenticatedUser();
+            var repo = new DapperAdminRepository();
+            var srv = new SrvBrandListingV1(repo, cache );
+            var dto = new DtoBrandListingResult();
 
-            var repo = new DapperUserRepository();
-            var srv = new SrvUserListV1(repo);
-            var dto = new DtoUserList();
-
-            if (!srv.Exec(network, au, search, ref dto))
+            if (!srv.Exec(network, obj, ref dto))
                 return BadRequest(srv.Error);
 
             return Ok(dto);
@@ -26,18 +30,16 @@ namespace Api.Master.Controllers
 
         [HttpGet]
         [Route("api/brand")]
-        public ActionResult<User> brand(long id)
+        public ActionResult<DtoBrand> brand(long id)
         {
-            var au = GetCurrentAuthenticatedUser();
+            var repo = new DapperAdminRepository();
+            var srv = new SrvBrandGetV1(repo, cache);
+            var dto = new DtoBrand();
 
-            var repo = new DapperUserRepository();
-            var srv = new SrvUserGetV1(repo);
-            var dto = new User();
-
-            if (!srv.Exec(network, au, id, ref dto))
+            if (!srv.Exec(network, id, ref dto))
                 return BadRequest(srv.Error);
 
-            return Ok(dto);
+            return Ok(dto);            
         }
     }
 }
