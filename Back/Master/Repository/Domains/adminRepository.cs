@@ -9,7 +9,7 @@ namespace Master.Repository
 {
     public interface IDapperAdminRepository
     {
-        List<Brand> GetBrands(NpgsqlConnection db, string sTag, int page, int pageSize, int orderBy);
+        List<Brand> GetBrands(NpgsqlConnection db, string sTag, int page, int pageSize, int orderBy, ref int total );
         Brand GetBrand(NpgsqlConnection db, long id);
         Category GetCategory(NpgsqlConnection db, long id);
         Product GetProduct(NpgsqlConnection db, long id);
@@ -20,15 +20,20 @@ namespace Master.Repository
 
     public class DapperAdminRepository : IDapperAdminRepository
     {
-        public List<Brand> GetBrands(NpgsqlConnection db, string sTag, int page, int pageSize, int orderBy)
+        public List<Brand> GetBrands(NpgsqlConnection db, string sTag, int page, int pageSize, int orderBy, ref int total)
         {
-            var query = "select * from \"Brand\" " + (!string.IsNullOrEmpty(sTag) ? " where \"stName\" like '%" + sTag + "%' " : "");
+            var query = "select * from \"Brand\" " +
+                            (!string.IsNullOrEmpty(sTag) ? " where \"stName\" like '%" + sTag + "%' " : "");
 
             switch (orderBy)
             {
                 default: case 1: query += " order by \"stName\" asc"; break;
                 case 2: query += " order by \"stName\" desc"; break;
             }
+
+            total = db.Query(query).Count();
+
+            query += " offset " + (page * pageSize) + " limit " + pageSize;
 
             return db.Query<Brand>(query).ToList();
         }

@@ -8,3 +8,5 @@ C:\Users\rodri\source\repos\qa_template\Looper\obj\Debug\Looper.csproj.CoreCompi
 C:\Users\rodri\source\repos\qa_template\Looper\obj\Debug\Looper.csproj.CopyComplete
 C:\Users\rodri\source\repos\qa_template\Looper\obj\Debug\Looper.exe
 C:\Users\rodri\source\repos\qa_template\Looper\obj\Debug\Looper.pdb
+C:\Users\rodri\source\repos\qa_template\Looper\bin\Debug\Newtonsoft.Json.dll
+C:\Users\rodri\source\repos\qa_template\Looper\bin\Debug\Newtonsoft.Json.xml

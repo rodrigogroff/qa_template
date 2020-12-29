@@ -3,6 +3,9 @@
 FULL NODE
 ----------------------
 
+Ajustar SSD
+https://www.pchardwarehelp.com/guides/optimize-ssd-windows.php
+
 Instalar VS Community  (com opção Git for windows e GitHub)
 https://visualstudio.microsoft.com/pt-br/thank-you-downloading-visual-studio/?sku=Community&rel=16
 Verificar instalação, logar com usuário regitrado na Microsoft

@@ -116,19 +116,20 @@ namespace Master.Service
                         }
                     }
 
-                    var lst = adminRepository.GetBrands (   db, 
-                                                                request.tag,                                                         
-                                                                (int)request.page,
-                                                                (int)request.pageSize,
-                                                                (int)request.orderBy );
+                    int total = 0;
+                    var lst = adminRepository.GetBrands ( db, 
+                                                          request.tag,                                                         
+                                                          (int)request.page,
+                                                          (int)request.pageSize,
+                                                          (int)request.orderBy, 
+                                                          ref total);
 
-                    ret.totalRecords = lst.Count;
+                    ret.totalRecords = total;
                     ret.results = new List<DtoBrand>();
 
                     for (int i = 0; i < lst.Count; i++)
                     {
                         var item = lst[i];
-
                         ret.results.Add(new DtoBrand
                         {
                             id = item.id,

@@ -7,7 +7,7 @@ namespace UnitTesting
 {
     public class FakeRepo_Product : IDapperProductRepository
     {
-        public List<Product> GetProducts(NpgsqlConnection db, string sTag, long? nuCategory, int page, int pageSize, int orderBy)
+        public List<Product> GetProducts(NpgsqlConnection db, string sTag, long? nuCategory, int page, int pageSize, int orderBy, ref int total )
         {
             if (sTag == "Livro")
             {

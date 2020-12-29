@@ -9,3 +9,4 @@ C:\Users\rodri\source\repos\qa_template\LoadTest\obj\Debug\LoadTest.csproj.CoreC
 C:\Users\rodri\source\repos\qa_template\LoadTest\obj\Debug\LoadTest.csproj.CopyComplete
 C:\Users\rodri\source\repos\qa_template\LoadTest\obj\Debug\LoadTest.exe
 C:\Users\rodri\source\repos\qa_template\LoadTest\obj\Debug\LoadTest.pdb
+C:\Users\rodri\source\repos\qa_template\LoadTest\obj\Debug\LoadTest.csprojAssemblyReference.cache

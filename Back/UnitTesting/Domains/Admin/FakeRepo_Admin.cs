@@ -18,7 +18,7 @@ namespace UnitTesting
             };
         }
 
-        public List<Brand> GetBrands(NpgsqlConnection db, string sTag, int page, int pageSize, int orderBy)
+        public List<Brand> GetBrands(NpgsqlConnection db, string sTag, int page, int pageSize, int orderBy, ref int total )
         {
             return null;
         }

@@ -11,13 +11,13 @@ namespace LoadTest
         {
             Console.WriteLine("Setup!");
 
+            RestRequest restRequest = new RestRequest("api/authenticate_v1", Method.POST);
+
             JObject jObjectbody = new JObject
             {
                 { "email", "vciuymp@loader.com" },
                 { "password", "1234" }
             };
-
-            RestRequest restRequest = new RestRequest("api/authenticate_v1", Method.POST);
 
             restRequest.AddParameter("application/json", jObjectbody, ParameterType.RequestBody);
             restRequest.AddHeader("Content-Type", "application/json;charset=utf-8");

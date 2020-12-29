@@ -9,7 +9,7 @@ namespace Master.Repository
 {
     public interface IDapperProductRepository
     {
-        List<Product> GetProducts(NpgsqlConnection db, string sTag, long? nuCategory, int page, int pageSize, int orderBy);
+        List<Product> GetProducts(NpgsqlConnection db, string sTag, long? nuCategory, int page, int pageSize, int orderBy, ref int total);
         void InsertProduct(NpgsqlConnection db, Product obj);
         void InsertProductCatalog(NpgsqlConnection db, ProductCatalog obj);
         void InsertProductCatalogLink(NpgsqlConnection db, ProductCatalogLink obj);
@@ -56,7 +56,7 @@ namespace Master.Repository
             }
         }
 
-        List<Product> IDapperProductRepository.GetProducts(NpgsqlConnection db, string sTag, long? nuCategory, int page, int pageSize, int orderBy)
+        List<Product> IDapperProductRepository.GetProducts(NpgsqlConnection db, string sTag, long? nuCategory, int page, int pageSize, int orderBy, ref int total)
         {
             var query = "with cat as ( select * from \"ProductCatalog\" where \"stTag\" = '" + sTag + "' ) " +
                 "select p.* from \"Product\" p, cat, \"ProductCatalogLink\" pcl " +
@@ -71,7 +71,11 @@ namespace Master.Repository
                 case 2: query += " order by p.id desc"; break;                
             }
 
-            return db.Query<Product>( query ).ToList();
+            total = db.Query(query).Count();
+
+            query += " offset " + (page * pageSize) + " limit " + pageSize;
+
+            return db.Query<Product>(query).ToList();
         }
     }
 }

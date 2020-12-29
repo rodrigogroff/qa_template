@@ -122,14 +122,16 @@ namespace Master.Service
                         }
                     }
 
+                    int total = 0;
                     var lst = repository.GetProducts(db, 
                                                          request.tag,
                                                          request.category, 
                                                          (int)request.page,
                                                          (int)request.pageSize,
-                                                         (int)request.orderBy );
+                                                         (int)request.orderBy,
+                                                         ref total );
 
-                    ret.totalRecords = lst.Count;
+                    ret.totalRecords = total;
                     ret.results = new List<DtoProduct>();
 
                     var threads = new List<int> { 1, 2 };
