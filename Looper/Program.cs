@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using Looper.Admin;
@@ -34,6 +35,11 @@ namespace Looper
                             }
                     }
                 });
+
+                Console.WriteLine("======== ");
+                Thread.Sleep(1000);
+                Console.WriteLine("#New cycle");
+                Console.WriteLine("");
             }
         }
     }
