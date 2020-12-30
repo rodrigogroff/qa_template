@@ -6,10 +6,10 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Options;
+using System;
 
 namespace Api.Master.Controllers
 {
-    [Route("api/brand")]
     public partial class CtrlBrand : MasterController
     {
         public CtrlBrand(IOptions<LocalNetwork> _network, IMemoryCache _cache) : base(_network, _cache) { }
@@ -20,7 +20,7 @@ namespace Api.Master.Controllers
         public ActionResult brandListing([FromBody] DtoBrandListing obj)
         {
             var repo = new DapperAdminRepository();
-            var srv = new SrvBrandListingV1(repo, cache );
+            var srv = new SrvBrandListingV1(repo, cache);
             var dto = new DtoBrandListingResult();
 
             if (!srv.Exec(network, obj, ref dto))
@@ -29,14 +29,15 @@ namespace Api.Master.Controllers
             return Ok(dto);
         }
 
-        [HttpGet("{id}")]        
-        public ActionResult<DtoBrand> brand(long id)
+        [HttpGet]
+        [Route("api/brand_v1")]
+        public ActionResult<DtoBrand> brand([FromQuery] string id)
         {
             var repo = new DapperAdminRepository();
             var srv = new SrvBrandGetV1(repo, cache);
             var dto = new DtoBrand();
 
-            if (!srv.Exec(network, id, ref dto))
+            if (!srv.Exec(network, Convert.ToInt32(id), ref dto))
                 return BadRequest(srv.Error);
 
             return Ok(dto);            
