@@ -6,11 +6,17 @@
 /Back/Integration/obj
 /.vs/Solution
 /Back/Cache/bin
+/Back/Cache/bin/Debug
 /Back/Cache/obj
+/Back/Cache/obj/Debug
 /Back/Master/bin
 /Back/Master/obj
 /Back/UnitTesting/bin
 /Back/UnitTesting/obj
+/Back/Looper/bin
+/Back/Looper/bin/Debug
+/Back/Looper/obj
+/Back/Looper/obj/Debug
 /packages
 /testresults
 /Front/nano_v1/node_modules

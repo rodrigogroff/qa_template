@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+using Looper.Admin;
+using Looper.Infra;
 
 namespace Looper
 {
@@ -10,22 +12,29 @@ namespace Looper
         {
             var threads = new List<int> { 1 };
 
-            var t_l1_brand = new L1.L1_Brand();
-
-            Parallel.ForEach(threads, item =>
+            while (true)
             {
-                switch (item)
+                var myBearer = new LooperBase().GetBearer();
+                var t_l1_brand = new Brand();
+
+                Parallel.ForEach(threads, item =>
                 {
-                    case 1:
-                        {
-                            while(true)
+                    switch (item)
+                    {
+                        case 1:
                             {
-                                t_l1_brand.Next();
-                                Thread.Sleep(1);
+                                while (true)
+                                {
+                                    if (!t_l1_brand.Next(myBearer))
+                                        break;
+
+                                    Thread.Sleep(1);
+                                }
+                                break;
                             }
-                        }
-                }
-            });
+                    }
+                });
+            }
         }
     }
 }

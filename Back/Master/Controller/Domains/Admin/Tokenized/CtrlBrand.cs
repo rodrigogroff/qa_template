@@ -29,7 +29,7 @@ namespace Api.Master.Controllers
         }
 
         [HttpGet]
-        [Route("api/brand")]
+        [Route("api/brand/{id:int}")]        
         public ActionResult<DtoBrand> brand(long id)
         {
             var repo = new DapperAdminRepository();

@@ -1,4 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using Newtonsoft.Json.Linq;
+using RestSharp;
+using System;
+using System.Collections.Generic;
 
 namespace Looper.Infra
 {
@@ -20,6 +23,25 @@ namespace Looper.Infra
                 nodeIndex = 0;
 
             return s;
+        }
+
+        public string GetBearer()
+        {
+            var restRequest = new RestRequest("api/authenticate_v1", Method.POST);
+
+            JObject jObjectbody = new JObject
+                {
+                    { "email", "rodrigo.groff@gmail.com" },
+                    { "password", "1234" },                    
+                };
+
+            restRequest.AddParameter("application/json", jObjectbody, ParameterType.RequestBody);
+            restRequest.AddHeader("Content-Type", "application/json;charset=utf-8");
+
+            var t = new RestClient(GetNextNode()).Execute(restRequest);
+            var obj = JObject.Parse(t.Content);
+
+            return Convert.ToString(obj["token"]);
         }
     }
 }
