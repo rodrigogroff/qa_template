@@ -9,6 +9,7 @@ using Microsoft.Extensions.Options;
 
 namespace Api.Master.Controllers
 {
+    [Route("api/brand")]
     public partial class CtrlBrand : MasterController
     {
         public CtrlBrand(IOptions<LocalNetwork> _network, IMemoryCache _cache) : base(_network, _cache) { }
@@ -28,8 +29,7 @@ namespace Api.Master.Controllers
             return Ok(dto);
         }
 
-        [HttpGet]
-        [Route("api/brand/{id:int}")]        
+        [HttpGet("{id}")]        
         public ActionResult<DtoBrand> brand(long id)
         {
             var repo = new DapperAdminRepository();
