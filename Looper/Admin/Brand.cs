@@ -13,41 +13,44 @@ namespace Looper.Admin
 
         public bool Next(string bearer)
         {
-            Console.WriteLine("Brand -> page_index " + page_index);
-
-            var restRequest = new RestRequest("api/brandListing_v1", Method.POST);
-
-            JObject jObjectbody = new JObject
+            for (int i = 1; i <= 2; i++)
             {
-                { "page", page_index++ },
-                { "pageSize", "50" },
-                { "orderBy", "1" }
-            };
+                Console.WriteLine("Brand -> page_index " + page_index + " -> order " + i);
 
-            restRequest.AddParameter("application/json", jObjectbody, ParameterType.RequestBody);
-            restRequest.AddHeader("Content-Type", "application/json;charset=utf-8");
-                
-            var ret = new RestClient(GetNextNode()).Execute(restRequest);
+                var restRequest = new RestRequest("api/brandListing_v1", Method.POST);
 
-            if (!ret.IsSuccessful)
-                return false;
+                JObject jObjectbody = new JObject
+                {
+                    { "page", page_index++ },
+                    { "pageSize", "50" },
+                    { "orderBy", i }
+                };
 
-            var dtoResp = JsonSerializer.Deserialize<DtoBrandListingResult>(ret.Content);
+                restRequest.AddParameter("application/json", jObjectbody, ParameterType.RequestBody);
+                restRequest.AddHeader("Content-Type", "application/json;charset=utf-8");
 
-            if (dtoResp.results.Count == 0)
-                return false;
+                var ret = new RestClient(GetNextNode()).Execute(restRequest);
 
-            foreach (var item in dtoResp.results)
-            {
-                Console.WriteLine("Brand -> page_index " + page_index + " -> id " + item.id);
+                if (!ret.IsSuccessful)
+                    return false;
 
-                var restRequestID = new RestRequest("api/brand_v1", Method.GET);
-                restRequestID.AddParameter("id", item.id);
-                restRequestID.AddParameter("Authorization", $"Bearer {bearer}", ParameterType.HttpHeader);
-                restRequestID.AddHeader("Content-Type", "application/json;charset=utf-8");
+                var dtoResp = JsonSerializer.Deserialize<DtoBrandListingResult>(ret.Content);
 
-                var retID = new RestClient(GetNextNode()).Execute(restRequestID);                    
-            }                
+                if (dtoResp.results.Count == 0)
+                    return false;
+
+                foreach (var item in dtoResp.results)
+                {
+                    Console.WriteLine("Brand -> page_index " + page_index + " -> id " + item.id);
+
+                    var restRequestID = new RestRequest("api/brand_v1", Method.GET);
+                    restRequestID.AddParameter("id", item.id);
+                    restRequestID.AddParameter("Authorization", $"Bearer {bearer}", ParameterType.HttpHeader);
+                    restRequestID.AddHeader("Content-Type", "application/json;charset=utf-8");
+
+                    var retID = new RestClient(GetNextNode()).Execute(restRequestID);
+                }
+            }
 
             return true;
         }

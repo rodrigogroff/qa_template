@@ -80,7 +80,7 @@ namespace Master.Service
                 return false;
             }
 
-            if (dto.orderBy == null)
+            if (dto.orderBy == null || dto.orderBy > 2 || dto.orderBy < 1 )
             {
                 Error = new DtoServiceError { message = getLanguage(dto._language, 1) };
                 return false;
