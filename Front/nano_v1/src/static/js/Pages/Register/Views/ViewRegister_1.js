@@ -1,4 +1,5 @@
-import { AppLanguage, MultiLanguage } from "../language";
+
+import { AppLanguage, MultiLanguage } from "../MultiLanguage";
 import StringText from "@app/Components/Fields/String";
 import NumberField from "@app/Components/Fields/Number";
 import Popup from "@app/Components/Modals/Popup";

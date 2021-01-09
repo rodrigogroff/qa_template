@@ -9,7 +9,7 @@ import MyForm from "./Views/ViewExit";
 window.addEventListener("resize", (e) => { 
   var curWidth = window.innerWidth;
   var update = false;
-  var last = sessionStorage.getItem('res');
+  var lastRes = sessionStorage.getItem('res');
   if (lastRes != null && lastRes != undefined)
   {
     if (parseInt(lastRes) != curWidth)

@@ -1,4 +1,5 @@
-import { MultiLanguage, AppLanguage } from "../language";
+
+import { MultiLanguage, AppLanguage } from "../MultiLanguage";
 import EmailField from "@app/Components/Fields/Email";
 import Popup from "@app/Components/Modals/Popup";
 import { buildTable2TD, BaseLoader } from "@app/Components/Images/BaseLoader";

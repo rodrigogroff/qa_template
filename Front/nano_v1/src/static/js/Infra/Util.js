@@ -474,7 +474,61 @@ export function postPublicPortal(location, _obj) {
   });
 }
 
-export function buildTable(tableobj, color, bgColor, styleClass, noResultMsg) {
+export function buildTableSimple(tableobj) {  
+
+  var color = 'black';
+  var bgColor = 'white';
+  var styleClass = ''; 
+  var noResultMsg = '';
+
+  if (styleClass == undefined) styleClass = '';
+  if (noResultMsg == undefined) noResultMsg = "No results found";
+  var lineData = "";
+  if (tableobj.data.length > 0) {
+    var size = tableobj.header.length;
+    var lineData =
+      "<table class='" +
+      styleClass +
+      "' id='" +
+      tableobj.id +
+      "'><thead style='background-color:" +
+      bgColor +
+      "';'> <tr>";
+    for (var h = 0; h < size; ++h)
+      lineData +=
+        "<th style='color:" +
+        color +
+        "' width='" +
+        tableobj.sizes[h] +
+        "'>" +
+        tableobj.header[h] +
+        "</th > ";
+    lineData += "</tr></thead><tbody>";
+    for (var d = 0; d < tableobj.data.length; ++d) {
+      var ar = tableobj.data[d];
+      lineData += "<tr>";
+      for (var h = 0; h < size; ++h)
+        lineData +=
+          "<td id='" +
+          d +
+          "' _par_table='" +
+          tableobj.id +
+          "'>" +
+          ar[h] +
+          "</td>";
+      lineData += "</tr>";
+    }
+    lineData += "</tbody></table>";
+  } else {
+    lineData =
+      "<br><button class='button circle'>" + noResultMsg + "</button><br>";
+  }
+
+  return lineData;
+}
+
+export function buildTable(tableobj, color, bgColor, styleClass, noResultMsg) {  
+  if (styleClass == undefined) styleClass = '';
   if (noResultMsg == undefined) noResultMsg = "No results found";
   var lineData = "";
   if (tableobj.data.length > 0) {

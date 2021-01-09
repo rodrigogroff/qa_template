@@ -1,3 +1,4 @@
+
 import { buildTable } from "@app/Infra/Util";
 
 export default class {

@@ -1,3 +1,4 @@
+
 export class AppLanguage {
   constructor() {
     this.availableLanguages = ["English", "Español", "Português BR"];
@@ -6,22 +7,31 @@ export class AppLanguage {
       // english (0)
       {
         labels: [
-          "Exit System?" /*0*/,
-          "Confirm" /*1*/,
+          "Brand Listing" /*0*/,
+          "No results found!" /*1*/,
+          "ID" /*2*/,
+          "Brand Name" /*3*/,
+          "Search" /*4*/,
         ],
       },
       // spanish (1)
       {
         labels: [
-          "¿Salir del sistema?" /*0*/,
-          "Confirmar" /*1*/,
+          "Brand Listing" /*0*/,
+          "No results found!" /*1*/,
+          "ID" /*2*/,
+          "Brand Name" /*3*/,
+          "Buscar" /*4*/,
         ],
       },
       // ptBr (2)
       {
         labels: [
-          "Sair do Sistema?" /*0*/,
-          "Confirmar" /*1*/,
+          "Brand Listing" /*0*/,
+          "No results found!" /*1*/,
+          "ID" /*2*/,
+          "Brand Name" /*3*/,
+          "Buscar" /*4*/,
         ],
       },
     ];

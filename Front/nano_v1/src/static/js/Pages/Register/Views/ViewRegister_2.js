@@ -1,4 +1,5 @@
-import { MultiLanguage } from "../language";
+
+import { MultiLanguage } from "../MultiLanguage";
 import { imageChange } from "@app/Infra/Util";
 import EmailField from "@app/Components/Fields/Email";
 import PasswordField from "@app/Components/Fields/Password";

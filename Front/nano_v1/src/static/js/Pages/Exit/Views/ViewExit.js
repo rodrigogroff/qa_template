@@ -1,5 +1,5 @@
 
-import { MultiLanguage } from "../language";
+import { MultiLanguage } from "../MultiLanguage";
 
 export default class MyForm {
   static elements() {

@@ -1,3 +1,4 @@
+
 export default class {
   constructor(totItens, itensPerPage, currentPage) {
     this.totItens = totItens;

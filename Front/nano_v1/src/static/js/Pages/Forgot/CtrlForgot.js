@@ -1,5 +1,5 @@
 
-import { getCurrentLanguage, MultiLanguage, MultiLanguageChange, } from "./language";
+import { getCurrentLanguage, MultiLanguage, MultiLanguageChange, } from "./MultiLanguage";
 import { Endpoints, DtoPasswordRecovery } from "@app/Infra/Endpoints";
 
 import {
@@ -19,7 +19,7 @@ import MyForm from "./Views/ViewForgot";
 window.addEventListener("resize", (e) => { 
   var curWidth = window.innerWidth;
   var update = false;
-  var last = sessionStorage.getItem('res');
+  var lastRes = sessionStorage.getItem('res');
   if (lastRes != null && lastRes != undefined)
   {
     if (parseInt(lastRes) != curWidth)

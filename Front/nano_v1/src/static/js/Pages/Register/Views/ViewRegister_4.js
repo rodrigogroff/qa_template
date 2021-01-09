@@ -1,4 +1,5 @@
-import { MultiLanguage } from "../language";
+
+import { MultiLanguage } from "../MultiLanguage";
 import { mobileCheck } from "@app/Infra/Util";
 import ImgLoader from "@app/Components/Images/ImageLoader";
 

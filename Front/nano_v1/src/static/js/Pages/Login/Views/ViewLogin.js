@@ -1,13 +1,16 @@
-import { MultiLanguage, AppLanguage } from "../language";
+
+import { MultiLanguage, AppLanguage } from "../MultiLanguage";
 import ImgLoader from "@app/Components/Images/ImageLoader";
 import EmailField from "@app/Components/Fields/Email";
 import PasswordField from "@app/Components/Fields/Password";
 import CheckBoxField from "@app/Components/Fields/CheckBox";
+
 import {
   buildTable2TD,
   buildTable2TDEqual,
   BaseLoader,
 } from "@app/Components/Images/BaseLoader";
+
 import Label from "@app/Components/Misc/Label";
 import Popup from "@app/Components/Modals/Popup";
 import LanguageSelect from "@app/Components/Selects/LanguageSelect";
@@ -18,7 +21,6 @@ export default class MyForm {
     return {
       formMail: "formMail",
       formPass: "formPass",
-      keepLogged: "keepLogged",
       btnSubmit: "btnSubmit",
     };
   }
@@ -55,8 +57,7 @@ export default class MyForm {
                         <br>
                         <label for='${elements.formPass}' style='padding-left:20px'>${placeholderPass}</label>
                           ${PasswordField.getHtml(elements.formPass, "", placeholderPass_Title)}
-                        <br>
-                        ${CheckBoxField.getHtml(elements.keepLogged, checkMsg, "checked")}
+                        <br>                        
                     </div>
                     <br>
                     <div class="form-row">
@@ -105,8 +106,7 @@ export default class MyForm {
                   <br>
                   <label for='${elements.formPass}' style='padding-left:20px'>${placeholderPass}</label>
                     ${PasswordField.getHtml(elements.formPass, "", placeholderPass_Title)}
-                  <br>
-                  ${CheckBoxField.getHtml(elements.keepLogged, checkMsg, "checked")}
+                  <br>                  
               </div>
               <br>
               <div class="form-row">

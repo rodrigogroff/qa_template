@@ -1,5 +1,5 @@
 
-import { MultiLanguage } from "../language";
+import { MultiLanguage } from "../MultiLanguage";
 
 import InputNumberField from "@app/Components/Fields/Number";
 import Popup from "@app/Components/Modals/Popup";

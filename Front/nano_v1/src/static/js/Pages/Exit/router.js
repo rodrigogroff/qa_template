@@ -1,3 +1,4 @@
+
 import "@app/Infra/global.script.js";
 import Menu from "@app/Components/Menu";
 import Controller from "./CtrlExit";

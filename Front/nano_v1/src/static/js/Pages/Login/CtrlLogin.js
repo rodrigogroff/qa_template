@@ -1,5 +1,5 @@
 
-import { getCurrentLanguage, MultiLanguage, MultiLanguageChange } from "./language";
+import { getCurrentLanguage, MultiLanguage, MultiLanguageChange } from "./MultiLanguage";
 import { Endpoints, DtoLoginInformation, DtoAuthenticatedUser } from "@app/Infra/Endpoints";
 
 import {
@@ -11,7 +11,6 @@ import {
   loginOk,
   mockServer,
   CheckPopUpCloseClick,
-  setToStorage,
   updateHTML,
   displaySystemPopup,
 } from "@app/Infra/Util";
@@ -22,7 +21,7 @@ import PasswordField from "@app/Components/Fields/Password";
 window.addEventListener("resize", (e) => { 
   var curWidth = window.innerWidth;
   var update = false;
-  var last = sessionStorage.getItem('res');
+  var lastRes = sessionStorage.getItem('res');
   if (lastRes != null && lastRes != undefined)
   {
     if (parseInt(lastRes) != curWidth)
@@ -128,8 +127,8 @@ export default class LoginPage {
       loadingOff();
       var response = DtoAuthenticatedUser(payload);
       loginOk(response);
-      if ($("#" + MyForm.elements().keepLogged).is(":checked"))
-        setToStorage("hsh", response.user.hsh);
+      //if ($("#" + MyForm.elements().keepLogged).is(":checked"))
+        //setToStorage("hsh", response.user.hsh);
       location.href = "/";
     }
   }

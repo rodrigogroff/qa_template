@@ -1,3 +1,4 @@
+
 export class AppLanguage {
   constructor() {
     this.availableLanguages = ["English", "Español", "Português BR"];

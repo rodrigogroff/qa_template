@@ -6,7 +6,7 @@ export class MenuAppLanguage {
     this.availableLanguages = [
       "English",
       "Español",
-      "Português BR",      
+      "Português BR",
     ];
 
     this.langs = [
@@ -20,6 +20,8 @@ export class MenuAppLanguage {
           "Dashboard" /* 4 */,
           "Welcome" /* 5 */,
           "Exit" /* 6 */,
+          "Admin" /* 7 */,
+          "Brand" /* 8 */,
         ],
       },
       // spanish (1)
@@ -32,6 +34,8 @@ export class MenuAppLanguage {
           "Dashboard" /* 4 */,
           "Bienvenido" /* 5 */,
           "Salir" /* 6 */,
+          "Administración" /* 7 */,
+          "Marca" /* 8 */,
         ],
       },
       // ptBr (2)
@@ -44,6 +48,8 @@ export class MenuAppLanguage {
           "Dashboard" /* 4 */,
           "Bem-vindo" /* 5 */,
           "Sair" /* 6 */,
+          "Administração" /* 7 */,
+          "Marca" /* 8 */,
         ],
       },
     ];
@@ -71,34 +77,43 @@ export function BuildMenuTranslation() {
     dashboardItem: Menu_MultiLanguage(4),
     welcome: Menu_MultiLanguage(5),
     exit: Menu_MultiLanguage(6),
+    admin: Menu_MultiLanguage(7),
+    brand: Menu_MultiLanguage(8),
   };
 }
 
 export default class {
   static getHtml() {
+    
     var itens = BuildMenuTranslation();
 
     var usrMsg = "";
-    var usrLoggedMenu = "";
+    var mainMenu = `<li>
+                    <a href="javascript:void(0);">${itens.userItem}</a>
+                    <ul>
+                      <li><a href="/login" style='cursor:pointer'>${itens.loginItem}</a></li>
+                      <li><a href="/register" style='cursor:pointer'>${itens.registerItem}</a></li>
+                    </ul>
+                  </li>                  
+                  `;
 
     var usr = isAuthenticated();
 
-    console.log(usr)
-
-    if (usr != null)
+    if (usr != null) {
       usrMsg = `<p style='color:white;padding-left:20px'>${itens.welcome}<br>
                   <span style='padding-left:30px'>${usr.user_name}</span><br>
                   <br>
                   <a href="/exit" style='cursor:pointer'>${itens.exit}</a>
-                </p>`;
-    else
-      usrLoggedMenu = `<li>
-                        <a href="javascript:void(0);">${itens.userItem}</a>
-                        <ul>
-                          <li><a href="/login" style='cursor:pointer'>${itens.loginItem}</a></li>
-                          <li><a href="/register" style='cursor:pointer'>${itens.registerItem}</a></li>
-                        </ul>
-                      </li>`;
+                </p>
+                `;
+      mainMenu += `<li>
+                  <a href="javascript:void(0);">${itens.admin}</a>
+                  <ul>
+                    <li><a href="/brand" style='cursor:pointer'>${itens.brand}</a></li>
+                  </ul>
+                </li>
+                `;
+    }
 
     return `<div class="nav-menu" align='left'><nav class="menu">                
         <div class="nav-container">
@@ -110,7 +125,7 @@ export default class {
 								<li><a href="/" style='cursor:pointer'>${itens.dashboardItem}</a></li>								
 							</ul>
             </li>
-						${usrLoggedMenu}
+						${mainMenu}
           </ul>
           <br>          
           <br>

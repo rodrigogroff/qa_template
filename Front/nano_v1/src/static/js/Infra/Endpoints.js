@@ -10,6 +10,7 @@ export function Endpoints() {
     checkToken: "checkToken_v1",
     resendToken: "resendToken_v1",
     passwordRecovery: "passwordRecovery_v1",
+    brandListing: "brandListing_v1",
   };
 }
 
@@ -68,5 +69,14 @@ export function DtoPasswordRecovery(sEmail, _language) {
   return {
     email: sEmail,
     _language: _language,
+  };
+}
+
+export function DtoBrandListing(_tag, _page, _pageSize, _orderBy) {
+  return {
+    tag: _tag,
+    page: _page,
+    pageSize: _pageSize,
+    orderBy: _orderBy,    
   };
 }
