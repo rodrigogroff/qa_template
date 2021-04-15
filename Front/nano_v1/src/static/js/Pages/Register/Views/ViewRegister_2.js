@@ -3,7 +3,7 @@ import { MultiLanguage } from "../MultiLanguage";
 import { imageChange } from "@app/Infra/Util";
 import EmailField from "@app/Components/Fields/Email";
 import PasswordField from "@app/Components/Fields/Password";
-import { buildTable2TD, BaseLoader } from "@app/Components/Images/BaseLoader";
+import { BaseLoader } from "@app/Components/Images/BaseLoader";
 import Popup from "@app/Components/Modals/Popup";
 
 import { mobileCheck } from "@app/Infra/Util";
@@ -54,15 +54,13 @@ export default class Register_2 {
                   </div>
                   <br>
               </div>
+              ${BaseLoader()}
               <div>
                   <table width='100%'>
                       <tr>
                           <td><a id="${elements.btnPrev}" class="button circle block green">${prevMsg}</a></td>
                           <td width='20px'></td>
-                          <td><a id="${elements.btnNext}" class="button circle block green">
-                                ${buildTable2TD(nextMsg, BaseLoader(), elements.btnNext)}
-                              </a>
-                          </td>
+                          <td><a id="${elements.btnNext}" class="button circle block green">${nextMsg}</a></td>
                       </tr>
                   </table>
               </div>
@@ -107,15 +105,13 @@ export default class Register_2 {
                         </div>
                         <br>
                     </div>
+                    ${BaseLoader()}
                     <div>
                         <table width='100%'>
                             <tr>
                                 <td><a id="${elements.btnPrev}" class="button circle block green">${prevMsg}</a></td>
                                 <td width='20px'></td>
-                                <td><a id="${elements.btnNext}" class="button circle block green">
-                                      ${buildTable2TD(nextMsg, BaseLoader(), elements.btnNext)}
-                                    </a>
-                                </td>
+                                <td><a id="${elements.btnNext}" class="button circle block green">${nextMsg}</a></td>
                             </tr>
                         </table>
                     </div>

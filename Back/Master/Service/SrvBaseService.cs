@@ -18,7 +18,7 @@ namespace Master.Service
 
         public DtoServiceError Error;
 
-        public IMemoryCache _cache;
+        public IMemoryCache _cache { get; set; }
 
         #region - const values - 
 

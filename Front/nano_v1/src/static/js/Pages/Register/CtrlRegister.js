@@ -64,8 +64,7 @@ window.addEventListener("resize", (e) => {
       case tags.form3: updateHTML("currentForm", Form3.getHtml()); Form3.maskUp(); break;
       case tags.form4: updateHTML("currentForm", Form4.getHtml()); break;
     }
-  }
-    
+  }    
   sessionStorage.setItem('res', curWidth);
 });
 
@@ -76,10 +75,6 @@ export default class Controller{
   }
 
   constructor(params) {
-
-    // -------------------------------------------------------------------------
-    // page events here --------------------------------------------------------
-    // -------------------------------------------------------------------------
 
     $(document).ready(function () {
       var tags = GetPageTags();      

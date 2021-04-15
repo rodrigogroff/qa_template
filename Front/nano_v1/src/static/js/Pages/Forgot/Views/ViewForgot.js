@@ -2,7 +2,7 @@
 import { MultiLanguage, AppLanguage } from "../MultiLanguage";
 import EmailField from "@app/Components/Fields/Email";
 import Popup from "@app/Components/Modals/Popup";
-import { buildTable2TD, BaseLoader } from "@app/Components/Images/BaseLoader";
+import { BaseLoader } from "@app/Components/Images/BaseLoader";
 import LanguageSelect from "@app/Components/Selects/LanguageSelect";
 import { mobileCheck } from "@app/Infra/Util";
 import ImgLoader from "@app/Components/Images/ImageLoader";
@@ -29,36 +29,32 @@ export default class {
     var title = MultiLanguage(6);
 
     return `<div style="width:296px" class="form-row-group-dark"><br>
-            <table><tr><td width='120px'><label for="languageSel">${language}</label></td><td width='50%'>${LanguageSelect.getHtml(
-      new AppLanguage().availableLanguages
-    )}</td></tr></table>
-            <h3 style='padding-top:10px;padding-bottom:4px'>${title}</h3>
-            <div class="form-row-group" align="left">            
-                <label for='${
-                  elements.formMail
-                }'><p style='padding-left:20px;'>${text}</p></label>
+              <table>
+                <tr>
+                  <td width='120px'><label for="languageSel">${language}</label></td>
+                  <td width='50%'>${LanguageSelect.getHtml(new AppLanguage().availableLanguages)}</td>
+                </tr>
+              </table>
+              <h3 style='padding-top:10px;padding-bottom:4px'>${title}</h3>
+              <div class="form-row-group" align="left">
+                <label for='${elements.formMail}'><p style='padding-left:20px;'>${text}</p></label>
                 ${EmailField.getHtml(elements.formMail, placeholderEmail)}
                 <br>
-                <br>
-                <div class="form-row">
-                    <div align='center' id="${
-                      elements.btnSubmit
-                    }" class="button circle block green">
-                        ${buildTable2TD(
-                          sendMsg,
-                          BaseLoader(),
-                          elements.btnSubmit
-                        )}
-                    </div>
+              </div>
+              <br>
+              ${BaseLoader()}
+              <div class="form-row">
+                <div align='center' id="${elements.btnSubmit}" class="button circle block green">
+                  ${sendMsg}
                 </div>
-                <br>
+              </div>
+              <br>
+              <br>
             </div>
             <br>
             <br>
-            </div>
             <br>
-            <br>
-        </div>${Popup.getHtml()}`;
+            </div>${Popup.getHtml()}`;
   }
 
   static htmlDesktop() {
@@ -78,28 +74,20 @@ export default class {
                 <td width='90px'></td>
                 <td valign='top' width='490px'>
                   <div style="width:296px"><br>
-                  <table><tr><td width='120px'><label for="languageSel">${language}</label></td><td width='50%'>${LanguageSelect.getHtml( new AppLanguage().availableLanguages )}</td></tr></table>
+                  <table><tr><td width='120px'><label for="languageSel">${language}</label></td><td width='50%'>${LanguageSelect.getHtml(new AppLanguage().availableLanguages)}</td></tr></table>
                   <h3 style='padding-top:10px;padding-bottom:4px'>${title}</h3>
                   <div class="form-row-group" align="left">            
-                      <label for='${
-                        elements.formMail
-                      }'><p style='padding-left:20px;'>${text}</p></label>
-                      ${EmailField.getHtml(elements.formMail, placeholderEmail)}
-                      <br>
-                      <br>
-                      <div class="form-row">
-                          <div align='center' id="${
-                            elements.btnSubmit
-                          }" class="button circle block green">
-                              ${buildTable2TD(
-                                sendMsg,
-                                BaseLoader(),
-                                elements.btnSubmit
-                              )}
-                          </div>
-                      </div>
-                      <br>
+                    <label for='${elements.formMail}'><p style='padding-left:20px;'>${text}</p></label>
+                    ${EmailField.getHtml(elements.formMail, placeholderEmail)}
+                    <br>
+                  </div>  
+                  ${BaseLoader()}
+                  <div class="form-row">
+                    <div align='center' id="${elements.btnSubmit}" class="button circle block green">
+                        ${sendMsg}        
+                    </div>
                   </div>
+                  <br>
                   <br>
                   <br>
                   </div>

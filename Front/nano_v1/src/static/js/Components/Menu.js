@@ -88,7 +88,7 @@ export default class {
     var itens = BuildMenuTranslation();
 
     var usrMsg = "";
-    var mainMenu = `<li>
+    var fullMenu = `<li>
                     <a href="javascript:void(0);">${itens.userItem}</a>
                     <ul>
                       <li><a href="/login" style='cursor:pointer'>${itens.loginItem}</a></li>
@@ -106,7 +106,7 @@ export default class {
                   <a href="/exit" style='cursor:pointer'>${itens.exit}</a>
                 </p>
                 `;
-      mainMenu += `<li>
+      fullMenu = `<li>
                   <a href="javascript:void(0);">${itens.admin}</a>
                   <ul>
                     <li><a href="/brand" style='cursor:pointer'>${itens.brand}</a></li>
@@ -125,7 +125,7 @@ export default class {
 								<li><a href="/" style='cursor:pointer'>${itens.dashboardItem}</a></li>								
 							</ul>
             </li>
-						${mainMenu}
+						${fullMenu}
           </ul>
           <br>          
           <br>

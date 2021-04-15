@@ -8,6 +8,7 @@ import {
   loadingOn,
   loadingOff,
   displaySystemPopup,
+  CheckPopUpCloseClick,
   mockServer,
   updateHTML,
   isAuthenticated,
@@ -36,17 +37,33 @@ window.addEventListener("resize", (e) => {
 });
 
 export default class {
+
+  getHtml() {
+    return MyForm.getHtml();
+  }
+
   constructor(params) {
     this.params = params;
 
     // events ---------------------------------------------------------------
 
-    $(document).ready(function () {
-      
+    document.body.addEventListener("click", (e) => {
+      if (CheckPopUpCloseClick(e)) return;
+      var elements = MyForm.elements();
+      switch ($(e.target).attr("id")) {
+        case elements.btnSubmit: btnSubmit_Click(); break;
+      }
+    });
+
+    $(document).ready(function () {      
       if (isAuthenticated() == null) {
         location.href = "/";
         return;
       }
+    });
+
+    function btnSubmit_Click() {
+      if (IsLoading()) return;
 
       var formData = DtoBrandListing('',0, 20, 1);
       var elements = MyForm.elements();
@@ -82,8 +99,7 @@ export default class {
         .catch((resp) => {
           displaySystemPopup(MultiLanguage(5), resp.msg);
         });
-
-    });
+    }
 
     function serviceOk(payload) {
       loadingOff();      
@@ -106,10 +122,5 @@ export default class {
 
       updateHTML('tableData', getDataTable (table));
     }
-
-  }
-
-  getHtml() {
-    return MyForm.getHtml();
-  }
+  }  
 }

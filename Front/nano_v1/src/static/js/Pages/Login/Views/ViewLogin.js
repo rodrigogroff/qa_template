@@ -3,12 +3,11 @@ import { MultiLanguage, AppLanguage } from "../MultiLanguage";
 import ImgLoader from "@app/Components/Images/ImageLoader";
 import EmailField from "@app/Components/Fields/Email";
 import PasswordField from "@app/Components/Fields/Password";
-import CheckBoxField from "@app/Components/Fields/CheckBox";
 
 import {
-  buildTable2TD,
   buildTable2TDEqual,
   BaseLoader,
+  BaseLoaderIcon,
 } from "@app/Components/Images/BaseLoader";
 
 import Label from "@app/Components/Misc/Label";
@@ -33,7 +32,6 @@ export default class MyForm {
   static htmlMobile() {
     var elements = this.elements();
     var _langs = new AppLanguage().availableLanguages;
-    var checkMsg = MultiLanguage(11);
     var forgotMsg = MultiLanguage(0);
     var loginMsg = MultiLanguage(1);
     var ncadMsg = MultiLanguage(2);
@@ -59,10 +57,10 @@ export default class MyForm {
                           ${PasswordField.getHtml(elements.formPass, "", placeholderPass_Title)}
                         <br>                        
                     </div>
-                    <br>
+                    ${BaseLoader()}                    
                     <div class="form-row">
                         <div align='center' id="${elements.btnSubmit}" class="button circle block green">
-                            ${buildTable2TD(loginMsg, BaseLoader(), elements.btnSubmit)}
+                          ${loginMsg}
                         </div>
                     </div>
                     <br>
@@ -76,7 +74,6 @@ export default class MyForm {
   static htmlDesktop() {
     var elements = this.elements();
     var _langs = new AppLanguage().availableLanguages;
-    var checkMsg = MultiLanguage(11);
     var forgotMsg = MultiLanguage(0);
     var loginMsg = MultiLanguage(1);
     var ncadMsg = MultiLanguage(2);
@@ -95,7 +92,9 @@ export default class MyForm {
             </td>
             <td width='90px'></td>
             <td valign='top' width='490px'>
-              <table><tr><td width='150px'><h2>${title}</h2></td><td>${ncadMsg} <a href='/register' style='padding-left:30px'>${cadHereMsg}</a></td></tr></table>
+              <table><tr><td width='150px'><h2>
+                ${title}
+              </h2></td><td>${ncadMsg} <a href='/register' style='padding-left:30px'>${cadHereMsg}</a></td></tr></table>
               <div align='left'>
                 ${LanguageSelect.getHtml(_langs)}                
               </div>
@@ -107,11 +106,11 @@ export default class MyForm {
                   <label for='${elements.formPass}' style='padding-left:20px'>${placeholderPass}</label>
                     ${PasswordField.getHtml(elements.formPass, "", placeholderPass_Title)}
                   <br>                  
-              </div>
-              <br>
+              </div>    
+              ${BaseLoader()}
               <div class="form-row">
                   <div align='center' id="${elements.btnSubmit}" class="button circle block green">
-                      ${buildTable2TD(loginMsg, BaseLoader(), elements.btnSubmit)}
+                    ${loginMsg}
                   </div>
               </div>
               <br>

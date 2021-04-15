@@ -16,29 +16,30 @@ import {
 
 import MyForm from "./Views/ViewForgot";
 
-window.addEventListener("resize", (e) => { 
+window.addEventListener("resize", (e) => {
   var curWidth = window.innerWidth;
   var update = false;
   var lastRes = sessionStorage.getItem('res');
-  if (lastRes != null && lastRes != undefined)
-  {
+  if (lastRes != null && lastRes != undefined) {
     if (parseInt(lastRes) != curWidth)
       update = true;
   }
-  else  
+  else
     update = true;
-  if(update == true)
-    updateHTML("mainFormApp", MyForm.getHtml()); 
+  if (update == true)
+    updateHTML("mainFormApp", MyForm.getHtml());
   sessionStorage.setItem('res', curWidth);
 });
 
-
 export default class {
+  
+  getHtml() {
+    return MyForm.getHtml();
+  }
+
   constructor(params) {
     this.params = params;
-
-    // events ---------------------------------------------------------------
-
+  
     $(document).ready(function () {
       SetLanguageHTMLSelect();
       MyForm.focus();
@@ -84,15 +85,17 @@ export default class {
       if (sessionStorage["mock"])
         mockServer(JSON.stringify({ payload: true, obj: {} }));
 
-      postPublicPortal(Endpoints().passwordRecovery, formData)
-        .then((resp) => {
-          if (resp.ok == true) serviceOK();
-          // output service data
-          else displaySystemPopup(MultiLanguage(5), resp.msg);
-        })
-        .catch((resp) => {
-          displaySystemPopup(MultiLanguage(5), resp.msg);
-        });
+      setTimeout(() => {
+        postPublicPortal(Endpoints().passRecovery, formData)
+          .then((resp) => {
+            if (resp.ok == true) serviceOK();
+            // output service data
+            else displaySystemPopup(MultiLanguage(5), resp.msg);
+          })
+          .catch((resp) => {
+            displaySystemPopup(MultiLanguage(5), resp.msg);
+          });
+      }, 1000);
     }
 
     function serviceOK() {
@@ -100,9 +103,5 @@ export default class {
       var _msg = MultiLanguage(8);
       displaySystemSuccess(_title, _msg);
     }
-  }
-
-  getHtml() {
-    return MyForm.getHtml();
   }
 }

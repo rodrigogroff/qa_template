@@ -6,11 +6,9 @@ import {
 
 export default class {
   static getHtml(id, placeholderMsg, isNumeric) {
-
     var numeric = '';
     if (isNumeric == true)
       numeric = 'type="tel" pattern="[0-9]*" inputmode="numeric"';
-
     return `<div class="form-row no-padding">
                 <table width='100%'>
                     <tr>
@@ -54,11 +52,14 @@ export default class {
       .val()
       .replace(/\D/g, "");
     if (!this.CheckCPF(strCPF)) {
-      if (_params.focus == true) $("#" + id).focus();
-      else {
-        imageChange("#fail" + id, "bolt_err.png");
-        if (_params.msg == true) displaySystemPopup(_title, customMsg);
-      }
+      if (_params != undefined)
+      {
+        if (_params.focus == true) $("#" + id).focus();
+        else {
+          imageChange("#fail" + id, "bolt_err.png");
+          if (_params.msg == true) displaySystemPopup(_title, customMsg);
+        }
+      }      
       return false;
     } else imageChange("#fail" + id, "bolt.png");
 

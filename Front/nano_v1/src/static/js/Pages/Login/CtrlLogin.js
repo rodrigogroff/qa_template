@@ -18,19 +18,18 @@ import {
 import MyForm from "./Views/ViewLogin";
 import PasswordField from "@app/Components/Fields/Password";
 
-window.addEventListener("resize", (e) => { 
+window.addEventListener("resize", (e) => {
   var curWidth = window.innerWidth;
   var update = false;
   var lastRes = sessionStorage.getItem('res');
-  if (lastRes != null && lastRes != undefined)
-  {
+  if (lastRes != null && lastRes != undefined) {
     if (parseInt(lastRes) != curWidth)
       update = true;
   }
-  else  
+  else
     update = true;
-  if(update == true)
-    updateHTML("mainFormApp", MyForm.getHtml()); 
+  if (update == true)
+    updateHTML("mainFormApp", MyForm.getHtml());
   sessionStorage.setItem('res', curWidth);
 });
 
@@ -42,10 +41,6 @@ export default class LoginPage {
 
   constructor(params) {
     this.params = params;
-
-    // ----------------------------------------------------------------
-    // page events here -----------------------------------------------
-    // ----------------------------------------------------------------
 
     $(document).ready(function () {
       SetLanguageHTMLSelect();
@@ -63,7 +58,7 @@ export default class LoginPage {
       if (MultiLanguageChange($("#languageSel").val()))
         setTimeout(() => {
           location.href = "/login";
-        }, 100);
+        }, 20);
     });
 
     document.body.addEventListener("click", (e) => {
@@ -74,10 +69,6 @@ export default class LoginPage {
         case "seePass" + elements.formPass: PasswordField.btnSeePassword(elements.formPass); break;
       }
     });
-
-    // ----------------------------------------------------------------
-    // page functions here --------------------------------------------
-    // ----------------------------------------------------------------
 
     function btnSubmit_Click() {
       if (IsLoading()) return;
@@ -108,27 +99,27 @@ export default class LoginPage {
           })
         );
 
-      postPublicPortal(Endpoints().authenticate, formData)
-        .then((resp) => {
-          if (resp.ok == true) serviceOk(resp.payload);
-          // output service data
-          else displaySystemPopup(MultiLanguage(5), resp.msg);
-        })
-        .catch((resp) => {
-          displaySystemPopup(MultiLanguage(5), resp.msg);
-        });
+      setTimeout(() => {
+        postPublicPortal(Endpoints().authenticate, formData)
+          .then((resp) => {
+            if (resp.ok == true)
+              serviceOk(resp.payload);
+            // output service data
+            else
+              displaySystemPopup(MultiLanguage(5), resp.msg);
+          })
+          .catch((resp) => {
+            displaySystemPopup(MultiLanguage(5), resp.msg);
+          });
+      }, 1000);
     }
-
-    // ----------------------------------------------------------------
-    // Flow and routing decision here ---------------------------------
-    // ----------------------------------------------------------------
 
     function serviceOk(payload) {
       loadingOff();
       var response = DtoAuthenticatedUser(payload);
       loginOk(response);
       //if ($("#" + MyForm.elements().keepLogged).is(":checked"))
-        //setToStorage("hsh", response.user.hsh);
+      //setToStorage("hsh", response.user.hsh);
       location.href = "/";
     }
   }

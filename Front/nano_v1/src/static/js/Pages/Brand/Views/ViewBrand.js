@@ -28,11 +28,11 @@ export default class {
     var search = MultiLanguage(4);
 
     return `<div style="width:296px" class="form-row-group-dark"><br>
-            <h3 style='padding-top:10px;padding-bottom:4px'>${title}</h3>
-            <br>
+              <h3 style='padding-top:10px;padding-bottom:4px'>${title} ${BaseLoader()}</h3>
+              <br>
             <div class="form-row">
               <div align='center' id="${elements.btnSubmit}" class="button circle block green">
-                ${buildTable2TD(search, BaseLoader(), elements.btnSubmit)}
+                ${search}
               </div>
             </div>            
             <div class="form-row">
@@ -47,7 +47,7 @@ export default class {
               <br>
               <br>
           </div>
-        </div>${Popup.getHtml()}`;
+              </div>${Popup.getHtml()}`;
   }
 
   static htmlDesktop() {
@@ -55,12 +55,12 @@ export default class {
     var title = MultiLanguage(0);
     var search = MultiLanguage(4);
 
-    return `<div style="width:1150px" class="form-row-group-dark"><br><br><br>
-              <h3 style='padding-top:10px;padding-bottom:4px'>${title}</h3>
+    return `<div style="width:90%" class="form-row-group-dark"><br><br><br>
+              <h3 style='padding-top:10px;padding-bottom:4px'>${title} ${BaseLoader()}</h3>
               <br>
             <div class="form-row">
               <div align='center' id="${elements.btnSubmit}" class="button circle block green">
-                ${buildTable2TD(search, BaseLoader(), elements.btnSubmit)}
+                ${search}
               </div>
             </div>            
             <div class="form-row">
@@ -79,7 +79,6 @@ export default class {
   }
 
   static validate(_params) {
-
     return true;
   }
 }

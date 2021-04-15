@@ -9,7 +9,7 @@ export function Endpoints() {
     onboarding: "onboarding_v1",
     checkToken: "checkToken_v1",
     resendToken: "resendToken_v1",
-    passwordRecovery: "passwordRecovery_v1",
+    passRecovery: "passRecovery_v1",
     brandListing: "brandListing_v1",
   };
 }

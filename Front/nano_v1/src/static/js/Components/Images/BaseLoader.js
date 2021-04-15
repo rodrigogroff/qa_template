@@ -1,3 +1,4 @@
+
 export function buildTable2TD(html1, html2, id) {
   return `<table align='center'><tr><td id='${id}' valign='middle'>${html1}</td><td valign='middle'>${html2}</td></tr></table>`;
 }
@@ -9,8 +10,19 @@ export function buildTable2TDEqual(html1, html2, id) {
 export function BaseLoader(id, _style) {
   if (id == undefined) id = "loading";
   if (_style == undefined) _style = "display:none;";
-  return `<span class="loadingio-spinner-spinner-z7v4g50j1x" id='loading' style="display:none;padding-top:3px">
-    <div class="ldio-hqohp5x0gi"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
-    </div>
-</span>`;
+  return `<div align='center'><div><span class="loadingio-spinner-spinner-4rb4hgyrsge" id='loading' style="display:none;">
+          <div class="ldio-k0jb5gkv3kn"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+          </div>
+          </span><br>
+          </div>
+          </div>`;
+}
+
+export function BaseLoaderIcon(id, _style) {
+  if (id == undefined) id = "loading";
+  if (_style == undefined) _style = "display:none;";
+  return `<span class="loadingio-spinner-spinner-4rb4hgyrsge" id='loading' style="display:none;">
+          <div class="ldio-k0jb5gkv3kn"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+          </div>
+          </span>`;
 }
